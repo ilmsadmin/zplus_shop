@@ -1301,6 +1301,109 @@ return [
                 ],
             ],
         ],
+
+        'groups' => [
+            'index' => [
+                'title' => 'Nhóm',
+
+                'create' => [
+                    'code'       => 'Mã',
+                    'create-btn' => 'Tạo nhóm',
+                    'name'       => 'Tên',
+                    'save-btn'   => 'Lưu nhóm',
+                    'success'    => 'Nhóm được tạo thành công',
+                    'title'      => 'Tạo nhóm mới',
+                ],
+
+                'edit' => [
+                    'delete-failed'  => 'Xóa nhóm thất bại',
+                    'delete-success' => 'Nhóm được xóa thành công',
+                    'group-default'  => 'Nhóm mặc định không thể xóa',
+                    'success'        => 'Nhóm được cập nhật thành công',
+                    'title'          => 'Chỉnh sửa nhóm',
+                ],
+
+                'datagrid' => [
+                    'code'   => 'Mã',
+                    'delete' => 'Xóa',
+                    'edit'   => 'Chỉnh sửa',
+                    'id'     => 'ID',
+                    'name'   => 'Tên',
+                ],
+            ],
+        ],
+
+        'gdpr' => [
+            'index' => [
+                'title' => 'Yêu cầu GDPR',
+
+                'datagrid' => [
+                    'completed'     => 'Hoàn thành',
+                    'created-at'    => 'Ngày tạo',
+                    'customer-name' => 'Tên khách hàng',
+                    'declined'      => 'Bị từ chối',
+                    'delete'        => 'Xóa',
+                    'edit'          => 'Chỉnh sửa',
+                    'id'            => 'ID',
+                    'message'       => 'Tin nhắn',
+                    'pending'       => 'Chờ xử lý',
+                    'processing'    => 'Đang xử lý',
+                    'revoked'       => 'Bị thu hồi',
+                    'status'        => 'Trạng thái',
+                    'type'          => 'Loại',
+                ],
+
+                'modal' => [
+                    'completed'  => 'Hoàn thành',
+                    'declined'   => 'Bị từ chối',
+                    'message'    => 'Tin nhắn',
+                    'pending'    => 'Chờ xử lý',
+                    'processing' => 'Đang xử lý',
+                    'revoked'    => 'Bị thu hồi',
+                    'status'     => 'Trạng thái',
+                    'title'      => 'Cập nhật trạng thái',
+                    'update'     => 'Cập nhật',
+                ],
+            ],
+        ],
+
+        'reviews' => [
+            'index' => [
+                'title' => 'Đánh giá',
+
+                'datagrid' => [
+                    'approved'      => 'Đã duyệt',
+                    'created-at'    => 'Ngày tạo',
+                    'customer-name' => 'Tên khách hàng',
+                    'disapproved'   => 'Không duyệt',
+                    'edit'          => 'Chỉnh sửa',
+                    'id'            => 'ID',
+                    'pending'       => 'Chờ duyệt',
+                    'product-name'  => 'Tên sản phẩm',
+                    'rating'        => 'Đánh giá',
+                    'status'        => 'Trạng thái',
+                    'title'         => 'Tiêu đề',
+                ],
+
+                'edit' => [
+                    'approved'      => 'Đã duyệt',
+                    'back-btn'      => 'Quay lại',
+                    'comment'       => 'Bình luận',
+                    'customer-name' => 'Tên khách hàng',
+                    'disapproved'   => 'Không duyệt',
+                    'pending'       => 'Chờ duyệt',
+                    'product-name'  => 'Tên sản phẩm',
+                    'rating'        => 'Đánh giá',
+                    'save-btn'      => 'Lưu đánh giá',
+                    'status'        => 'Trạng thái',
+                    'title'         => 'Tiêu đề',
+                    'update-success' => 'Cập nhật thành công',
+                ],
+
+                'delete-failed'  => 'Đánh giá xóa thất bại',
+                'delete-success' => 'Đánh giá được xóa thành công',
+            ],
+        ],
     ],
 
     'marketing' => [
@@ -3178,26 +3281,201 @@ return [
     'components' => [
         'layouts' => [
             'header' => [
-                'bagisto'           => 'Bagisto',
-                'logout'            => 'Đăng xuất',
-                'my-account'        => 'Tài khoản của tôi',
-                'profile'           => 'Hồ sơ',
+                'account-title' => 'Tài khoản',
+                'app-version'   => 'Phiên bản: :version',
+                'bagisto'       => 'Bagisto',
+                'logout'        => 'Đăng xuất',
+                'my-account'    => 'Tài khoản của tôi',
+                'notifications' => 'Thông báo',
+                'profile'       => 'Hồ sơ',
+                'visit-shop'    => 'Thăm cửa hàng',
+
+                'mega-search' => [
+                    'categories'                      => 'Danh mục',
+                    'customers'                       => 'Khách hàng',
+                    'explore-all-categories'          => 'Khám phá tất cả danh mục',
+                    'explore-all-customers'           => 'Khám phá tất cả khách hàng',
+                    'explore-all-matching-categories' => 'Khám phá tất cả danh mục khớp với ":query" (:count)',
+                    'explore-all-matching-customers'  => 'Khám phá tất cả khách hàng khớp với ":query" (:count)',
+                    'explore-all-matching-orders'     => 'Khám phá tất cả đơn hàng khớp với ":query" (:count)',
+                    'explore-all-matching-products'   => 'Khám phá tất cả sản phẩm khớp với ":query" (:count)',
+                    'explore-all-orders'              => 'Khám phá tất cả đơn hàng',
+                    'explore-all-products'            => 'Khám phá tất cả sản phẩm',
+                    'orders'                          => 'Đơn hàng',
+                    'products'                        => 'Sản phẩm',
+                    'sku'                             => 'SKU: :sku',
+                    'title'                           => 'Tìm kiếm Mega',
+                ],
             ],
 
             'sidebar' => [
-                'catalog'           => 'Danh mục',
-                'categories'        => 'Danh mục',
-                'configuration'     => 'Cấu hình',
-                'customers'         => 'Khách hàng',
-                'dashboard'         => 'Bảng điều khiển',
-                'marketing'         => 'Marketing',
-                'products'          => 'Sản phẩm',
-                'sales'             => 'Bán hàng',
-                'settings'          => 'Cài đặt',
+                'attribute-families'       => 'Họ thuộc tính',
+                'attributes'               => 'Thuộc tính',
+                'booking-product'          => 'Đặt chỗ',
+                'campaigns'                => 'Chiến dịch',
+                'catalog'                  => 'Danh mục',
+                'categories'               => 'Danh mục',
+                'channels'                 => 'Kênh',
+                'cms'                      => 'CMS',
+                'collapse'                 => 'Thu gọn',
+                'communications'           => 'Liên lạc',
+                'configuration'            => 'Cấu hình',
+                'configure'                => 'Cấu hình',
+                'currencies'               => 'Tiền tệ',
+                'customers'                => 'Khách hàng',
+                'dashboard'                => 'Bảng điều khiển',
+                'data-transfer'            => 'Truyền dữ liệu',
+                'discount'                 => 'Giảm giá',
+                'email-templates'          => 'Mẫu email',
+                'events'                   => 'Sự kiện',
+                'exchange-rates'           => 'Tỷ giá hối đoái',
+                'gdpr-data-requests'       => 'Yêu cầu dữ liệu GDPR',
+                'groups'                   => 'Nhóm',
+                'imports'                  => 'Nhập khẩu',
+                'inventory-sources'        => 'Nguồn hàng tồn kho',
+                'invoices'                 => 'Hóa đơn',
+                'locales'                  => 'Ngôn ngữ',
+                'marketing'                => 'Marketing',
+                'mode'                     => 'Chế độ tối',
+                'newsletter-subscriptions' => 'Đăng ký bản tin',
+                'orders'                   => 'Đơn hàng',
+                'products'                 => 'Sản phẩm',
+                'promotions'               => 'Khuyến mãi',
+                'refunds'                  => 'Hoàn tiền',
+                'reporting'                => 'Báo cáo',
+                'reviews'                  => 'Đánh giá',
+                'roles'                    => 'Vai trò',
+                'sales'                    => 'Bán hàng',
+                'search-seo'               => 'Tìm kiếm & SEO',
+                'search-synonyms'          => 'Từ đồng nghĩa tìm kiếm',
+                'search-terms'             => 'Từ khóa tìm kiếm',
+                'settings'                 => 'Cài đặt',
+                'shipments'                => 'Lô hàng',
+                'sitemaps'                 => 'Sitemaps',
+                'tax-categories'           => 'Danh mục thuế',
+                'tax-rates'                => 'Thuế suất',
+                'taxes'                    => 'Thuế',
+                'themes'                   => 'Giao diện',
+                'transactions'             => 'Giao dịch',
+                'url-rewrites'             => 'URL Rewrites',
+                'users'                    => 'Người dùng',
+            ],
+
+            'powered-by' => [
+                'description' => 'Được hỗ trợ bởi :bagisto, một dự án mã nguồn mở của :webkul.',
+                'title'       => 'Được hỗ trợ bởi',
             ],
         ],
 
         'datagrid' => [
+            'index' => [
+                'no-records-found' => 'Không tìm thấy bản ghi.',
+                'per-page'         => 'Mỗi trang',
+                'showing'          => 'Hiển thị :firstItem đến :lastItem trong tổng số :total kết quả',
+            ],
+
+            'toolbar' => [
+                'export'            => 'Xuất',
+                'filter'            => 'Lọc',
+                'length'            => 'Hiển thị :length mục',
+                'mass-actions'      => 'Hành động hàng loạt',
+                'search'            => 'Tìm kiếm',
+                'sort'              => 'Sắp xếp',
+
+                'mass-actions' => [
+                    'must-select-a-mass-action'        => 'Bạn phải chọn một hành động hàng loạt.',
+                    'must-select-a-mass-action-option' => 'Bạn phải chọn một tùy chọn hành động hàng loạt.',
+                    'no-records-selected'              => 'Không có bản ghi nào được chọn.',
+                    'select-action'                    => 'Chọn hành động',
+                ],
+
+                'filter' => [
+                    'apply-filter' => 'Áp dụng bộ lọc',
+                    'clear-all'    => 'Xóa tất cả',
+                    'filter'       => 'Lọc',
+                    'filters'      => 'Bộ lọc',
+
+                    'custom-filters' => [
+                        'clear-all'         => 'Xóa tất cả',
+                        'date-range'        => 'Khoảng ngày',
+                        'from'              => 'Từ',
+                        'to'                => 'Đến',
+                        'today'             => 'Hôm nay',
+                        'yesterday'         => 'Hôm qua',
+                        'last-week'         => 'Tuần trước',
+                        'last-month'        => 'Tháng trước',
+                        'custom'            => 'Tùy chỉnh',
+                    ],
+
+                    'boolean-options' => [
+                        'false' => 'Sai',
+                        'true'  => 'Đúng',
+                    ],
+
+                    'date-options' => [
+                        'last-month'   => 'Tháng trước',
+                        'last-six-months' => '6 tháng trước',
+                        'last-three-months' => '3 tháng trước',
+                        'last-week'    => 'Tuần trước',
+                        'last-year'    => 'Năm trước',
+                        'this-month'   => 'Tháng này',
+                        'this-week'    => 'Tuần này',
+                        'this-year'    => 'Năm này',
+                        'today'        => 'Hôm nay',
+                        'yesterday'    => 'Hôm qua',
+                    ],
+                ],
+
+                'search' => [
+                    'placeholder' => 'Tìm kiếm ở đây...',
+                    'title'       => 'Tìm kiếm',
+                ],
+            ],
+
+            'filters' => [
+                'title' => 'Áp dụng bộ lọc',
+
+                'dropdown' => [
+                    'searchable' => [
+                        'at-least-two-chars' => 'Nhập ít nhất 2 ký tự...',
+                        'no-results'         => 'Không tìm thấy kết quả...',
+                    ],
+                ],
+
+                'custom-filters' => [
+                    'clear-all' => 'Xóa tất cả',
+                ],
+
+                'boolean-options' => [
+                    'false' => 'Sai',
+                    'true'  => 'Đúng',
+                ],
+
+                'date-options' => [
+                    'last-month'        => 'Tháng trước',
+                    'last-six-months'   => '6 tháng trước',
+                    'last-three-months' => '3 tháng trước',
+                    'last-week'         => 'Tuần trước',
+                    'last-year'         => 'Năm trước',
+                    'this-month'        => 'Tháng này',
+                    'this-week'         => 'Tuần này',
+                    'this-year'         => 'Năm này',
+                    'today'             => 'Hôm nay',
+                    'yesterday'         => 'Hôm qua',
+                ],
+            ],
+
+            'table' => [
+                'actions'                 => 'Hành động',
+                'next-page'               => 'Trang tiếp theo',
+                'no-records-found'        => 'Không tìm thấy bản ghi.',
+                'of'                      => 'của',
+                'page-navigation'         => 'Điều hướng trang',
+                'page-number'             => 'Số trang',
+                'previous-page'           => 'Trang trước',
+                'showing'                 => 'Hiển thị :firstItem đến :lastItem trong tổng số :total kết quả',
+            ],
+
             'actions' => [
                 'delete'    => 'Xóa',
                 'edit'      => 'Chỉnh sửa',
@@ -3209,12 +3487,89 @@ return [
                 'mass-delete'       => 'Xóa hàng loạt',
                 'mass-update'       => 'Cập nhật hàng loạt',
             ],
+        ],
 
-            'toolbar' => [
-                'export'            => 'Xuất',
-                'filter'            => 'Lọc',
-                'search'            => 'Tìm kiếm',
-                'sort'              => 'Sắp xếp',
+        'modal' => [
+            'confirm' => [
+                'agree-btn'    => 'Đồng ý',
+                'cancel-btn'   => 'Hủy',
+                'message'      => 'Bạn có chắc chắn muốn thực hiện hành động này không?',
+                'title'        => 'Xác nhận',
+            ],
+        ],
+
+        'products' => [
+            'search' => [
+                'placeholder'     => 'Tìm kiếm sản phẩm...',
+                'no-results'      => 'Không tìm thấy sản phẩm nào.',
+                'featured'        => 'Nổi bật',
+                'popular'         => 'Phổ biến',
+                'recent'          => 'Gần đây',
+                'suggested'       => 'Được đề xuất',
+            ],
+        ],
+
+        'media' => [
+            'images' => [
+                'add-image'      => 'Thêm hình ảnh',
+                'delete-all'     => 'Xóa tất cả',
+                'delete-confirm' => 'Bạn có chắc chắn muốn xóa hình ảnh này không?',
+                'delete-image'   => 'Xóa hình ảnh',
+                'placeholder'    => 'Kéo và thả hình ảnh ở đây hoặc bấm để tải lên',
+                'upload'         => 'Tải lên',
+
+                'ai-generation' => [
+                    'generate'              => 'Tạo',
+                    'generating'            => 'Đang tạo...',
+                    'image-generation'      => 'Tạo hình ảnh',
+                    'image-generation-info' => 'Tạo hình ảnh bằng AI dựa trên mô tả.',
+                    'model'                 => 'Mô hình',
+                    'model-info'            => 'Chọn mô hình AI để tạo hình ảnh.',
+                    'prompt'                => 'Gợi ý',
+                    'prompt-info'           => 'Nhập mô tả để tạo hình ảnh.',
+                    'size'                  => 'Kích thước',
+                    'size-info'             => 'Chọn kích thước hình ảnh.',
+                    'title'                 => 'Tạo hình ảnh bằng AI',
+                ],
+
+                'placeholders' => [
+                    'large'  => 'Hình ảnh lớn',
+                    'medium' => 'Hình ảnh trung bình',
+                    'small'  => 'Hình ảnh nhỏ',
+                ],
+            ],
+
+            'videos' => [
+                'add-video'      => 'Thêm video',
+                'delete-all'     => 'Xóa tất cả',
+                'delete-confirm' => 'Bạn có chắc chắn muốn xóa video này không?',
+                'delete-video'   => 'Xóa video',
+                'placeholder'    => 'Kéo và thả video ở đây hoặc bấm để tải lên',
+                'upload'         => 'Tải lên',
+            ],
+        ],
+
+        'tinymce' => [
+            'ai-generation' => [
+                'generate'                  => 'Tạo',
+                'generating'                => 'Đang tạo...',
+                'content-generation'        => 'Tạo nội dung',
+                'content-generation-info'   => 'Tạo nội dung bằng AI dựa trên gợi ý.',
+                'prompt'                    => 'Gợi ý',
+                'prompt-info'               => 'Nhập gợi ý để tạo nội dung.',
+                'title'                     => 'Tạo nội dung bằng AI',
+                'tone'                      => 'Giọng điệu',
+                'tone-info'                 => 'Chọn giọng điệu cho nội dung.',
+                'professional'              => 'Chuyên nghiệp',
+                'casual'                    => 'Bình thường',
+                'friendly'                  => 'Thân thiện',
+                'formal'                    => 'Trang trọng',
+                'humorous'                  => 'Hài hước',
+                'length'                    => 'Độ dài',
+                'length-info'               => 'Chọn độ dài nội dung.',
+                'short'                     => 'Ngắn',
+                'medium'                    => 'Trung bình',
+                'long'                      => 'Dài',
             ],
         ],
     ],
