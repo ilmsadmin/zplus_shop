@@ -11,7 +11,7 @@ class WpConvertServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->mergeConfigFrom(dirname(__DIR__).'/Config/menu.php', 'menu.admin');
     }
 
     /**

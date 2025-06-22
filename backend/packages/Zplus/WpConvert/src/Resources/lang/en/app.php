@@ -4,6 +4,10 @@ return [
     'title' => 'WooCommerce to Bagisto Converter',
     'description' => 'Convert WooCommerce product CSV files to Bagisto format and optionally import them directly.',
     
+    'menu' => [
+        'title' => 'WP Convert',
+    ],
+    
     'upload' => [
         'title' => 'Upload WooCommerce CSV File',
         'description' => 'Drag and drop your CSV file here or click to select',

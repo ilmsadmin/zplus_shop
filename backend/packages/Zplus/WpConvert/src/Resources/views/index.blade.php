@@ -1,155 +1,159 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ __('wp_convert::app.title') }}</title>
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .upload-area {
-            border: 2px dashed #dee2e6;
-            border-radius: 8px;
-            padding: 40px;
-            text-align: center;
-            transition: border-color 0.3s ease;
-        }
-        .upload-area.dragover {
-            border-color: #0d6efd;
-            background-color: #f8f9fa;
-        }
-        .stats-card {
-            border-left: 4px solid #0d6efd;
-        }
-        .progress {
-            display: none;
-        }
-    </style>
-</head>
-<body>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-10">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="mb-0">{{ __('wp_convert::app.title') }}</h4>
-                        <p class="text-muted mb-0">{{ __('wp_convert::app.description') }}</p>
+<x-admin::layouts>
+    <x-slot:title>
+        {{ __('wp_convert::app.title') }}
+    </x-slot:title>
+
+    <div class="flex flex-col gap-4">
+        <div class="flex items-center justify-between">
+            <p class="text-xl font-bold text-gray-800 dark:text-white">
+                {{ __('wp_convert::app.title') }}
+            </p>
+        </div>
+
+        <div class="flex flex-col gap-4">
+            <div class="p-4 bg-white dark:bg-gray-900 rounded box-shadow">
+                <p class="text-gray-600 dark:text-gray-300 mb-6">
+                    {{ __('wp_convert::app.description') }}
+                </p>
+
+                <!-- Upload Form -->
+                <form id="convertForm" enctype="multipart/form-data">
+                    @csrf
+                    
+                    <!-- File Upload Area -->
+                    <div class="upload-area border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-8 text-center mb-6 transition-colors" id="uploadArea">
+                        <div class="flex flex-col items-center">
+                            <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mb-4">
+                                <svg class="w-8 h-8 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                </svg>
+                            </div>
+                            <h5 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">
+                                {{ __('wp_convert::app.upload.title') }}
+                            </h5>
+                            <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                {{ __('wp_convert::app.upload.description') }}
+                            </p>
+                            <input type="file" 
+                                   id="woocommerce_csv" 
+                                   name="woocommerce_csv" 
+                                   accept=".csv,.txt" 
+                                   class="hidden">
+                            <button type="button" 
+                                    class="secondary-button" 
+                                    onclick="document.getElementById('woocommerce_csv').click()">
+                                {{ __('wp_convert::app.upload.select_file') }}
+                            </button>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <!-- Upload Form -->
-                        <form id="convertForm" enctype="multipart/form-data">
-                            @csrf
-                            
-                            <!-- File Upload Area -->
-                            <div class="upload-area mb-4" id="uploadArea">
-                                <i class="bi bi-cloud-upload fs-1 text-muted mb-3"></i>
-                                <h5>{{ __('wp_convert::app.upload.title') }}</h5>
-                                <p class="text-muted">{{ __('wp_convert::app.upload.description') }}</p>
-                                <input type="file" 
-                                       id="woocommerce_csv" 
-                                       name="woocommerce_csv" 
-                                       accept=".csv,.txt" 
-                                       class="form-control d-none">
+                    
+                    <!-- File Info -->
+                    <div id="fileInfo" class="hidden bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <strong class="text-blue-800 dark:text-blue-200">{{ __('wp_convert::app.selected_file') }}:</strong> 
+                                <span id="fileName" class="text-blue-700 dark:text-blue-300"></span>
+                            </div>
+                            <button type="button" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-200" onclick="clearFile()">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats Display -->
+                    <div id="statsDisplay" class="hidden grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-white dark:bg-gray-800 border border-l-4 border-l-blue-500 rounded-lg p-4">
+                            <h6 class="text-sm font-medium text-gray-600 dark:text-gray-300">
+                                {{ __('wp_convert::app.stats.total_rows') }}
+                            </h6>
+                            <div class="text-2xl font-bold text-blue-600 dark:text-blue-400" id="totalRows">0</div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 border border-l-4 border-l-green-500 rounded-lg p-4">
+                            <h6 class="text-sm font-medium text-gray-600 dark:text-gray-300">
+                                {{ __('wp_convert::app.stats.convertible') }}
+                            </h6>
+                            <div class="text-2xl font-bold text-green-600 dark:text-green-400" id="convertibleProducts">0</div>
+                        </div>
+                        <div class="bg-white dark:bg-gray-800 border border-l-4 border-l-purple-500 rounded-lg p-4">
+                            <h6 class="text-sm font-medium text-gray-600 dark:text-gray-300">
+                                {{ __('wp_convert::app.stats.conversion_rate') }}
+                            </h6>
+                            <div class="text-2xl font-bold text-purple-600 dark:text-purple-400" id="conversionRate">0%</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Selection -->
+                    <div id="actionSection" class="hidden">
+                        <h6 class="text-lg font-semibold text-gray-800 dark:text-white mb-4">
+                            {{ __('wp_convert::app.action.title') }}
+                        </h6>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 text-center">
+                                <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <svg class="w-6 h-6 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                                    </svg>
+                                </div>
+                                <h6 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">
+                                    {{ __('wp_convert::app.action.download.title') }}
+                                </h6>
+                                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                    {{ __('wp_convert::app.action.download.description') }}
+                                </p>
                                 <button type="button" 
-                                        class="btn btn-outline-primary" 
-                                        onclick="document.getElementById('woocommerce_csv').click()">
-                                    {{ __('wp_convert::app.upload.select_file') }}
+                                        class="primary-button w-full" 
+                                        onclick="performAction('download')">
+                                    {{ __('wp_convert::app.action.download.button') }}
                                 </button>
                             </div>
-                            
-                            <!-- File Info -->
-                            <div id="fileInfo" class="alert alert-info d-none">
-                                <strong>{{ __('wp_convert::app.selected_file') }}:</strong> 
-                                <span id="fileName"></span>
-                                <button type="button" class="btn-close float-end" onclick="clearFile()"></button>
-                            </div>
-                            
-                            <!-- Stats Display -->
-                            <div id="statsDisplay" class="row d-none mb-4">
-                                <div class="col-md-4">
-                                    <div class="card stats-card">
-                                        <div class="card-body">
-                                            <h6 class="card-title">{{ __('wp_convert::app.stats.total_rows') }}</h6>
-                                            <h4 class="text-primary" id="totalRows">0</h4>
-                                        </div>
-                                    </div>
+                            <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 text-center">
+                                <div class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <svg class="w-6 h-6 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+                                    </svg>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="card stats-card">
-                                        <div class="card-body">
-                                            <h6 class="card-title">{{ __('wp_convert::app.stats.convertible') }}</h6>
-                                            <h4 class="text-success" id="convertibleProducts">0</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="card stats-card">
-                                        <div class="card-body">
-                                            <h6 class="card-title">{{ __('wp_convert::app.stats.conversion_rate') }}</h6>
-                                            <h4 class="text-info" id="conversionRate">0%</h4>
-                                        </div>
-                                    </div>
-                                </div>
+                                <h6 class="text-lg font-semibold text-gray-800 dark:text-white mb-2">
+                                    {{ __('wp_convert::app.action.import.title') }}
+                                </h6>
+                                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                                    {{ __('wp_convert::app.action.import.description') }}
+                                </p>
+                                <button type="button" 
+                                        class="primary-button w-full" 
+                                        onclick="performAction('import')">
+                                    {{ __('wp_convert::app.action.import.button') }}
+                                </button>
                             </div>
-                            
-                            <!-- Action Selection -->
-                            <div id="actionSection" class="d-none">
-                                <h6>{{ __('wp_convert::app.action.title') }}</h6>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="card">
-                                            <div class="card-body text-center">
-                                                <i class="bi bi-download fs-1 text-primary mb-3"></i>
-                                                <h6>{{ __('wp_convert::app.action.download.title') }}</h6>
-                                                <p class="text-muted">{{ __('wp_convert::app.action.download.description') }}</p>
-                                                <button type="button" 
-                                                        class="btn btn-primary" 
-                                                        onclick="performAction('download')">
-                                                    {{ __('wp_convert::app.action.download.button') }}
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="card">
-                                            <div class="card-body text-center">
-                                                <i class="bi bi-database-add fs-1 text-success mb-3"></i>
-                                                <h6>{{ __('wp_convert::app.action.import.title') }}</h6>
-                                                <p class="text-muted">{{ __('wp_convert::app.action.import.description') }}</p>
-                                                <button type="button" 
-                                                        class="btn btn-success" 
-                                                        onclick="performAction('import')">
-                                                    {{ __('wp_convert::app.action.import.button') }}
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Progress Bar -->
-                            <div class="progress mb-3">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" 
-                                     role="progressbar" 
-                                     style="width: 0%"></div>
-                            </div>
-                            
-                            <!-- Results -->
-                            <div id="results" class="d-none"></div>
-                        </form>
+                        </div>
                     </div>
-                </div>
+                    
+                    <!-- Progress Bar -->
+                    <div class="hidden mt-6" id="progressBar">
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-blue-600 h-2 rounded-full animate-pulse" style="width: 100%"></div>
+                        </div>
+                        <p class="text-center text-gray-600 dark:text-gray-300 mt-2">Processing...</p>
+                    </div>
+                    
+                    <!-- Results -->
+                    <div id="results" class="hidden mt-6"></div>
+                </form>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    
+    <style>
+        .upload-area.dragover {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+        }
+        .dark .upload-area.dragover {
+            background-color: #1e3a8a;
+        }
+    </style>
+
     <script>
         // CSRF token setup
         const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
@@ -195,7 +199,7 @@
             
             // Show file info
             document.getElementById('fileName').textContent = file.name;
-            document.getElementById('fileInfo').classList.remove('d-none');
+            document.getElementById('fileInfo').classList.remove('hidden');
             
             // Get file stats
             getFileStats();
@@ -203,9 +207,9 @@
 
         function clearFile() {
             document.getElementById('woocommerce_csv').value = '';
-            document.getElementById('fileInfo').classList.add('d-none');
-            document.getElementById('statsDisplay').classList.add('d-none');
-            document.getElementById('actionSection').classList.add('d-none');
+            document.getElementById('fileInfo').classList.add('hidden');
+            document.getElementById('statsDisplay').classList.add('hidden');
+            document.getElementById('actionSection').classList.add('hidden');
         }
 
         function getFileStats() {
@@ -232,8 +236,8 @@
                     document.getElementById('convertibleProducts').textContent = data.stats.convertible_products;
                     document.getElementById('conversionRate').textContent = data.stats.conversion_rate + '%';
                     
-                    document.getElementById('statsDisplay').classList.remove('d-none');
-                    document.getElementById('actionSection').classList.remove('d-none');
+                    document.getElementById('statsDisplay').classList.remove('hidden');
+                    document.getElementById('actionSection').classList.remove('hidden');
                 } else {
                     showAlert('error', data.message || 'Error analyzing file');
                 }
@@ -285,37 +289,53 @@
         }
 
         function showProgress(show) {
-            const progress = document.querySelector('.progress');
+            const progress = document.getElementById('progressBar');
             if (show) {
-                progress.style.display = 'block';
+                progress.classList.remove('hidden');
             } else {
-                progress.style.display = 'none';
+                progress.classList.add('hidden');
             }
         }
 
         function showAlert(type, message) {
-            const alertClass = type === 'error' ? 'alert-danger' : 'alert-success';
+            const alertClass = type === 'error' ? 'bg-red-50 border-red-200 text-red-800 dark:bg-red-900/20 dark:border-red-800 dark:text-red-200' : 'bg-green-50 border-green-200 text-green-800 dark:bg-green-900/20 dark:border-green-800 dark:text-green-200';
+            const iconColor = type === 'error' ? 'text-red-500' : 'text-green-500';
+            const icon = type === 'error' ? 
+                '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />' : 
+                '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />';
+            
             const alertHtml = `
-                <div class="alert ${alertClass} alert-dismissible fade show" role="alert">
-                    ${message}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <div class="border rounded-lg p-4 ${alertClass}">
+                    <div class="flex items-start">
+                        <svg class="w-5 h-5 ${iconColor} mr-3 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            ${icon}
+                        </svg>
+                        <div class="flex-1">
+                            ${message}
+                        </div>
+                        <button type="button" class="ml-3 ${iconColor} hover:opacity-70" onclick="this.parentElement.parentElement.remove()">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             `;
             
             const results = document.getElementById('results');
             results.innerHTML = alertHtml;
-            results.classList.remove('d-none');
+            results.classList.remove('hidden');
             
-            // Auto-hide success messages after 5 seconds
+            // Auto-hide success messages after 8 seconds
             if (type === 'success') {
                 setTimeout(() => {
-                    const alert = results.querySelector('.alert');
+                    const alert = results.querySelector('div');
                     if (alert) {
-                        alert.classList.remove('show');
+                        alert.remove();
+                        results.classList.add('hidden');
                     }
-                }, 5000);
+                }, 8000);
             }
         }
     </script>
-</body>
-</html>
+</x-admin::layouts>
