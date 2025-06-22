@@ -43,4 +43,9 @@ return [
     Webkul\Tax\Providers\TaxServiceProvider::class,
     Webkul\Theme\Providers\ThemeServiceProvider::class,
     Webkul\User\Providers\UserServiceProvider::class,
+
+    /**
+     * Zplus service providers.
+     */
+    Zplus\WpConvert\Providers\WpConvertServiceProvider::class,
 ];
