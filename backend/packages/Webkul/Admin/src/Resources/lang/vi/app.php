@@ -973,6 +973,261 @@ return [
                 'title'           => 'Chỉnh sửa danh mục',
             ],
         ],
+
+        'attributes' => [
+            'index' => [
+                'create-btn' => 'Tạo thuộc tính',
+                'title'      => 'Thuộc tính',
+
+                'datagrid' => [
+                    'boolean'             => 'Boolean',
+                    'channel-based'       => 'Dựa trên kênh',
+                    'checkbox'            => 'Hộp kiểm',
+                    'code'                => 'Mã',
+                    'created-at'          => 'Ngày tạo',
+                    'date'                => 'Ngày',
+                    'date-time'           => 'Ngày giờ',
+                    'delete'              => 'Xóa',
+                    'edit'                => 'Chỉnh sửa',
+                    'false'               => 'Sai',
+                    'file'                => 'Tệp',
+                    'id'                  => 'ID',
+                    'image'               => 'Hình ảnh',
+                    'locale-based'        => 'Dựa trên ngôn ngữ',
+                    'mass-delete-success' => 'Thuộc tính đã chọn được xóa thành công',
+                    'multiselect'         => 'Đa lựa chọn',
+                    'name'                => 'Tên',
+                    'price'               => 'Giá',
+                    'required'            => 'Bắt buộc',
+                    'select'              => 'Lựa chọn',
+                    'text'                => 'Văn bản',
+                    'textarea'            => 'Vùng văn bản',
+                    'true'                => 'Đúng',
+                    'type'                => 'Loại',
+                    'unique'              => 'Duy nhất',
+                ],
+            ],
+
+            'create' => [
+                'add-attribute-options' => 'Thêm tùy chọn thuộc tính',
+                'add-option'            => 'Thêm tùy chọn',
+                'add-options-info'      => 'Để tạo các kết hợp khác nhau của tùy chọn thuộc tính một cách nhanh chóng.',
+                'add-row'               => 'Thêm hàng',
+                'admin'                 => 'Quản trị',
+                'admin-name'            => 'Tên quản trị',
+                'back-btn'              => 'Quay lại',
+                'boolean'               => 'Boolean',
+                'checkbox'              => 'Hộp kiểm',
+                'code'                  => 'Mã',
+                'create-success'        => 'Thuộc tính được tạo thành công.',
+                'date'                  => 'Ngày',
+                'datetime'              => 'Ngày giờ',
+                'file'                  => 'Tệp',
+                'general'               => 'Chung',
+                'general-properties'    => 'Thuộc tính chung',
+                'image'                 => 'Hình ảnh',
+                'is-filterable'         => 'Có thể lọc',
+                'is-required'           => 'Bắt buộc',
+                'is-unique'             => 'Duy nhất',
+                'multiselect'           => 'Đa lựa chọn',
+                'name'                  => 'Tên',
+                'option'                => 'Tùy chọn',
+                'price'                 => 'Giá',
+                'save-btn'              => 'Lưu thuộc tính',
+                'select'                => 'Lựa chọn',
+                'text'                  => 'Văn bản',
+                'textarea'              => 'Vùng văn bản',
+                'title'                 => 'Tạo thuộc tính',
+                'type'                  => 'Loại',
+                'value'                 => 'Giá trị',
+                'validations'           => 'Xác thực',
+
+                'option' => [
+                    'create' => [
+                        'add-row'        => 'Thêm hàng',
+                        'admin-name'     => 'Tên quản trị',
+                        'delete'         => 'Xóa',
+                        'is-default'     => 'Mặc định',
+                        'position'       => 'Vị trí',
+                        'save-btn'       => 'Lưu tùy chọn',
+                        'swatches-image' => 'Hình ảnh mẫu',
+                        'title'          => 'Quản lý tùy chọn (Giá trị thuộc tính)',
+                    ],
+
+                    'update-create' => [
+                        'add-row'        => 'Thêm hàng',
+                        'admin-name'     => 'Tên quản trị',
+                        'delete'         => 'Xóa',
+                        'is-default'     => 'Mặc định',
+                        'position'       => 'Vị trí',
+                        'save-btn'       => 'Lưu tùy chọn',
+                        'swatches-image' => 'Hình ảnh mẫu',
+                        'title'          => 'Quản lý tùy chọn (Giá trị thuộc tính)',
+                    ],
+
+                    'types' => [
+                        'text'        => [
+                            'title' => 'Văn bản',
+                        ],
+
+                        'textarea'    => [
+                            'title' => 'Vùng văn bản',
+                        ],
+
+                        'checkbox'    => [
+                            'title' => 'Hộp kiểm',
+                        ],
+
+                        'radio'       => [
+                            'title' => 'Nút radio',
+                        ],
+
+                        'select'      => [
+                            'title' => 'Lựa chọn',
+                        ],
+
+                        'multiselect' => [
+                            'title' => 'Đa lựa chọn',
+                        ],
+
+                        'date'        => [
+                            'title' => 'Ngày',
+                        ],
+
+                        'datetime'    => [
+                            'title' => 'Ngày giờ',
+                        ],
+
+                        'time'        => [
+                            'title' => 'Thời gian',
+                        ],
+
+                        'file'        => [
+                            'title' => 'Tệp',
+                        ],
+                    ],
+
+                    'items' => [
+                        'update-create' => [
+                            'admin-name'     => 'Tên quản trị',
+                            'is-default'     => 'Mặc định',
+                            'position'       => 'Vị trí',
+                            'swatches-image' => 'Hình ảnh mẫu',
+                        ],
+                    ],
+                ],
+
+                'validations' => [
+                    'code'                => 'Mã là bắt buộc',
+                    'name'                => 'Tên là bắt buộc',
+                    'type'                => 'Loại là bắt buộc',
+                ],
+            ],
+
+            'edit' => [
+                'add-attribute-options' => 'Thêm tùy chọn thuộc tính',
+                'add-option'            => 'Thêm tùy chọn',
+                'add-options-info'      => 'Để tạo các kết hợp khác nhau của tùy chọn thuộc tính một cách nhanh chóng.',
+                'add-row'               => 'Thêm hàng',
+                'admin'                 => 'Quản trị',
+                'admin-name'            => 'Tên quản trị',
+                'back-btn'              => 'Quay lại',
+                'boolean'               => 'Boolean',
+                'checkbox'              => 'Hộp kiểm',
+                'code'                  => 'Mã',
+                'date'                  => 'Ngày',
+                'datetime'              => 'Ngày giờ',
+                'file'                  => 'Tệp',
+                'general'               => 'Chung',
+                'general-properties'    => 'Thuộc tính chung',
+                'image'                 => 'Hình ảnh',
+                'is-filterable'         => 'Có thể lọc',
+                'is-required'           => 'Bắt buộc',
+                'is-unique'             => 'Duy nhất',
+                'multiselect'           => 'Đa lựa chọn',
+                'name'                  => 'Tên',
+                'option'                => 'Tùy chọn',
+                'price'                 => 'Giá',
+                'save-btn'              => 'Lưu thuộc tính',
+                'select'                => 'Lựa chọn',
+                'text'                  => 'Văn bản',
+                'textarea'              => 'Vùng văn bản',
+                'title'                 => 'Chỉnh sửa thuộc tính',
+                'type'                  => 'Loại',
+                'update-success'        => 'Cập nhật thành công',
+                'value'                 => 'Giá trị',
+                'validations'           => 'Xác thực',
+
+                'option' => [
+                    'create' => [
+                        'add-row'        => 'Thêm hàng',
+                        'admin-name'     => 'Tên quản trị',
+                        'delete'         => 'Xóa',
+                        'is-default'     => 'Mặc định',
+                        'position'       => 'Vị trí',
+                        'save-btn'       => 'Lưu tùy chọn',
+                        'swatches-image' => 'Hình ảnh mẫu',
+                        'title'          => 'Quản lý tùy chọn (Giá trị thuộc tính)',
+                    ],
+
+                    'update-create' => [
+                        'add-row'        => 'Thêm hàng',
+                        'admin-name'     => 'Tên quản trị',
+                        'delete'         => 'Xóa',
+                        'is-default'     => 'Mặc định',
+                        'position'       => 'Vị trí',
+                        'save-btn'       => 'Lưu tùy chọn',
+                        'swatches-image' => 'Hình ảnh mẫu',
+                        'title'          => 'Quản lý tùy chọn (Giá trị thuộc tính)',
+                    ],
+                ],
+            ],
+
+            'delete-failed'  => 'Thuộc tính không thể xóa',
+            'delete-success' => 'Thuộc tính được xóa thành công',
+        ],
+
+        'families' => [
+            'index' => [
+                'create-btn' => 'Tạo họ thuộc tính',
+                'title'      => 'Họ thuộc tính',
+
+                'datagrid' => [
+                    'code'               => 'Mã',
+                    'id'                 => 'ID',
+                    'name'               => 'Tên',
+                    'attribute-count'    => 'Số lượng thuộc tính',
+                    'actions'            => 'Hành động',
+                ],
+            ],
+
+            'create' => [
+                'attributes'         => 'Thuộc tính',
+                'back-btn'           => 'Quay lại',
+                'code'               => 'Mã',
+                'create-success'     => 'Họ thuộc tính được tạo thành công.',
+                'general'            => 'Chung',
+                'name'               => 'Tên',
+                'save-btn'           => 'Lưu họ thuộc tính',
+                'title'              => 'Tạo họ thuộc tính',
+                'attribute-groups'   => 'Nhóm thuộc tính',
+            ],
+
+            'edit' => [
+                'attributes'         => 'Thuộc tính',
+                'back-btn'           => 'Quay lại',
+                'code'               => 'Mã',
+                'general'            => 'Chung',
+                'name'               => 'Tên',
+                'save-btn'           => 'Lưu họ thuộc tính',
+                'title'              => 'Chỉnh sửa họ thuộc tính',
+                'update-success'     => 'Cập nhật thành công',
+                'attribute-groups'   => 'Nhóm thuộc tính',
+            ],
+
+            'delete-failed'  => 'Họ thuộc tính không thể xóa',
+            'delete-success' => 'Họ thuộc tính được xóa thành công',
+        ],
     ],
 
     'customers' => [
@@ -1650,6 +1905,453 @@ return [
         ],
     ],
 
+    'data-transfer' => [
+        'imports' => [
+            'create' => [
+                'action'              => 'Hành động',
+                'allowed-errors'      => 'Lỗi được phép',
+                'back-btn'            => 'Quay lại',
+                'create-update'       => 'Tạo/Cập nhật',
+                'delete'              => 'Xóa',
+                'download-sample'     => 'Tải mẫu',
+                'field-separator'     => 'Phân cách trường',
+                'file'                => 'Tệp',
+                'file-info'           => 'Sử dụng đường dẫn tương đối đến /project-root/storage/app/import, ví dụ: product-images, import-images.',
+                'file-info-example'   => 'Ví dụ, trong trường hợp product-images, các tệp nên được đặt vào thư mục /project-root/storage/app/import/product-images.',
+                'general'             => 'Chung',
+                'images-directory'    => 'Đường dẫn thư mục hình ảnh',
+                'process-in-queue'    => 'Xử lý trong hàng đợi',
+                'results'             => 'Kết quả',
+                'save-btn'            => 'Lưu nhập khẩu',
+                'settings'            => 'Cài đặt',
+                'skip-errors'         => 'Bỏ qua lỗi',
+                'stop-on-errors'      => 'Dừng khi có lỗi',
+                'title'               => 'Tạo nhập khẩu',
+                'type'                => 'Loại',
+                'validation-strategy' => 'Chiến lược xác thực',
+            ],
+
+            'edit' => [
+                'action'              => 'Hành động',
+                'allowed-errors'      => 'Lỗi được phép',
+                'back-btn'            => 'Quay lại',
+                'create-update'       => 'Tạo/Cập nhật',
+                'current-file'        => 'Tệp đã tải lên hiện tại',
+                'delete'              => 'Xóa',
+                'download-sample'     => 'Tải mẫu',
+                'field-separator'     => 'Phân cách trường',
+                'file'                => 'Tệp',
+                'file-info'           => 'Sử dụng đường dẫn tương đối đến /project-root/storage/app/import, ví dụ: product-images, import-images.',
+                'file-info-example'   => 'Ví dụ, trong trường hợp product-images, các tệp nên được đặt vào thư mục /project-root/storage/app/import/product-images.',
+                'general'             => 'Chung',
+                'images-directory'    => 'Đường dẫn thư mục hình ảnh',
+                'process-in-queue'    => 'Xử lý trong hàng đợi',
+                'results'             => 'Kết quả',
+                'save-btn'            => 'Lưu nhập khẩu',
+                'settings'            => 'Cài đặt',
+                'skip-errors'         => 'Bỏ qua lỗi',
+                'stop-on-errors'      => 'Dừng khi có lỗi',
+                'title'               => 'Chỉnh sửa nhập khẩu',
+                'type'                => 'Loại',
+                'validation-strategy' => 'Chiến lược xác thực',
+            ],
+
+            'index' => [
+                'create-btn' => 'Tạo nhập khẩu',
+                'title'      => 'Nhập khẩu',
+
+                'datagrid' => [
+                    'actions'         => 'Hành động',
+                    'created-date'    => 'Ngày tạo',
+                    'file-name'       => 'Tên tệp',
+                    'id'              => 'ID',
+                    'import-status'   => 'Trạng thái',
+                    'processing'      => 'Đang xử lý',
+                    'completed'       => 'Hoàn thành',
+                    'processed'       => 'Đã xử lý',
+                    'error'           => 'Lỗi',
+                    'type'            => 'Loại',
+                ],
+            ],
+
+            'import' => [
+                'back-btn'                => 'Quay lại',
+                'completed-batches'       => 'Tổng số lô đã hoàn thành:',
+                'download-error-report'   => 'Tải báo cáo đầy đủ',
+                'edit-btn'                => 'Chỉnh sửa',
+                'imported-info'           => 'Chúc mừng! Quá trình nhập khẩu của bạn đã thành công.',
+                'importing-info'          => 'Quá trình nhập khẩu đang diễn ra',
+                'indexing-info'           => 'Đang lập chỉ mục tài nguyên (Giá, Tồn kho và Tìm kiếm đàn hồi)',
+                'linking-info'            => 'Đang liên kết tài nguyên',
+                'progress'                => 'Tiến độ:',
+                'title'                   => 'Nhập khẩu',
+                'total-batches'           => 'Tổng số lô:',
+                'total-created'           => 'Tổng số bản ghi đã tạo:',
+                'total-deleted'           => 'Tổng số bản ghi đã xóa:',
+                'total-errors'            => 'Tổng số lỗi:',
+                'total-invalid-rows'      => 'Tổng số hàng không hợp lệ:',
+                'total-rows-processed'    => 'Tổng số hàng đã xử lý:',
+                'total-updated'           => 'Tổng số bản ghi đã cập nhật:',
+            ],
+        ],
+
+        'exports' => [
+            'index' => [
+                'export' => 'Xuất',
+                'title'  => 'Xuất khẩu',
+            ],
+        ],
+    ],
+
+    'taxes' => [
+        'categories' => [
+            'index' => [
+                'create-btn' => 'Tạo danh mục thuế',
+                'title'      => 'Danh mục thuế',
+
+                'datagrid' => [
+                    'code'        => 'Mã',
+                    'description' => 'Mô tả',
+                    'id'          => 'ID',
+                    'name'        => 'Tên',
+                ],
+            ],
+
+            'create' => [
+                'back-btn'       => 'Quay lại',
+                'code'           => 'Mã',
+                'create-success' => 'Danh mục thuế được tạo thành công.',
+                'description'    => 'Mô tả',
+                'general'        => 'Chung',
+                'name'           => 'Tên',
+                'save-btn'       => 'Lưu danh mục thuế',
+                'title'          => 'Tạo danh mục thuế',
+            ],
+
+            'edit' => [
+                'back-btn'       => 'Quay lại',
+                'code'           => 'Mã',
+                'description'    => 'Mô tả',
+                'general'        => 'Chung',
+                'name'           => 'Tên',
+                'save-btn'       => 'Lưu danh mục thuế',
+                'title'          => 'Chỉnh sửa danh mục thuế',
+                'update-success' => 'Cập nhật thành công',
+            ],
+
+            'delete-failed'  => 'Danh mục thuế xóa thất bại',
+            'delete-success' => 'Danh mục thuế được xóa thành công',
+        ],
+
+        'rates' => [
+            'index' => [
+                'create-btn' => 'Tạo thuế suất',
+                'title'      => 'Thuế suất',
+
+                'datagrid' => [
+                    'actions'      => 'Hành động',
+                    'country'      => 'Quốc gia',
+                    'id'           => 'ID',
+                    'identifier'   => 'Định danh',
+                    'state'        => 'Tỉnh/Thành',
+                    'tax-rate'     => 'Thuế suất',
+                ],
+            ],
+
+            'create' => [
+                'back-btn'       => 'Quay lại',
+                'country'        => 'Quốc gia',
+                'create-success' => 'Thuế suất được tạo thành công.',
+                'general'        => 'Chung',
+                'identifier'     => 'Định danh',
+                'is-zip'         => 'Là mã bưu điện',
+                'rate'           => 'Thuế suất',
+                'save-btn'       => 'Lưu thuế suất',
+                'state'          => 'Tỉnh/Thành',
+                'title'          => 'Tạo thuế suất',
+                'zip-code'       => 'Mã bưu điện',
+                'zip-from'       => 'Mã bưu điện từ',
+                'zip-to'         => 'Mã bưu điện đến',
+            ],
+
+            'edit' => [
+                'back-btn'       => 'Quay lại',
+                'country'        => 'Quốc gia',
+                'general'        => 'Chung',
+                'identifier'     => 'Định danh',
+                'is-zip'         => 'Là mã bưu điện',
+                'rate'           => 'Thuế suất',
+                'save-btn'       => 'Lưu thuế suất',
+                'state'          => 'Tỉnh/Thành',
+                'title'          => 'Chỉnh sửa thuế suất',
+                'update-success' => 'Cập nhật thành công',
+                'zip-code'       => 'Mã bưu điện',
+                'zip-from'       => 'Mã bưu điện từ',
+                'zip-to'         => 'Mã bưu điện đến',
+            ],
+
+            'delete-failed'  => 'Thuế suất xóa thất bại',
+            'delete-success' => 'Thuế suất được xóa thành công',
+        ],
+    ],
+
+    'users' => [
+        'index' => [
+            'create-btn' => 'Tạo người dùng',
+            'title'      => 'Người dùng',
+
+            'create' => [
+                'active'                => 'Hoạt động',
+                'back-btn'              => 'Quay lại',
+                'confirm-password'      => 'Xác nhận mật khẩu',
+                'create-success'        => 'Người dùng được tạo thành công.',
+                'email'                 => 'Email',
+                'first-name'            => 'Tên',
+                'general'               => 'Chung',
+                'inactive'              => 'Không hoạt động',
+                'last-name'             => 'Họ',
+                'password'              => 'Mật khẩu',
+                'role'                  => 'Vai trò',
+                'save-btn'              => 'Lưu người dùng',
+                'status'                => 'Trạng thái',
+                'title'                 => 'Tạo người dùng',
+            ],
+
+            'datagrid' => [
+                'actions'    => 'Hành động',
+                'active'     => 'Hoạt động',
+                'email'      => 'Email',
+                'first-name' => 'Tên',
+                'id'         => 'ID',
+                'inactive'   => 'Không hoạt động',
+                'last-name'  => 'Họ',
+                'role'       => 'Vai trò',
+                'status'     => 'Trạng thái',
+            ],
+        ],
+
+        'edit' => [
+            'edit' => [
+                'active'                => 'Hoạt động',
+                'back-btn'              => 'Quay lại',
+                'confirm-password'      => 'Xác nhận mật khẩu',
+                'current-password'      => 'Mật khẩu hiện tại',
+                'email'                 => 'Email',
+                'first-name'            => 'Tên',
+                'general'               => 'Chung',
+                'inactive'              => 'Không hoạt động',
+                'last-name'             => 'Họ',
+                'password'              => 'Mật khẩu',
+                'role'                  => 'Vai trò',
+                'save-btn'              => 'Lưu người dùng',
+                'status'                => 'Trạng thái',
+                'title'                 => 'Chỉnh sửa người dùng',
+                'update-success'        => 'Cập nhật thành công',
+            ],
+        ],
+
+        'delete-failed'  => 'Người dùng xóa thất bại',
+        'delete-success' => 'Người dùng được xóa thành công',
+    ],
+
+    'roles' => [
+        'index' => [
+            'create-btn' => 'Tạo vai trò',
+            'title'      => 'Vai trò',
+
+            'datagrid' => [
+                'actions'       => 'Hành động',
+                'description'   => 'Mô tả',
+                'id'            => 'ID',
+                'name'          => 'Tên',
+                'permission-type' => 'Loại quyền',
+            ],
+        ],
+
+        'create' => [
+            'access-control' => 'Kiểm soát truy cập',
+            'all'            => 'Tất cả',
+            'back-btn'       => 'Quay lại',
+            'create-success' => 'Vai trò được tạo thành công.',
+            'custom'         => 'Tùy chỉnh',
+            'description'    => 'Mô tả',
+            'general'        => 'Chung',
+            'name'           => 'Tên',
+            'permission-type' => 'Loại quyền',
+            'permissions'    => 'Quyền',
+            'save-btn'       => 'Lưu vai trò',
+            'title'          => 'Tạo vai trò',
+        ],
+
+        'edit' => [
+            'access-control' => 'Kiểm soát truy cập',
+            'all'            => 'Tất cả',
+            'back-btn'       => 'Quay lại',
+            'custom'         => 'Tùy chỉnh',
+            'description'    => 'Mô tả',
+            'general'        => 'Chung',
+            'name'           => 'Tên',
+            'permission-type' => 'Loại quyền',
+            'permissions'    => 'Quyền',
+            'save-btn'       => 'Lưu vai trò',
+            'title'          => 'Chỉnh sửa vai trò',
+            'update-success' => 'Cập nhật thành công',
+        ],
+
+        'delete-failed'  => 'Vai trò xóa thất bại',
+        'delete-success' => 'Vai trò được xóa thành công',
+    ],
+
+    'themes' => [
+        'index' => [
+            'create-btn' => 'Tạo giao diện',
+            'title'      => 'Giao diện',
+
+            'datagrid' => [
+                'actions'    => 'Hành động',
+                'active'     => 'Hoạt động',
+                'channel-id' => 'ID Kênh',
+                'id'         => 'ID',
+                'inactive'   => 'Không hoạt động',
+                'name'       => 'Tên',
+                'status'     => 'Trạng thái',
+                'sort-order' => 'Thứ tự sắp xếp',
+                'type'       => 'Loại',
+            ],
+        ],
+
+        'create' => [
+            'back-btn'       => 'Quay lại',
+            'channel'        => 'Kênh',
+            'create-success' => 'Giao diện được tạo thành công.',
+            'general'        => 'Chung',
+            'name'           => 'Tên',
+            'save-btn'       => 'Lưu giao diện',
+            'sort-order'     => 'Thứ tự sắp xếp',
+            'status'         => 'Trạng thái',
+            'title'          => 'Tạo giao diện',
+            'type'           => 'Loại',
+
+            'type' => [
+                'footer-links'     => 'Liên kết chân trang',
+                'image-carousel'   => 'Băng chuyền hình ảnh',
+                'product-carousel' => 'Băng chuyền sản phẩm',
+                'static-content'   => 'Nội dung tĩnh',
+            ],
+        ],
+
+        'edit' => [
+            'back-btn'       => 'Quay lại',
+            'channel'        => 'Kênh',
+            'general'        => 'Chung',
+            'name'           => 'Tên',
+            'save-btn'       => 'Lưu giao diện',
+            'sort-order'     => 'Thứ tự sắp xếp',
+            'status'         => 'Trạng thái',
+            'title'          => 'Chỉnh sửa giao diện',
+            'type'           => 'Loại',
+            'update-success' => 'Cập nhật thành công',
+
+            'type' => [
+                'footer-links'     => 'Liên kết chân trang',
+                'image-carousel'   => 'Băng chuyền hình ảnh',
+                'product-carousel' => 'Băng chuyền sản phẩm',
+                'static-content'   => 'Nội dung tĩnh',
+            ],
+        ],
+
+        'delete-failed'  => 'Giao diện xóa thất bại',
+        'delete-success' => 'Giao diện được xóa thành công',
+    ],
+
+    'reporting' => [
+        'sales' => [
+            'index' => [
+                'title' => 'Báo cáo bán hàng',
+
+                'total-sales'       => 'Tổng doanh số',
+                'total-orders'      => 'Tổng đơn hàng',
+                'total-products'    => 'Tổng sản phẩm',
+                'avg-sales'         => 'Doanh số trung bình',
+                'total-revenue'     => 'Tổng doanh thu',
+                'last-order-date'   => 'Ngày đặt hàng cuối',
+                'product-name'      => 'Tên sản phẩm',
+                'price'             => 'Giá',
+                'formated-price'    => 'Giá định dạng',
+                'quantity'          => 'Số lượng',
+                'base-total'        => 'Tổng cơ sở',
+                'over-all-amount'   => 'Tổng số tiền',
+                'over-all-revenue'  => 'Tổng doanh thu',
+                'over-all-discount' => 'Tổng giảm giá',
+                'over-all-tax'      => 'Tổng thuế',
+                'date'              => 'Ngày',
+                'start-date'        => 'Ngày bắt đầu',
+                'end-date'          => 'Ngày kết thúc',
+                'search'            => 'Tìm kiếm',
+            ],
+        ],
+
+        'customers' => [
+            'index' => [
+                'title' => 'Báo cáo khách hàng',
+
+                'customer-name'     => 'Tên khách hàng',
+                'email'             => 'Email',
+                'gender'            => 'Giới tính',
+                'date-of-birth'     => 'Ngày sinh',
+                'phone'             => 'Điện thoại',
+                'domain'            => 'Tên miền',
+                'customer-group'    => 'Nhóm khách hàng',
+                'orders'            => 'Đơn hàng',
+                'total'             => 'Tổng cộng',
+                'revenue'           => 'Doanh thu',
+                'start-date'        => 'Ngày bắt đầu',
+                'end-date'          => 'Ngày kết thúc',
+                'search'            => 'Tìm kiếm',
+            ],
+        ],
+
+        'products' => [
+            'index' => [
+                'title' => 'Báo cáo sản phẩm',
+
+                'name'              => 'Tên',
+                'sku'               => 'SKU',
+                'price'             => 'Giá',
+                'formated-price'    => 'Giá định dạng',
+                'orders'            => 'Đơn hàng',
+                'quantity-sold'     => 'Số lượng đã bán',
+                'revenue'           => 'Doanh thu',
+                'start-date'        => 'Ngày bắt đầu',
+                'end-date'          => 'Ngày kết thúc',
+                'search'            => 'Tìm kiếm',
+            ],
+
+            'view' => [
+                'title'             => 'Sản phẩm',
+                'sku'               => 'SKU',
+                'customer-name'     => 'Tên khách hàng',
+                'formated-price'    => 'Giá định dạng',
+                'quantity-sold'     => 'Số lượng đã bán',
+                'sales'             => 'Doanh số',
+                'date'              => 'Ngày',
+                'product-name'      => 'Tên sản phẩm',
+                'price'             => 'Giá',
+                'customer-email'    => 'Email khách hàng',
+                'image'             => 'Hình ảnh',
+                'qty-ordered'       => 'Số lượng đặt hàng',
+                'revenue'           => 'Doanh thu',
+                'formated-revenue'  => 'Doanh thu định dạng',
+                'no-result-found'   => 'Không tìm thấy kết quả.',
+            ],
+
+            'empty' => [
+                'title'             => 'Báo cáo sản phẩm',
+                'description'       => 'Hiện tại không có dữ liệu báo cáo nào.',
+            ],
+        ],
+    ],
+
     'components' => [
         'layouts' => [
             'header' => [
@@ -1692,6 +2394,67 @@ return [
                 'sort'              => 'Sắp xếp',
             ],
         ],
+    ],
+
+    'acl' => [
+        'addresses'                => 'Địa chỉ',
+        'attribute-families'       => 'Họ thuộc tính',
+        'attributes'               => 'Thuộc tính',
+        'campaigns'                => 'Chiến dịch',
+        'cancel'                   => 'Hủy',
+        'cart-rules'               => 'Quy tắc giỏ hàng',
+        'catalog'                  => 'Danh mục',
+        'catalog-rules'            => 'Quy tắc danh mục',
+        'categories'               => 'Danh mục',
+        'channels'                 => 'Kênh',
+        'cms'                      => 'CMS',
+        'communications'           => 'Liên lạc',
+        'configure'                => 'Cấu hình',
+        'copy'                     => 'Sao chép',
+        'create'                   => 'Tạo',
+        'currencies'               => 'Tiền tệ',
+        'customers'                => 'Khách hàng',
+        'dashboard'                => 'Bảng điều khiển',
+        'data-transfer'            => 'Truyền dữ liệu',
+        'delete'                   => 'Xóa',
+        'edit'                     => 'Chỉnh sửa',
+        'email-templates'          => 'Mẫu email',
+        'events'                   => 'Sự kiện',
+        'exchange-rates'           => 'Tỷ giá hối đoái',
+        'gdpr'                     => 'GDPR',
+        'groups'                   => 'Nhóm',
+        'import'                   => 'Nhập khẩu',
+        'imports'                  => 'Nhập khẩu',
+        'inventory-sources'        => 'Nguồn hàng tồn kho',
+        'invoices'                 => 'Hóa đơn',
+        'locales'                  => 'Ngôn ngữ',
+        'marketing'                => 'Marketing',
+        'newsletter-subscriptions' => 'Đăng ký bản tin',
+        'note'                     => 'Ghi chú',
+        'orders'                   => 'Đơn hàng',
+        'products'                 => 'Sản phẩm',
+        'promotions'               => 'Khuyến mãi',
+        'refunds'                  => 'Hoàn tiền',
+        'reporting'                => 'Báo cáo',
+        'reviews'                  => 'Đánh giá',
+        'roles'                    => 'Vai trò',
+        'sales'                    => 'Bán hàng',
+        'search-seo'               => 'Tìm kiếm & SEO',
+        'search-synonyms'          => 'Từ đồng nghĩa tìm kiếm',
+        'search-terms'             => 'Từ khóa tìm kiếm',
+        'settings'                 => 'Cài đặt',
+        'shipments'                => 'Lô hàng',
+        'sitemaps'                 => 'Sitemaps',
+        'subscribers'              => 'Người đăng ký bản tin',
+        'tax-categories'           => 'Danh mục thuế',
+        'tax-rates'                => 'Thuế suất',
+        'taxes'                    => 'Thuế',
+        'themes'                   => 'Giao diện',
+        'transactions'             => 'Giao dịch',
+        'url-rewrites'             => 'URL Rewrites',
+        'users'                    => 'Người dùng',
+        'view'                     => 'Xem',
+        'wdsl'                     => 'WDSL',
     ],
 
     'errors' => [
