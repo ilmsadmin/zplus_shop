@@ -1,0 +1,36 @@
+{
+    "name": "zplus/wp-convert",
+    "type": "library",
+    "description": "Convert WooCommerce products to Bagisto products",
+    "keywords": [
+        "woocommerce",
+        "bagisto",
+        "import",
+        "convert",
+        "csv"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Zplus Team",
+            "email": "admin@zplus.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zplus\\WpConvert\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Zplus\\WpConvert\\Providers\\WpConvertServiceProvider"
+            ],
+            "aliases": {}
+        }
+    },
+    "minimum-stability": "dev"
+}
