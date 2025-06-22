@@ -778,5 +778,476 @@ return [
                 'already-taken' => ':name đã được sử dụng.',
                 'create-btn'    => 'Tạo sản phẩm',
                 'title'         => 'Sản phẩm',
+
+                'create' => [
+                    'back-btn'                => 'Quay lại',
+                    'configurable-attributes' => 'Thuộc tính có thể cấu hình',
+                    'create-btn'              => 'Tạo sản phẩm',
+                    'family'                  => 'Nhóm',
+                    'save-btn'                => 'Lưu sản phẩm',
+                    'sku'                     => 'SKU',
+                    'title'                   => 'Tạo sản phẩm mới',
+                    'type'                    => 'Loại',
+                ],
+
+                'datagrid' => [
+                    'active'                 => 'Hoạt động',
+                    'attribute-family-value' => 'Nhóm thuộc tính - :attribute_family',
+                    'attribute-family'       => 'Nhóm thuộc tính',
+                    'category'               => 'Danh mục',
+                    'channel'                => 'Kênh',
+                    'copy-of-slug'           => 'ban-sao-cua-:value',
+                    'copy-of'                => 'Bản sao của :value',
+                    'delete'                 => 'Xóa',
+                    'disable'                => 'Vô hiệu hóa',
+                    'id-value'               => 'ID - :id',
+                    'id'                     => 'ID',
+                    'image'                  => 'Hình ảnh',
+                    'mass-delete-success'    => 'Xóa sản phẩm đã chọn thành công',
+                    'mass-update-success'    => 'Cập nhật sản phẩm đã chọn thành công',
+                    'name'                   => 'Tên',
+                    'out-of-stock'           => 'Hết hàng',
+                    'price'                  => 'Giá',
+                    'product-image'          => 'Hình ảnh sản phẩm',
+                    'qty-value'              => ':qty Có sẵn',
+                    'qty'                    => 'Số lượng',
+                    'sku-value'              => 'SKU - :sku',
+                    'sku'                    => 'SKU',
+                    'status'                 => 'Trạng thái',
+                    'type'                   => 'Loại',
+                    'update-status'          => 'Cập nhật trạng thái',
+                ],
+            ],
+
+            'edit' => [
+                'preview'  => 'Xem trước',
+                'remove'   => 'Xóa',
+                'save-btn' => 'Lưu sản phẩm',
+                'title'    => 'Chỉnh sửa sản phẩm',
+
+                'channels' => [
+                    'title' => 'Kênh',
+                ],
+
+                'price' => [
+                    'group' => [
+                        'add-group-price'           => 'Thêm giá nhóm',
+                        'all-groups'                => 'Tất cả nhóm',
+                        'create-btn'                => 'Thêm mới',
+                        'discount-group-price-info' => 'Cho số lượng :qty với giảm giá :price',
+                        'edit-btn'                  => 'Chỉnh sửa',
+                        'empty-info'                => 'Giá đặc biệt cho khách hàng thuộc nhóm cụ thể.',
+                        'fixed-group-price-info'    => 'Cho số lượng :qty với giá cố định :price',
+                        'title'                     => 'Giá nhóm khách hàng',
+
+                        'create' => [
+                            'all-groups'     => 'Tất cả nhóm',
+                            'create-title'   => 'Tạo giá nhóm khách hàng',
+                            'customer-group' => 'Nhóm khách hàng',
+                            'delete-btn'     => 'Xóa',
+                            'discount'       => 'Giảm giá',
+                            'fixed'          => 'Cố định',
+                            'price'          => 'Giá',
+                            'price-type'     => 'Loại giá',
+                            'qty'            => 'Số lượng tối thiểu',
+                            'save-btn'       => 'Lưu',
+                            'update-title'   => 'Cập nhật giá nhóm khách hàng',
+                        ],
+                    ],
+                ],
+
+                'inventories' => [
+                    'pending-ordered-qty'      => 'Số lượng đặt hàng chờ: :qty',
+                    'pending-ordered-qty-info' => 'Số lượng đặt hàng chờ sẽ được trừ từ nguồn hàng tồn kho tương ứng sau khi giao hàng. Trong trường hợp hủy, số lượng chờ sẽ có sẵn để bán.',
+                    'title'                    => 'Hàng tồn kho',
+                ],
+
+                'categories' => [
+                    'title' => 'Danh mục',
+                ],
+
+                'images' => [
+                    'info'  => 'Độ phân giải hình ảnh nên như 560px X 609px',
+                    'title' => 'Hình ảnh',
+                ],
+
+                'videos' => [
+                    'error' => ':attribute không được lớn hơn :max kilobyte. Vui lòng chọn tệp nhỏ hơn.',
+                    'info'  => 'Kích thước video tối đa nên như :size',
+                    'title' => 'Video',
+                ],
+
+                'links' => [
+                    'related-products' => [
+                        'empty-info' => 'Thêm sản phẩm liên quan ngay lập tức.',
+                        'info'       => 'Ngoài sản phẩm khách hàng đang xem, họ được giới thiệu các sản phẩm liên quan.',
+                        'title'      => 'Sản phẩm liên quan',
+                    ],
+
+                    'up-sells' => [
+                        'empty-info' => 'Thêm sản phẩm bán kèm ngay lập tức.',
+                        'info'       => 'Khách hàng được giới thiệu sản phẩm bán kèm, phục vụ như một sự thay thế cao cấp hoặc chất lượng cao hơn cho sản phẩm họ đang xem.',
+                        'title'      => 'Sản phẩm bán kèm',
+                    ],
+
+                    'cross-sells' => [
+                        'empty-info' => 'Thêm sản phẩm bán chéo ngay lập tức.',
+                        'info'       => 'Bên cạnh giỏ hàng, bạn sẽ tìm thấy những sản phẩm "mua theo cảm tính" này được định vị như các sản phẩm bán chéo để bổ sung cho các mặt hàng đã được thêm vào giỏ hàng của bạn.',
+                        'title'      => 'Sản phẩm bán chéo',
+                    ],
+
+                    'add-btn'           => 'Thêm sản phẩm',
+                    'delete'            => 'Xóa',
+                    'empty-info'        => 'Để thêm sản phẩm :type ngay lập tức.',
+                    'empty-title'       => 'Thêm sản phẩm',
+                    'image-placeholder' => 'Hình ảnh sản phẩm',
+                    'sku'               => 'SKU - :sku',
+                ],
+
+                'types' => [
+                    'configurable' => [
+                        'add-btn'           => 'Thêm biến thể',
+                        'empty-info'        => 'Để tạo các kết hợp sản phẩm khác nhau ngay lập tức.',
+                        'empty-title'       => 'Thêm biến thể',
+                        'title'             => 'Biến thể',
+                    ],
+                ],
             ],
         ],
+
+        'categories' => [
+            'index' => [
+                'add-btn' => 'Tạo danh mục',
+                'title'   => 'Danh mục',
+
+                'datagrid' => [
+                    'active'         => 'Hoạt động',
+                    'delete-success' => ':resource đã chọn được xóa thành công',
+                    'delete'         => 'Xóa',
+                    'edit'           => 'Chỉnh sửa',
+                    'id'             => 'ID',
+                    'inactive'       => 'Không hoạt động',
+                    'name'           => 'Tên',
+                    'no-of-products' => 'Số lượng sản phẩm',
+                    'position'       => 'Vị trí',
+                    'status'         => 'Hiển thị trong menu',
+                    'update-status'  => 'Cập nhật trạng thái',
+                ],
+            ],
+
+            'create' => [
+                'add-banner'               => 'Thêm banner',
+                'add-logo'                 => 'Thêm logo',
+                'back-btn'                 => 'Quay lại',
+                'banner'                   => 'Banner',
+                'banner-size'              => 'Tỷ lệ khung hình banner (1320px X 300px)',
+                'description'              => 'Mô tả',
+                'description-and-images'   => 'Mô tả và hình ảnh',
+                'description-only'         => 'Chỉ mô tả',
+                'display-mode'             => 'Chế độ hiển thị',
+                'enter-position'           => 'Nhập vị trí',
+                'filterable-attributes'    => 'Thuộc tính có thể lọc',
+                'general'                  => 'Chung',
+                'logo'                     => 'Logo',
+                'logo-size'                => 'Độ phân giải logo nên là (110px X 110px)',
+                'meta-description'         => 'Meta Description',
+                'meta-keywords'            => 'Meta Keywords',
+                'meta-title'               => 'Meta Title',
+                'name'                     => 'Tên',
+                'parent-category'          => 'Danh mục cha',
+                'position'                 => 'Vị trí',
+                'products-and-description' => 'Sản phẩm và mô tả',
+                'products-only'            => 'Chỉ sản phẩm',
+                'save-btn'                 => 'Lưu danh mục',
+                'select-display-mode'      => 'Chọn chế độ hiển thị',
+                'seo-details'              => 'Chi tiết SEO',
+                'settings'                 => 'Cài đặt',
+                'slug'                     => 'Slug',
+                'title'                    => 'Thêm danh mục mới',
+                'visible-in-menu'          => 'Hiển thị trong menu',
+            ],
+
+            'edit' => [
+                'back-btn'        => 'Quay lại',
+                'save-btn'        => 'Lưu danh mục',
+                'title'           => 'Chỉnh sửa danh mục',
+            ],
+        ],
+    ],
+
+    'customers' => [
+        'customers' => [
+            'index' => [
+                'add-btn'            => 'Thêm khách hàng',
+                'customer-save'      => 'Khách hàng được lưu thành công',
+                'title'              => 'Khách hàng',
+
+                'datagrid' => [
+                    'customer-name'     => 'Tên khách hàng',
+                    'delete'            => 'Xóa',
+                    'edit'              => 'Chỉnh sửa',
+                    'email'             => 'Email',
+                    'id'                => 'ID',
+                    'mass-delete'       => 'Xóa hàng loạt',
+                    'mass-update'       => 'Cập nhật hàng loạt',
+                    'phone'             => 'Điện thoại',
+                    'status'            => 'Trạng thái',
+                    'suspended'         => 'Đình chỉ',
+                    'update-status'     => 'Cập nhật trạng thái',
+                    'verified'          => 'Đã xác minh',
+                ],
+            ],
+
+            'create' => [
+                'back-btn'                  => 'Quay lại',
+                'confirm-password'          => 'Xác nhận mật khẩu',
+                'create-success'            => 'Khách hàng được tạo thành công',
+                'date-of-birth'             => 'Ngày sinh',
+                'email'                     => 'Email',
+                'female'                    => 'Nữ',
+                'first-name'                => 'Tên',
+                'gender'                    => 'Giới tính',
+                'general'                   => 'Chung',
+                'last-name'                 => 'Họ',
+                'male'                      => 'Nam',
+                'password'                  => 'Mật khẩu',
+                'phone'                     => 'Điện thoại',
+                'save-btn'                  => 'Lưu khách hàng',
+                'title'                     => 'Tạo khách hàng',
+            ],
+
+            'edit' => [
+                'back-btn'                  => 'Quay lại',
+                'save-btn'                  => 'Lưu khách hàng',
+                'title'                     => 'Chỉnh sửa khách hàng',
+                'update-success'            => 'Khách hàng được cập nhật thành công',
+            ],
+        ],
+
+        'addresses' => [
+            'index' => [
+                'add-btn'               => 'Thêm địa chỉ',
+                'create-success'        => 'Địa chỉ được thêm thành công.',
+                'default-address'       => 'Địa chỉ mặc định',
+                'title'                 => 'Địa chỉ',
+
+                'datagrid' => [
+                    'city'              => 'Thành phố',
+                    'country'           => 'Quốc gia',
+                    'default'           => 'Mặc định',
+                    'delete'            => 'Xóa',
+                    'edit'              => 'Chỉnh sửa',
+                    'first-name'        => 'Tên',
+                    'id'                => 'ID',
+                    'last-name'         => 'Họ',
+                    'phone'             => 'Điện thoại',
+                    'postcode'          => 'Mã bưu điện',
+                    'state'             => 'Tỉnh/Thành',
+                ],
+            ],
+        ],
+    ],
+
+    'settings' => [
+        'channels' => [
+            'index' => [
+                'add-btn'           => 'Thêm kênh',
+                'create-success'    => 'Kênh được tạo thành công.',
+                'delete-success'    => 'Kênh được xóa thành công',
+                'title'             => 'Kênh',
+
+                'datagrid' => [
+                    'code'          => 'Mã',
+                    'delete'        => 'Xóa',
+                    'edit'          => 'Chỉnh sửa',
+                    'hostname'      => 'Tên máy chủ',
+                    'id'            => 'ID',
+                    'name'          => 'Tên',
+                ],
+            ],
+
+            'create' => [
+                'back-btn'                  => 'Quay lại',
+                'code'                      => 'Mã',
+                'currencies'                => 'Tiền tệ',
+                'default-locale'            => 'Ngôn ngữ mặc định',
+                'description'               => 'Mô tả',
+                'general'                   => 'Chung',
+                'hostname'                  => 'Tên máy chủ',
+                'inventory-sources'         => 'Nguồn hàng tồn kho',
+                'locales'                   => 'Ngôn ngữ',
+                'maintenance-mode'          => 'Chế độ bảo trì',
+                'maintenance-mode-text'     => 'Văn bản chế độ bảo trì',
+                'name'                      => 'Tên',
+                'root-category'             => 'Danh mục gốc',
+                'save-btn'                  => 'Lưu kênh',
+                'seo'                       => 'SEO',
+                'seo-description'           => 'Meta Description',
+                'seo-keywords'              => 'Meta Keywords',
+                'seo-title'                 => 'Meta Title',
+                'title'                     => 'Tạo kênh',
+            ],
+        ],
+
+        'locales' => [
+            'index' => [
+                'add-btn'           => 'Thêm ngôn ngữ',
+                'create-success'    => 'Ngôn ngữ được tạo thành công.',
+                'title'             => 'Ngôn ngữ',
+
+                'datagrid' => [
+                    'code'      => 'Mã',
+                    'delete'    => 'Xóa',
+                    'edit'      => 'Chỉnh sửa',
+                    'id'        => 'ID',
+                    'name'      => 'Tên',
+                ],
+            ],
+        ],
+
+        'currencies' => [
+            'index' => [
+                'add-btn'           => 'Thêm tiền tệ',
+                'create-success'    => 'Tiền tệ được tạo thành công.',
+                'title'             => 'Tiền tệ',
+
+                'datagrid' => [
+                    'code'      => 'Mã',
+                    'delete'    => 'Xóa',
+                    'edit'      => 'Chỉnh sửa',
+                    'id'        => 'ID',
+                    'name'      => 'Tên',
+                ],
+            ],
+        ],
+    ],
+
+    'configuration' => [
+        'index' => [
+            'general' => [
+                'general' => [
+                    'design' => [
+                        'admin' => [
+                            'admin-logo'        => 'Logo quản trị',
+                            'info'              => 'Logo quản trị',
+                            'admin-logo-image'  => 'Hình ảnh logo quản trị',
+                            'admin-logo-info'   => 'Logo quản trị',
+                        ],
+                    ],
+                ],
+            ],
+
+            'sales' => [
+                'orderSettings' => [
+                    'order-number' => [
+                        'order-number-prefix'       => 'Tiền tố số đơn hàng',
+                        'order-number-prefix-info'  => 'Tiền tố số đơn hàng',
+                        'order-number-suffix'       => 'Hậu tố số đơn hàng',
+                        'order-number-suffix-info'  => 'Hậu tố số đơn hàng',
+                        'order-number-length'       => 'Độ dài số đơn hàng',
+                        'order-number-length-info'  => 'Độ dài số đơn hàng',
+                        'order-number-generator-class' => 'Lớp tạo số đơn hàng',
+                        'order-number-generator-class-info' => 'Lớp tạo số đơn hàng',
+                    ],
+                ],
+            ],
+        ],
+    ],
+
+    'components' => [
+        'layouts' => [
+            'header' => [
+                'bagisto'           => 'Bagisto',
+                'logout'            => 'Đăng xuất',
+                'my-account'        => 'Tài khoản của tôi',
+                'profile'           => 'Hồ sơ',
+            ],
+
+            'sidebar' => [
+                'catalog'           => 'Danh mục',
+                'categories'        => 'Danh mục',
+                'configuration'     => 'Cấu hình',
+                'customers'         => 'Khách hàng',
+                'dashboard'         => 'Bảng điều khiển',
+                'marketing'         => 'Marketing',
+                'products'          => 'Sản phẩm',
+                'sales'             => 'Bán hàng',
+                'settings'          => 'Cài đặt',
+            ],
+        ],
+
+        'datagrid' => [
+            'actions' => [
+                'delete'    => 'Xóa',
+                'edit'      => 'Chỉnh sửa',
+                'view'      => 'Xem',
+            ],
+
+            'massactions' => [
+                'delete'            => 'Xóa',
+                'mass-delete'       => 'Xóa hàng loạt',
+                'mass-update'       => 'Cập nhật hàng loạt',
+            ],
+
+            'toolbar' => [
+                'export'            => 'Xuất',
+                'filter'            => 'Lọc',
+                'search'            => 'Tìm kiếm',
+                'sort'              => 'Sắp xếp',
+            ],
+        ],
+    ],
+
+    'errors' => [
+        '401' => [
+            'message'   => 'Oops! Có vẻ như bạn không được phép truy cập trang này.',
+            'title'     => 'Không được phép 401',
+        ],
+
+        '403' => [
+            'message'   => 'Oops! Có vẻ như bạn không có quyền truy cập trang này.',
+            'title'     => 'Bị cấm 403',
+        ],
+
+        '404' => [
+            'message'   => 'Oops! Trang bạn đang tìm kiếm đang trong kỳ nghỉ. Có vẻ như chúng tôi không thể tìm thấy những gì bạn đang tìm kiếm.',
+            'title'     => 'Không tìm thấy trang 404',
+        ],
+
+        '500' => [
+            'message'   => 'Oops! Có gì đó không ổn. Có vẻ như chúng tôi gặp sự cố khi tải trang bạn đang tìm kiếm.',
+            'title'     => 'Lỗi máy chủ nội bộ 500',
+        ],
+
+        '503' => [
+            'message'   => 'Oops! Có vẻ như chúng tôi tạm thời ngừng hoạt động để bảo trì. Vui lòng kiểm tra lại sau.',
+            'title'     => 'Dịch vụ không khả dụng 503',
+        ],
+    ],
+
+    'emails' => [
+        'customer' => [
+            'registration' => [
+                'subject'   => 'Đăng ký khách hàng mới',
+                'greeting'  => 'Chào mừng và cảm ơn bạn đã đăng ký với chúng tôi!',
+            ],
+
+            'forgot-password' => [
+                'subject'   => 'Đặt lại mật khẩu email',
+                'greeting'  => 'Bạn đã quên mật khẩu!',
+            ],
+        ],
+
+        'order' => [
+            'created' => [
+                'subject'   => 'Xác nhận đơn hàng mới #:order_id',
+                'greeting'  => 'Cảm ơn bạn đã đặt hàng #:order_id được đặt vào :created_at',
+            ],
+
+            'canceled' => [
+                'subject'   => 'Xác nhận hủy đơn hàng #:order_id',
+                'greeting'  => 'Đơn hàng của bạn #:order_id được đặt vào :created_at đã bị hủy',
+            ],
+        ],
+    ],
+];
