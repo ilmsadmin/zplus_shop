@@ -1048,6 +1048,502 @@ return [
         ],
     ],
 
+    'marketing' => [
+        'communications' => [
+            'templates' => [
+                'index' => [
+                    'create-btn' => 'Tạo mẫu',
+                    'title'      => 'Mẫu email',
+
+                    'datagrid' => [
+                        'active'   => 'Hoạt động',
+                        'draft'    => 'Bản nháp',
+                        'id'       => 'ID',
+                        'inactive' => 'Không hoạt động',
+                        'name'     => 'Tên',
+                        'status'   => 'Trạng thái',
+                    ],
+                ],
+
+                'create' => [
+                    'active'         => 'Hoạt động',
+                    'back-btn'       => 'Quay lại',
+                    'content'        => 'Nội dung',
+                    'create-success' => 'Mẫu email được tạo thành công.',
+                    'draft'          => 'Bản nháp',
+                    'general'        => 'Chung',
+                    'inactive'       => 'Không hoạt động',
+                    'name'           => 'Tên',
+                    'save-btn'       => 'Lưu mẫu',
+                    'select-status'  => 'Chọn trạng thái',
+                    'status'         => 'Trạng thái',
+                    'title'          => 'Tạo mẫu',
+                ],
+
+                'edit' => [
+                    'active'         => 'Hoạt động',
+                    'back-btn'       => 'Quay lại',
+                    'content'        => 'Nội dung',
+                    'draft'          => 'Bản nháp',
+                    'general'        => 'Chung',
+                    'inactive'       => 'Không hoạt động',
+                    'name'           => 'Tên',
+                    'save-btn'       => 'Lưu mẫu',
+                    'status'         => 'Trạng thái',
+                    'title'          => 'Chỉnh sửa mẫu',
+                    'update-success' => 'Cập nhật thành công',
+                ],
+
+                'delete-failed'  => ':name Xóa thất bại',
+                'delete-success' => 'Mẫu được xóa thành công',
+                'email-template' => 'Mẫu email',
+            ],
+
+            'campaigns' => [
+                'index' => [
+                    'create-btn' => 'Tạo chiến dịch',
+                    'title'      => 'Chiến dịch',
+
+                    'datagrid' => [
+                        'active'   => 'Hoạt động',
+                        'channel'  => 'Kênh',
+                        'draft'    => 'Bản nháp',
+                        'id'       => 'ID',
+                        'inactive' => 'Không hoạt động',
+                        'name'     => 'Tên',
+                        'status'   => 'Trạng thái',
+                        'subject'  => 'Chủ đề',
+                        'type'     => 'Loại',
+                    ],
+                ],
+
+                'create' => [
+                    'active'                         => 'Hoạt động',
+                    'audiences'                      => 'Đối tượng',
+                    'back-btn'                       => 'Quay lại',
+                    'content'                        => 'Nội dung',
+                    'create-success'                 => 'Chiến dịch được tạo thành công.',
+                    'draft'                          => 'Bản nháp',
+                    'email-template'                 => 'Mẫu email',
+                    'event'                          => 'Sự kiện',
+                    'general'                        => 'Chung',
+                    'inactive'                       => 'Không hoạt động',
+                    'marketing-event'                => 'Sự kiện marketing',
+                    'name'                           => 'Tên',
+                    'save-btn'                       => 'Lưu chiến dịch',
+                    'status'                         => 'Trạng thái',
+                    'subject'                        => 'Chủ đề',
+                    'title'                          => 'Tạo chiến dịch',
+                ],
+
+                'edit' => [
+                    'active'                         => 'Hoạt động',
+                    'audiences'                      => 'Đối tượng',
+                    'back-btn'                       => 'Quay lại',
+                    'content'                        => 'Nội dung',
+                    'draft'                          => 'Bản nháp',
+                    'email-template'                 => 'Mẫu email',
+                    'event'                          => 'Sự kiện',
+                    'general'                        => 'Chung',
+                    'inactive'                       => 'Không hoạt động',
+                    'marketing-event'                => 'Sự kiện marketing',
+                    'name'                           => 'Tên',
+                    'save-btn'                       => 'Lưu chiến dịch',
+                    'status'                         => 'Trạng thái',
+                    'subject'                        => 'Chủ đề',
+                    'title'                          => 'Chỉnh sửa chiến dịch',
+                    'update-success'                 => 'Cập nhật thành công',
+                ],
+
+                'delete-failed'  => ':name Xóa thất bại',
+                'delete-success' => 'Chiến dịch được xóa thành công',
+            ],
+
+            'events' => [
+                'index' => [
+                    'create-btn'     => 'Tạo sự kiện',
+                    'title'          => 'Sự kiện email',
+
+                    'datagrid' => [
+                        'date'        => 'Ngày',
+                        'description' => 'Mô tả',
+                        'id'          => 'ID',
+                        'name'        => 'Tên',
+                    ],
+                ],
+
+                'create' => [
+                    'back-btn'       => 'Quay lại',
+                    'create-success' => 'Sự kiện được tạo thành công.',
+                    'description'    => 'Mô tả',
+                    'general'        => 'Chung',
+                    'name'           => 'Tên',
+                    'save-btn'       => 'Lưu sự kiện',
+                    'title'          => 'Tạo sự kiện',
+                ],
+
+                'edit' => [
+                    'back-btn'       => 'Quay lại',
+                    'description'    => 'Mô tả',
+                    'general'        => 'Chung',
+                    'name'           => 'Tên',
+                    'save-btn'       => 'Lưu sự kiện',
+                    'title'          => 'Chỉnh sửa sự kiện',
+                    'update-success' => 'Cập nhật thành công',
+                ],
+
+                'delete-failed'  => ':name Xóa thất bại',
+                'delete-success' => 'Sự kiện được xóa thành công',
+            ],
+
+            'subscribers' => [
+                'index' => [
+                    'title' => 'Người đăng ký',
+
+                    'datagrid' => [
+                        'channel'      => 'Kênh',
+                        'customer'     => 'Khách hàng',
+                        'email'        => 'Email',
+                        'id'           => 'ID',
+                        'subscribed'   => 'Đã đăng ký',
+                        'unsubscribed' => 'Đã hủy đăng ký',
+                    ],
+                ],
+
+                'edit' => [
+                    'back-btn'       => 'Quay lại',
+                    'save-btn'       => 'Lưu người đăng ký',
+                    'title'          => 'Chỉnh sửa người đăng ký',
+                    'update-success' => 'Người đăng ký được cập nhật thành công',
+                ],
+
+                'unsubscribe-success' => 'Hủy đăng ký thành công',
+            ],
+        ],
+
+        'promotions' => [
+            'index' => [
+                'title' => 'Khuyến mãi',
+            ],
+
+            'cart-rules' => [
+                'index' => [
+                    'create-btn' => 'Tạo quy tắc giỏ hàng',
+                    'title'      => 'Quy tắc giỏ hàng',
+
+                    'datagrid' => [
+                        'actions'      => 'Hành động',
+                        'active'       => 'Hoạt động',
+                        'channels'     => 'Kênh',
+                        'coupon-code'  => 'Mã coupon',
+                        'customer-groups' => 'Nhóm khách hàng',
+                        'end-date'     => 'Ngày kết thúc',
+                        'ends'         => 'Kết thúc',
+                        'id'           => 'ID',
+                        'inactive'     => 'Không hoạt động',
+                        'name'         => 'Tên',
+                        'priority'     => 'Ưu tiên',
+                        'start-date'   => 'Ngày bắt đầu',
+                        'starts'       => 'Bắt đầu',
+                        'status'       => 'Trạng thái',
+                        'usage-limit'  => 'Giới hạn sử dụng',
+                        'used'         => 'Đã sử dụng',
+                    ],
+                ],
+
+                'create' => [
+                    'back-btn'                => 'Quay lại',
+                    'conditions'              => 'Điều kiện',
+                    'general'                 => 'Chung',
+                    'save-btn'                => 'Lưu quy tắc giỏ hàng',
+                    'title'                   => 'Tạo quy tắc giỏ hàng',
+                ],
+
+                'edit' => [
+                    'back-btn'                => 'Quay lại',
+                    'conditions'              => 'Điều kiện',
+                    'general'                 => 'Chung',
+                    'save-btn'                => 'Lưu quy tắc giỏ hàng',
+                    'title'                   => 'Chỉnh sửa quy tắc giỏ hàng',
+                    'update-success'          => 'Cập nhật thành công',
+                ],
+
+                'delete-failed'  => 'Quy tắc không thể xóa',
+                'delete-success' => 'Quy tắc giỏ hàng đã được xóa thành công',
+            ],
+
+            'catalog-rules' => [
+                'index' => [
+                    'create-btn' => 'Tạo quy tắc danh mục',
+                    'title'      => 'Quy tắc giá danh mục',
+
+                    'datagrid' => [
+                        'actions'          => 'Hành động',
+                        'active'           => 'Hoạt động',
+                        'channels'         => 'Kênh',
+                        'customer-groups'  => 'Nhóm khách hàng',
+                        'end-date'         => 'Ngày kết thúc',
+                        'ends'             => 'Kết thúc',
+                        'id'               => 'ID',
+                        'inactive'         => 'Không hoạt động',
+                        'name'             => 'Tên',
+                        'priority'         => 'Ưu tiên',
+                        'start-date'       => 'Ngày bắt đầu',
+                        'starts'           => 'Bắt đầu',
+                        'status'           => 'Trạng thái',
+                    ],
+                ],
+
+                'create' => [
+                    'back-btn'       => 'Quay lại',
+                    'conditions'     => 'Điều kiện',
+                    'general'        => 'Chung',
+                    'save-btn'       => 'Lưu quy tắc danh mục',
+                    'title'          => 'Tạo quy tắc danh mục',
+                ],
+
+                'edit' => [
+                    'back-btn'       => 'Quay lại',
+                    'conditions'     => 'Điều kiện',
+                    'general'        => 'Chung',
+                    'save-btn'       => 'Lưu quy tắc danh mục',
+                    'title'          => 'Chỉnh sửa quy tắc danh mục',
+                    'update-success' => 'Cập nhật thành công',
+                ],
+
+                'delete-failed'  => 'Quy tắc không thể xóa',
+                'delete-success' => 'Quy tắc danh mục đã được xóa thành công',
+            ],
+        ],
+
+        'search-seo' => [
+            'search-terms' => [
+                'index' => [
+                    'create-btn' => 'Tạo từ khóa tìm kiếm',
+                    'title'      => 'Từ khóa tìm kiếm',
+
+                    'datagrid' => [
+                        'channel'      => 'Kênh',
+                        'id'           => 'ID',
+                        'locale'       => 'Ngôn ngữ',
+                        'results'      => 'Kết quả',
+                        'search-term'  => 'Từ khóa tìm kiếm',
+                        'uses'         => 'Lượt sử dụng',
+                    ],
+                ],
+
+                'create' => [
+                    'back-btn'       => 'Quay lại',
+                    'channel'        => 'Kênh',
+                    'create-success' => 'Từ khóa tìm kiếm được tạo thành công.',
+                    'general'        => 'Chung',
+                    'locale'         => 'Ngôn ngữ',
+                    'redirect-url'   => 'URL chuyển hướng',
+                    'save-btn'       => 'Lưu từ khóa tìm kiếm',
+                    'search-term'    => 'Từ khóa tìm kiếm',
+                    'title'          => 'Tạo từ khóa tìm kiếm',
+                ],
+
+                'edit' => [
+                    'back-btn'       => 'Quay lại',
+                    'channel'        => 'Kênh',
+                    'general'        => 'Chung',
+                    'locale'         => 'Ngôn ngữ',
+                    'redirect-url'   => 'URL chuyển hướng',
+                    'save-btn'       => 'Lưu từ khóa tìm kiếm',
+                    'search-term'    => 'Từ khóa tìm kiếm',
+                    'title'          => 'Chỉnh sửa từ khóa tìm kiếm',
+                    'update-success' => 'Cập nhật thành công',
+                ],
+
+                'delete-failed'  => 'Từ khóa tìm kiếm xóa thất bại',
+                'delete-success' => 'Từ khóa tìm kiếm được xóa thành công',
+            ],
+
+            'search-synonyms' => [
+                'index' => [
+                    'create-btn' => 'Tạo từ đồng nghĩa',
+                    'title'      => 'Từ đồng nghĩa tìm kiếm',
+
+                    'datagrid' => [
+                        'id'       => 'ID',
+                        'name'     => 'Tên',
+                        'synonyms' => 'Từ đồng nghĩa',
+                        'terms'    => 'Thuật ngữ',
+                    ],
+                ],
+
+                'create' => [
+                    'back-btn'       => 'Quay lại',
+                    'create-success' => 'Từ đồng nghĩa tìm kiếm được tạo thành công.',
+                    'general'        => 'Chung',
+                    'name'           => 'Tên',
+                    'save-btn'       => 'Lưu từ đồng nghĩa',
+                    'terms'          => 'Thuật ngữ',
+                    'title'          => 'Tạo từ đồng nghĩa tìm kiếm',
+                ],
+
+                'edit' => [
+                    'back-btn'       => 'Quay lại',
+                    'general'        => 'Chung',
+                    'name'           => 'Tên',
+                    'save-btn'       => 'Lưu từ đồng nghĩa',
+                    'terms'          => 'Thuật ngữ',
+                    'title'          => 'Chỉnh sửa từ đồng nghĩa tìm kiếm',
+                    'update-success' => 'Cập nhật thành công',
+                ],
+
+                'delete-failed'  => 'Từ đồng nghĩa xóa thất bại',
+                'delete-success' => 'Từ đồng nghĩa được xóa thành công',
+            ],
+
+            'sitemaps' => [
+                'index' => [
+                    'create-btn' => 'Tạo Sitemap',
+                    'title'      => 'Sitemaps',
+
+                    'datagrid' => [
+                        'file-name' => 'Tên tệp',
+                        'file-path' => 'Đường dẫn tệp',
+                        'id'        => 'ID',
+                        'link'      => 'Liên kết',
+                    ],
+                ],
+
+                'create' => [
+                    'back-btn'       => 'Quay lại',
+                    'create-success' => 'Sitemap được tạo thành công.',
+                    'file-name'      => 'Tên tệp',
+                    'general'        => 'Chung',
+                    'path'           => 'Đường dẫn',
+                    'save-btn'       => 'Lưu Sitemap',
+                    'title'          => 'Tạo Sitemap',
+                ],
+
+                'edit' => [
+                    'back-btn'       => 'Quay lại',
+                    'file-name'      => 'Tên tệp',
+                    'general'        => 'Chung',
+                    'path'           => 'Đường dẫn',
+                    'save-btn'       => 'Lưu Sitemap',
+                    'title'          => 'Chỉnh sửa Sitemap',
+                    'update-success' => 'Cập nhật thành công',
+                ],
+
+                'edit' => [
+                    'back-btn'       => 'Quay lại',
+                    'file-name'      => 'Tên tệp',
+                    'general'        => 'Chung',
+                    'path'           => 'Đường dẫn',
+                    'save-btn'       => 'Lưu Sitemap',
+                    'title'          => 'Chỉnh sửa Sitemap',
+                    'update-success' => 'Cập nhật thành công',
+                ],
+
+                'delete-failed'  => 'Sitemap xóa thất bại',
+                'delete-success' => 'Sitemap được xóa thành công',
+            ],
+
+            'url-rewrites' => [
+                'index' => [
+                    'create-btn' => 'Tạo URL Rewrite',
+                    'title'      => 'URL Rewrites',
+
+                    'datagrid' => [
+                        'entity-type'   => 'Loại thực thể',
+                        'id'            => 'ID',
+                        'redirect-type' => 'Loại chuyển hướng',
+                        'request-path'  => 'Đường dẫn yêu cầu',
+                        'target-path'   => 'Đường dẫn đích',
+                    ],
+                ],
+
+                'create' => [
+                    'back-btn'                => 'Quay lại',
+                    'create-success'          => 'URL Rewrite được tạo thành công.',
+                    'entity-type'             => 'Loại thực thể',
+                    'general'                 => 'Chung',
+                    'redirect-type'           => 'Loại chuyển hướng',
+                    'request-path'            => 'Đường dẫn yêu cầu',
+                    'save-btn'                => 'Lưu URL Rewrite',
+                    'target-path'             => 'Đường dẫn đích',
+                    'title'                   => 'Tạo URL Rewrite',
+                ],
+
+                'edit' => [
+                    'back-btn'                => 'Quay lại',
+                    'entity-type'             => 'Loại thực thể',
+                    'general'                 => 'Chung',
+                    'redirect-type'           => 'Loại chuyển hướng',
+                    'request-path'            => 'Đường dẫn yêu cầu',
+                    'save-btn'                => 'Lưu URL Rewrite',
+                    'target-path'             => 'Đường dẫn đích',
+                    'title'                   => 'Chỉnh sửa URL Rewrite',
+                    'update-success'          => 'Cập nhật thành công',
+                ],
+
+                'delete-failed'  => 'URL Rewrite xóa thất bại',
+                'delete-success' => 'URL Rewrite được xóa thành công',
+            ],
+        ],
+    ],
+
+    'cms' => [
+        'index' => [
+            'create-btn' => 'Tạo trang',
+            'title'      => 'CMS',
+
+            'datagrid' => [
+                'active'        => 'Hoạt động',
+                'channel'       => 'Kênh',
+                'id'            => 'ID',
+                'inactive'      => 'Không hoạt động',
+                'page-title'    => 'Tiêu đề trang',
+                'status'        => 'Trạng thái',
+                'url-key'       => 'Khóa URL',
+            ],
+        ],
+
+        'create' => [
+            'back-btn'                => 'Quay lại',
+            'channels'                => 'Kênh',
+            'content'                 => 'Nội dung',
+            'create-success'          => 'CMS được tạo thành công.',
+            'general'                 => 'Chung',
+            'html-content'            => 'Nội dung HTML',
+            'meta-description'        => 'Mô tả Meta',
+            'meta-keywords'           => 'Từ khóa Meta',
+            'meta-title'              => 'Tiêu đề Meta',
+            'page-title'              => 'Tiêu đề trang',
+            'save-btn'                => 'Lưu CMS',
+            'seo'                     => 'SEO',
+            'status'                  => 'Trạng thái',
+            'title'                   => 'Tạo CMS',
+            'url-key'                 => 'Khóa URL',
+        ],
+
+        'edit' => [
+            'back-btn'                => 'Quay lại',
+            'channels'                => 'Kênh',
+            'content'                 => 'Nội dung',
+            'general'                 => 'Chung',
+            'html-content'            => 'Nội dung HTML',
+            'meta-description'        => 'Mô tả Meta',
+            'meta-keywords'           => 'Từ khóa Meta',
+            'meta-title'              => 'Tiêu đề Meta',
+            'page-title'              => 'Tiêu đề trang',
+            'save-btn'                => 'Lưu CMS',
+            'seo'                     => 'SEO',
+            'status'                  => 'Trạng thái',
+            'title'                   => 'Chỉnh sửa CMS',
+            'update-success'          => 'Cập nhật thành công',
+            'url-key'                 => 'Khóa URL',
+        ],
+
+        'delete-failed'  => 'CMS xóa thất bại',
+        'delete-success' => 'CMS được xóa thành công',
+    ],
+
     'settings' => [
         'channels' => [
             'index' => [
@@ -1225,29 +1721,136 @@ return [
         ],
     ],
 
+    'export' => [
+        'csv'        => 'CSV',
+        'download'   => 'Tải xuống',
+        'export'     => 'Xuất',
+        'no-records' => 'Không có gì để xuất',
+        'xls'        => 'XLS',
+        'xlsx'       => 'XLSX',
+    ],
+
+    'validations' => [
+        'slug-being-used' => 'Slug này đang được sử dụng trong danh mục hoặc sản phẩm.',
+        'slug-reserved'   => 'Slug này đã được đặt trước.',
+    ],
+
+    'footer' => [
+        'copy-right' => 'Được hỗ trợ bởi <a href="https://bagisto.com/" target="_blank">Bagisto</a>, Một dự án cộng đồng của <a href="https://webkul.com/" target="_blank">Webkul</a>',
+    ],
+
     'emails' => [
-        'customer' => [
+        'dear'   => 'Kính gửi :admin_name',
+        'thanks' => 'Nếu bạn cần bất kỳ sự trợ giúp nào, vui lòng liên hệ với chúng tôi tại <a href=":link" style=":style">:email</a>.<br/>Cảm ơn!',
+
+        'admin' => [
+            'forgot-password' => [
+                'description'    => 'Bạn đang nhận được email này vì chúng tôi đã nhận được yêu cầu đặt lại mật khẩu cho tài khoản của bạn.',
+                'greeting'       => 'Quên mật khẩu!',
+                'reset-password' => 'Đặt lại mật khẩu',
+                'subject'        => 'Email đặt lại mật khẩu',
+            ],
+        ],
+
+        'customers' => [
             'registration' => [
-                'subject'   => 'Đăng ký khách hàng mới',
-                'greeting'  => 'Chào mừng và cảm ơn bạn đã đăng ký với chúng tôi!',
+                'description' => 'Một tài khoản khách hàng mới đã được tạo thành công. Họ giờ có thể đăng nhập bằng địa chỉ email và mật khẩu của mình. Sau khi đăng nhập, họ sẽ có quyền truy cập vào các dịch vụ khác nhau, bao gồm khả năng xem lại các đơn hàng trước đó, quản lý danh sách yêu thích và cập nhật thông tin tài khoản.',
+                'greeting'    => 'Chúng tôi chào mừng khách hàng mới, :customer_name đã vừa đăng ký với chúng tôi!',
+                'subject'     => 'Đăng ký khách hàng mới',
             ],
 
             'forgot-password' => [
                 'subject'   => 'Đặt lại mật khẩu email',
                 'greeting'  => 'Bạn đã quên mật khẩu!',
             ],
+
+            'gdpr' => [
+                'new-delete-request' => 'Yêu cầu mới để xóa dữ liệu',
+                'new-update-request' => 'Yêu cầu mới để cập nhật dữ liệu',
+
+                'new-request' => [
+                    'customer-name'  => 'Tên khách hàng: ',
+                    'delete-summary' => 'Tóm tắt yêu cầu xóa',
+                    'message'        => 'Tin nhắn: ',
+                    'request-status' => 'Trạng thái yêu cầu: ',
+                    'request-type'   => 'Loại yêu cầu: ',
+                    'update-summary' => 'Tóm tắt yêu cầu cập nhật',
+                ],
+
+                'status-update' => [
+                    'subject'        => 'Yêu cầu GDPR đã được cập nhật',
+                    'summary'        => 'Trạng thái yêu cầu GDPR đã được cập nhật',
+                    'request-status' => 'Trạng thái yêu cầu:',
+                    'request-type'   => 'Loại yêu cầu:',
+                    'message'        => 'Tin nhắn:',
+                ],
+            ],
         ],
 
-        'order' => [
+        'orders' => [
             'created' => [
-                'subject'   => 'Xác nhận đơn hàng mới #:order_id',
-                'greeting'  => 'Cảm ơn bạn đã đặt hàng #:order_id được đặt vào :created_at',
+                'greeting' => 'Bạn có đơn hàng mới :order_id được đặt vào :created_at',
+                'subject'  => 'Xác nhận đơn hàng mới',
+                'summary'  => 'Tóm tắt đơn hàng',
+                'title'    => 'Xác nhận đơn hàng!',
+            ],
+
+            'invoiced' => [
+                'greeting' => 'Hóa đơn #:invoice_id của bạn cho đơn hàng :order_id được tạo vào :created_at',
+                'subject'  => 'Xác nhận hóa đơn mới',
+                'summary'  => 'Tóm tắt hóa đơn',
+                'title'    => 'Hóa đơn mới!',
+            ],
+
+            'shipped' => [
+                'greeting' => 'Bạn đã giao hàng cho đơn hàng :order_id được đặt vào :created_at',
+                'subject'  => 'Xác nhận giao hàng mới',
+                'summary'  => 'Tóm tắt giao hàng',
+                'title'    => 'Đơn hàng đã được giao!',
+            ],
+
+            'inventory-source' => [
+                'greeting' => 'Bạn đã giao hàng cho đơn hàng :order_id được đặt vào :created_at',
+                'subject'  => 'Xác nhận giao hàng mới',
+                'summary'  => 'Tóm tắt giao hàng',
+                'title'    => 'Đơn hàng đã được giao!',
+            ],
+
+            'refunded' => [
+                'greeting' => 'Bạn đã hoàn tiền cho đơn hàng :order_id được đặt vào :created_at',
+                'subject'  => 'Xác nhận hoàn tiền mới',
+                'summary'  => 'Tóm tắt hoàn tiền',
+                'title'    => 'Đơn hàng đã được hoàn tiền!',
             ],
 
             'canceled' => [
-                'subject'   => 'Xác nhận hủy đơn hàng #:order_id',
-                'greeting'  => 'Đơn hàng của bạn #:order_id được đặt vào :created_at đã bị hủy',
+                'greeting' => 'Bạn đã hủy đơn hàng :order_id được đặt vào :created_at',
+                'subject'  => 'Đơn hàng mới bị hủy',
+                'summary'  => 'Tóm tắt đơn hàng',
+                'title'    => 'Đơn hàng đã bị hủy!',
             ],
+
+            'billing-address'            => 'Địa chỉ thanh toán',
+            'carrier'                    => 'Nhà vận chuyển',
+            'contact'                    => 'Liên hệ',
+            'discount'                   => 'Giảm giá',
+            'excl-tax'                   => 'Chưa bao gồm thuế: ',
+            'grand-total'                => 'Tổng cộng',
+            'name'                       => 'Tên',
+            'payment'                    => 'Thanh toán',
+            'price'                      => 'Giá',
+            'qty'                        => 'Số lượng',
+            'shipping-address'           => 'Địa chỉ giao hàng',
+            'shipping-handling-excl-tax' => 'Phí vận chuyển xử lý (Chưa bao gồm thuế)',
+            'shipping-handling-incl-tax' => 'Phí vận chuyển xử lý (Bao gồm thuế)',
+            'shipping-handling'          => 'Phí vận chuyển xử lý',
+            'shipping'                   => 'Vận chuyển',
+            'sku'                        => 'SKU',
+            'subtotal-excl-tax'          => 'Tổng phụ (Chưa bao gồm thuế)',
+            'subtotal-incl-tax'          => 'Tổng phụ (Bao gồm thuế)',
+            'subtotal'                   => 'Tổng phụ',
+            'tax'                        => 'Thuế',
+            'tracking-number'            => 'Số theo dõi: :tracking_number',
         ],
     ],
 ];
