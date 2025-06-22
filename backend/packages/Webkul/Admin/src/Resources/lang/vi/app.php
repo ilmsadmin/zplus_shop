@@ -1875,30 +1875,853 @@ return [
 
     'configuration' => [
         'index' => [
+            'back-btn'                     => 'Quay lại',
+            'delete'                       => 'Xóa',
+            'enable-at-least-one-payment'  => 'Bật ít nhất một phương thức thanh toán.',
+            'enable-at-least-one-shipping' => 'Bật ít nhất một phương thức vận chuyển.',
+            'no-result-found'              => 'Không tìm thấy kết quả',
+            'save-btn'                     => 'Lưu cấu hình',
+            'save-message'                 => 'Cấu hình được lưu thành công',
+            'search'                       => 'Tìm kiếm',
+            'select-country'               => 'Chọn quốc gia',
+            'select-state'                 => 'Chọn tỉnh/thành',
+            'title'                        => 'Cấu hình',
+
             'general' => [
+                'info'  => 'Đặt tùy chọn đơn vị.',
+                'title' => 'Chung',
+
                 'general' => [
-                    'design' => [
-                        'admin' => [
-                            'admin-logo'        => 'Logo quản trị',
-                            'info'              => 'Logo quản trị',
-                            'admin-logo-image'  => 'Hình ảnh logo quản trị',
-                            'admin-logo-info'   => 'Logo quản trị',
+                    'info'  => 'Đặt tùy chọn đơn vị và bật hoặc tắt điều hướng breadcrumbs.',
+                    'title' => 'Chung',
+
+                    'unit-options' => [
+                        'info'        => 'Đặt tùy chọn đơn vị.',
+                        'title'       => 'Tùy chọn đơn vị',
+                        'title-info'  => 'Cấu hình trọng lượng theo pound (lbs) hoặc kilogram (kgs).',
+                        'weight-unit' => 'Đơn vị trọng lượng',
+                    ],
+
+                    'breadcrumbs' => [
+                        'shop'       => 'Breadcrumbs cửa hàng',
+                        'title'      => 'Breadcrumbs',
+                        'title-info' => 'Bật hoặc tắt điều hướng breadcrumbs trong cửa hàng.',
+                    ],
+                ],
+
+                'content' => [
+                    'info'  => 'Đặt tiêu đề ưu đãi header và script tùy chỉnh.',
+                    'title' => 'Nội dung',
+
+                    'header-offer' => [
+                        'title'             => 'Tiêu đề ưu đãi Header',
+                        'title-info'        => 'Cấu hình tiêu đề ưu đãi Header với tiêu đề ưu đãi, tiêu đề chuyển hướng và liên kết chuyển hướng.',
+                        'offer-title'       => 'Tiêu đề ưu đãi',
+                        'redirection-title' => 'Tiêu đề chuyển hướng',
+                        'redirection-link'  => 'Liên kết chuyển hướng',
+                    ],
+
+                    'speculation-rules' => [
+                        'enable-speculation' => 'Bật quy tắc suy đoán',
+                        'info'               => 'Cấu hình cài đặt để bật hoặc tắt logic suy đoán tự động.',
+                        'title'              => 'Quy tắc suy đoán',
+
+                        'prerender' => [
+                            'conservative'           => 'Bảo thủ',
+                            'eager'                  => 'Tích cực',
+                            'eagerness'              => 'Mức độ tích cực Prerender',
+                            'eagerness-info'         => 'Kiểm soát mức độ tích cực áp dụng quy tắc suy đoán. Tùy chọn: eager (tối đa), moderate (mặc định), conservative (thấp).',
+                            'enabled'                => 'Bật quy tắc suy đoán Prerender',
+                            'ignore-url-params'      => 'Bỏ qua tham số URL Prerender',
+                            'ignore-url-params-info' => 'Chỉ định tham số URL để bỏ qua trong quy tắc suy đoán. Sử dụng pipe (|) để phân tách nhiều tham số.',
+                            'moderate'               => 'Vừa phải',
+                            'mouse-over-delay'       => 'Độ trễ khi di chuột',
+                            'mouse-over-delay-info'  => 'Thời gian chờ (ms) trước khi kích hoạt prerender khi di chuột qua liên kết.',
+                            'title'                  => 'Prerender',
+                            'where-list'             => 'Danh sách Where',
+                        ],
+
+                        'prefetch' => [
+                            'conservative'           => 'Bảo thủ',
+                            'eager'                  => 'Tích cực',
+                            'eagerness'              => 'Mức độ tích cực Prefetch',
+                            'eagerness-info'         => 'Kiểm soát mức độ tích cực áp dụng quy tắc prefetch.',
+                            'enabled'                => 'Bật quy tắc suy đoán Prefetch',
+                            'ignore-url-params'      => 'Bỏ qua tham số URL Prefetch',
+                            'ignore-url-params-info' => 'Chỉ định tham số URL để bỏ qua trong quy tắc prefetch.',
+                            'moderate'               => 'Vừa phải',
+                            'mouse-over-delay'       => 'Độ trễ khi di chuột',
+                            'mouse-over-delay-info'  => 'Thời gian chờ (ms) trước khi kích hoạt prefetch khi di chuột qua liên kết.',
+                            'title'                  => 'Prefetch',
+                            'where-list'             => 'Danh sách Where',
+                        ],
+                    ],
+
+                    'custom-scripts' => [
+                        'title'      => 'Script tùy chỉnh',
+                        'title-info' => 'Thêm script tùy chỉnh vào trang.',
+                    ],
+                ],
+
+                'design' => [
+                    'info'  => 'Đặt logo quản trị.',
+                    'title' => 'Thiết kế',
+
+                    'admin' => [
+                        'admin-logo'        => 'Logo quản trị',
+                        'info'              => 'Logo quản trị',
+                        'admin-logo-image'  => 'Hình ảnh logo quản trị',
+                        'admin-logo-info'   => 'Logo quản trị',
+                    ],
+
+                    'menu-category' => [
+                        'title'              => 'Danh mục menu',
+                        'title-info'         => 'Cấu hình hiển thị danh mục trong menu.',
+                        'max-menu-item'      => 'Số lượng mục menu tối đa',
+                        'max-menu-item-info' => 'Số lượng tối đa các mục danh mục được hiển thị trong menu.',
+                    ],
+                ],
+
+                'magic-ai' => [
+                    'info'  => 'Cấu hình AI Magic.',
+                    'title' => 'Magic AI',
+
+                    'settings' => [
+                        'enabled'                => 'Bật Magic AI',
+                        'info'                   => 'Cấu hình cài đặt Magic AI.',
+                        'title'                  => 'Cài đặt',
+                        'api-key'                => 'Khóa API OpenAI',
+                        'api-key-info'           => 'Nhập khóa API OpenAI của bạn.',
+                    ],
+
+                    'content-generation' => [
+                        'info'                      => 'Cấu hình tạo nội dung AI.',
+                        'title'                     => 'Tạo nội dung',
+                        'product-description'       => 'Mô tả sản phẩm',
+                        'product-description-info'  => 'Bật tạo mô tả sản phẩm bằng AI.',
+                        'product-short-description' => 'Mô tả ngắn sản phẩm',
+                        'product-short-description-info' => 'Bật tạo mô tả ngắn sản phẩm bằng AI.',
+                        'category-description'      => 'Mô tả danh mục',
+                        'category-description-info' => 'Bật tạo mô tả danh mục bằng AI.',
+                    ],
+
+                    'image-generation' => [
+                        'info'  => 'Cấu hình tạo hình ảnh AI.',
+                        'title' => 'Tạo hình ảnh',
+                    ],
+
+                    'review-translation' => [
+                        'enabled'                    => 'Bật dịch đánh giá',
+                        'info'                       => 'Cung cấp tùy chọn cho khách hàng hoặc khách truy cập dịch đánh giá khách hàng sang tiếng Anh.',
+                        'title'                      => 'Dịch đánh giá',
+                        'title-info'                 => 'Cung cấp tùy chọn cho khách hàng hoặc khách truy cập dịch đánh giá khách hàng sang tiếng Anh.<br/><br/>Khi bật, đi đến đánh giá và bạn sẽ tìm thấy nút "Dịch sang tiếng Anh" nếu bạn xem xét khác tiếng Anh.',
+                        'llama-3-1-405b'             => 'Llama 3.1 (405b)',
+                        'llama-3-1-70b'              => 'Llama 3.1 (70b)',
+                        'llama-3-1-8b'               => 'Llama 3.1 (8b)',
+                        'llama-3-2-11b'              => 'Llama 3.2 (11b)',
+                        'llama-3-2-1b'               => 'Llama 3.2 (1b)',
+                        'llama-3-2-3b'               => 'Llama 3.2 (3b)',
+                        'llama-3-2-90b'              => 'Llama 3.2 (90b)',
+                        'llama-3-3-70b'              => 'Llama 3.3 (70b)',
+                        'qwen2-5-0-5b'               => 'Qwen 2.5 (0.5b)',
+                        'qwen2-5-1-5b'               => 'Qwen 2.5 (1.5b)',
+                        'qwen2-5-14b'                => 'Qwen 2.5 (14b)',
+                        'qwen2-5-3b'                 => 'Qwen 2.5 (3b)',
+                        'qwen2-5-7b'                 => 'Qwen 2.5 (7b)',
+                        'starling-lm-7b'             => 'Starling-lm (7b)',
+                        'vicuna-13b'                 => 'Vicuna (13b)',
+                    ],
+                ],
+
+                'checkout-message' => [
+                    'info'  => 'Thông báo khi thanh toán.',
+                    'title' => 'Thông báo thanh toán',
+                ],
+
+                'gdpr' => [
+                    'info'  => 'Cấu hình GDPR.',
+                    'title' => 'GDPR',
+
+                    'settings' => [
+                        'enabled' => 'Bật GDPR',
+                        'info'    => 'Cấu hình cài đặt GDPR.',
+                        'title'   => 'Cài đặt',
+                    ],
+
+                    'agreement' => [
+                        'info'    => 'Nội dung thỏa thuận GDPR.',
+                        'title'   => 'Thỏa thuận',
+                        'content' => 'Nội dung thỏa thuận',
+                    ],
+
+                    'cookie' => [
+                        'info'         => 'Cấu hình cookie GDPR.',
+                        'title'        => 'Cookie',
+                        'cookie-text'  => 'Văn bản cookie',
+                        'learn-more'   => 'Tìm hiểu thêm',
+                    ],
+
+                    'cookie-consent' => [
+                        'info'                        => 'Cấu hình đồng ý cookie.',
+                        'title'                       => 'Đồng ý cookie',
+                        'analytics-and-tracking'      => 'Phân tích và theo dõi',
+                        'analytics-and-tracking-info' => 'Cookie này giúp chúng tôi hiểu cách khách truy cập tương tác với trang web.',
+                        'essential'                   => 'Thiết yếu',
+                        'essential-info'              => 'Cookie này là cần thiết cho hoạt động cơ bản của trang web.',
+                        'marketing'                   => 'Marketing',
+                        'marketing-info'              => 'Cookie này được sử dụng để hiển thị quảng cáo có liên quan.',
+                    ],
+                ],
+
+                'sitemap' => [
+                    'info'  => 'Cấu hình sitemap.',
+                    'title' => 'Sitemap',
+
+                    'settings' => [
+                        'enabled'    => 'Bật sitemap',
+                        'info'       => 'Cấu hình cài đặt sitemap.',
+                        'title'      => 'Cài đặt',
+                        'frequency'  => 'Tần suất',
+                        'priority'   => 'Ưu tiên',
+                    ],
+
+                    'file-limits' => [
+                        'info'                    => 'Giới hạn tệp sitemap.',
+                        'title'                   => 'Giới hạn tệp',
+                        'images-per-sitemap'      => 'Hình ảnh mỗi sitemap',
+                        'images-per-sitemap-info' => 'Số lượng hình ảnh tối đa trong một tệp sitemap.',
+                        'urls-per-sitemap'        => 'URL mỗi sitemap',
+                        'urls-per-sitemap-info'   => 'Số lượng URL tối đa trong một tệp sitemap.',
+                    ],
+                ],
+            ],
+
+            'catalog' => [
+                'info'  => 'Cấu hình danh mục.',
+                'title' => 'Danh mục',
+
+                'products' => [
+                    'info'  => 'Cấu hình sản phẩm.',
+                    'title' => 'Sản phẩm',
+
+                    'settings' => [
+                        'info'  => 'Cấu hình cài đặt sản phẩm.',
+                        'title' => 'Cài đặt',
+                    ],
+
+                    'search' => [
+                        'info'                         => 'Cấu hình tìm kiếm sản phẩm.',
+                        'title'                        => 'Tìm kiếm',
+                        'engine'                       => 'Công cụ tìm kiếm',
+                        'engine-info'                  => 'Chọn công cụ tìm kiếm.',
+                        'mysql'                        => 'MySQL',
+                        'elastic'                      => 'Elasticsearch',
+                        'algolia'                      => 'Algolia',
+                        'elasticsearch-host'           => 'Host Elasticsearch',
+                        'elasticsearch-host-info'      => 'Chỉ định host Elasticsearch.',
+                        'elasticsearch-port'           => 'Cổng Elasticsearch',
+                        'elasticsearch-port-info'      => 'Chỉ định cổng Elasticsearch.',
+                        'elasticsearch-prefix'         => 'Tiền tố Elasticsearch',
+                        'elasticsearch-prefix-info'    => 'Chỉ định tiền tố chỉ mục Elasticsearch.',
+                        'elasticsearch-timeout'        => 'Timeout Elasticsearch',
+                        'elasticsearch-timeout-info'   => 'Chỉ định timeout Elasticsearch.',
+                    ],
+
+                    'guest-checkout' => [
+                        'info'    => 'Cho phép khách thanh toán mà không cần đăng ký.',
+                        'title'   => 'Thanh toán khách',
+                        'enabled' => 'Bật thanh toán khách',
+                    ],
+
+                    'product-view-page' => [
+                        'info'  => 'Cấu hình trang xem sản phẩm.',
+                        'title' => 'Trang xem sản phẩm',
+                    ],
+
+                    'cart-view-page' => [
+                        'info'  => 'Cấu hình trang xem giỏ hàng.',
+                        'title' => 'Trang xem giỏ hàng',
+                    ],
+
+                    'storefront' => [
+                        'info'                        => 'Cấu hình storefront.',
+                        'title'                       => 'Storefront',
+                        'products-per-page'           => 'Sản phẩm mỗi trang',
+                        'products-per-page-info'      => 'Số sản phẩm hiển thị mỗi trang.',
+                        'buy-now-button-display'      => 'Hiển thị nút Mua ngay',
+                        'buy-now-button-display-info' => 'Hiển thị nút "Mua ngay" trên trang sản phẩm.',
+                        'wishlist-display'            => 'Hiển thị danh sách yêu thích',
+                        'wishlist-display-info'       => 'Hiển thị tính năng danh sách yêu thích.',
+                        'compare-option-display'      => 'Hiển thị tùy chọn so sánh',
+                        'compare-option-display-info' => 'Hiển thị tính năng so sánh sản phẩm.',
+                        'product-review'              => 'Đánh giá sản phẩm',
+                        'product-review-info'         => 'Bật đánh giá sản phẩm.',
+                    ],
+
+                    'small-image' => [
+                        'info'   => 'Cấu hình hình ảnh nhỏ.',
+                        'title'  => 'Hình ảnh nhỏ',
+                        'width'  => 'Chiều rộng',
+                        'height' => 'Chiều cao',
+                    ],
+
+                    'medium-image' => [
+                        'info'   => 'Cấu hình hình ảnh trung bình.',
+                        'title'  => 'Hình ảnh trung bình',
+                        'width'  => 'Chiều rộng',
+                        'height' => 'Chiều cao',
+                    ],
+
+                    'large-image' => [
+                        'info'   => 'Cấu hình hình ảnh lớn.',
+                        'title'  => 'Hình ảnh lớn',
+                        'width'  => 'Chiều rộng',
+                        'height' => 'Chiều cao',
+                    ],
+
+                    'review' => [
+                        'info'                    => 'Cấu hình đánh giá.',
+                        'title'                   => 'Đánh giá',
+                        'guest-review'            => 'Đánh giá khách',
+                        'guest-review-info'       => 'Cho phép khách đánh giá sản phẩm.',
+                    ],
+
+                    'attribute' => [
+                        'info'  => 'Cấu hình thuộc tính.',
+                        'title' => 'Thuộc tính',
+                    ],
+
+                    'social-share' => [
+                        'info'             => 'Cấu hình chia sẻ mạng xã hội.',
+                        'title'            => 'Chia sẻ mạng xã hội',
+                        'enabled'          => 'Bật chia sẻ mạng xã hội',
+                        'facebook'         => 'Facebook',
+                        'facebook-info'    => 'Bật chia sẻ Facebook.',
+                        'twitter'          => 'Twitter',
+                        'twitter-info'     => 'Bật chia sẻ Twitter.',
+                        'pinterest'        => 'Pinterest',
+                        'pinterest-info'   => 'Bật chia sẻ Pinterest.',
+                        'whatsapp'         => 'WhatsApp',
+                        'whatsapp-info'    => 'Bật chia sẻ WhatsApp.',
+                        'linkedin'         => 'LinkedIn',
+                        'linkedin-info'    => 'Bật chia sẻ LinkedIn.',
+                        'email'            => 'Email',
+                        'email-info'       => 'Bật chia sẻ qua email.',
+                    ],
+
+                    'rich-snippets' => [
+                        'info'  => 'Cấu hình rich snippets.',
+                        'title' => 'Rich Snippets',
+
+                        'products' => [
+                            'info'                   => 'Cấu hình rich snippets sản phẩm.',
+                            'title'                  => 'Sản phẩm',
+                            'enable-product-snippet' => 'Bật rich snippet sản phẩm',
+                            'sku'                    => 'SKU',
+                            'sku-info'               => 'Hiển thị SKU trong rich snippet.',
+                            'brand'                  => 'Thương hiệu',
+                            'brand-info'             => 'Hiển thị thương hiệu trong rich snippet.',
+                            'color'                  => 'Màu sắc',
+                            'color-info'             => 'Hiển thị màu sắc trong rich snippet.',
+                        ],
+
+                        'categories' => [
+                            'info'                     => 'Cấu hình rich snippets danh mục.',
+                            'title'                    => 'Danh mục',
+                            'enable-category-snippet'  => 'Bật rich snippet danh mục',
+                        ],
+                    ],
+
+                    'inventory' => [
+                        'info'  => 'Cấu hình tồn kho.',
+                        'title' => 'Tồn kho',
+
+                        'product-stock-options' => [
+                            'info'                      => 'Cấu hình tùy chọn tồn kho sản phẩm.',
+                            'title'                     => 'Tùy chọn tồn kho sản phẩm',
+                            'back-orders'               => 'Đặt hàng trước',
+                            'back-orders-info'          => 'Cho phép đặt hàng khi hết hàng.',
                         ],
                     ],
                 ],
             ],
 
+            'customer' => [
+                'info'  => 'Cấu hình khách hàng.',
+                'title' => 'Khách hàng',
+
+                'address' => [
+                    'info'  => 'Cấu hình địa chỉ khách hàng.',
+                    'title' => 'Địa chỉ',
+
+                    'requirements' => [
+                        'info'              => 'Cấu hình yêu cầu địa chỉ.',
+                        'title'             => 'Yêu cầu',
+                        'street-address'    => 'Địa chỉ đường phố',
+                        'street-address-info' => 'Yêu cầu địa chỉ đường phố.',
+                        'country'           => 'Quốc gia',
+                        'country-info'      => 'Yêu cầu quốc gia.',
+                        'state'             => 'Tỉnh/Thành',
+                        'state-info'        => 'Yêu cầu tỉnh/thành.',
+                        'postcode'          => 'Mã bưu điện',
+                        'postcode-info'     => 'Yêu cầu mã bưu điện.',
+                    ],
+
+                    'information' => [
+                        'info'  => 'Cấu hình thông tin địa chỉ.',
+                        'title' => 'Thông tin',
+                    ],
+                ],
+
+                'captcha' => [
+                    'info'  => 'Cấu hình captcha.',
+                    'title' => 'Captcha',
+
+                    'credentials' => [
+                        'info'       => 'Thông tin xác thực captcha.',
+                        'title'      => 'Thông tin xác thực',
+                        'site-key'   => 'Site key',
+                        'secret-key' => 'Secret key',
+                    ],
+
+                    'validations' => [
+                        'info'                => 'Cấu hình xác thực captcha.',
+                        'title'               => 'Xác thực',
+                        'customer-login'      => 'Đăng nhập khách hàng',
+                        'customer-login-info' => 'Bật captcha cho đăng nhập khách hàng.',
+                        'customer-registration' => 'Đăng ký khách hàng',
+                        'customer-registration-info' => 'Bật captcha cho đăng ký khách hàng.',
+                        'customer-forgot-password' => 'Quên mật khẩu khách hàng',
+                        'customer-forgot-password-info' => 'Bật captcha cho quên mật khẩu khách hàng.',
+                        'contact-us'          => 'Liên hệ chúng tôi',
+                        'contact-us-info'     => 'Bật captcha cho form liên hệ.',
+                    ],
+                ],
+
+                'settings' => [
+                    'info'  => 'Cấu hình cài đặt khách hàng.',
+                    'title' => 'Cài đặt',
+
+                    'login-as-customer' => [
+                        'info'    => 'Cho phép quản trị viên đăng nhập như khách hàng.',
+                        'title'   => 'Đăng nhập như khách hàng',
+                        'enabled' => 'Bật đăng nhập như khách hàng',
+                    ],
+
+                    'wishlist' => [
+                        'info'    => 'Cấu hình danh sách yêu thích.',
+                        'title'   => 'Danh sách yêu thích',
+                        'enabled' => 'Bật danh sách yêu thích',
+                    ],
+
+                    'login-options' => [
+                        'info'                => 'Cấu hình tùy chọn đăng nhập.',
+                        'title'               => 'Tùy chọn đăng nhập',
+                        'enable-remember-me'  => 'Bật "Ghi nhớ tôi"',
+                        'enable-remember-me-info' => 'Cho phép khách hàng chọn "Ghi nhớ tôi" khi đăng nhập.',
+                    ],
+
+                    'create-new-account-option' => [
+                        'info'  => 'Cấu hình tùy chọn tạo tài khoản mới.',
+                        'title' => 'Tùy chọn tạo tài khoản mới',
+
+                        'default-group' => [
+                            'info'                      => 'Nhóm khách hàng mặc định.',
+                            'title'                     => 'Nhóm mặc định',
+                            'default-customer-group'    => 'Nhóm khách hàng mặc định',
+                            'default-customer-group-info' => 'Chọn nhóm khách hàng mặc định cho khách hàng mới.',
+                        ],
+                    ],
+
+                    'newsletter' => [
+                        'info'    => 'Cấu hình bản tin.',
+                        'title'   => 'Bản tin',
+                        'enabled' => 'Bật bản tin',
+                    ],
+
+                    'email' => [
+                        'info'  => 'Cấu hình email khách hàng.',
+                        'title' => 'Email',
+                    ],
+
+                    'social-login' => [
+                        'info'  => 'Cấu hình đăng nhập mạng xã hội.',
+                        'title' => 'Đăng nhập mạng xã hội',
+
+                        'google' => [
+                            'info'  => 'Cấu hình đăng nhập Google.',
+                            'title' => 'Google',
+
+                            'client-id' => [
+                                'info'  => 'ID ứng dụng Google.',
+                                'title' => 'Client ID',
+                            ],
+
+                            'client-secret' => [
+                                'info'  => 'Secret ứng dụng Google.',
+                                'title' => 'Client Secret',
+                            ],
+
+                            'redirect' => [
+                                'info'  => 'URL chuyển hướng Google.',
+                                'title' => 'Redirect',
+                            ],
+                        ],
+
+                        'facebook' => [
+                            'info'  => 'Cấu hình đăng nhập Facebook.',
+                            'title' => 'Facebook',
+
+                            'client-id' => [
+                                'info'  => 'ID ứng dụng Facebook.',
+                                'title' => 'Client ID',
+                            ],
+
+                            'client-secret' => [
+                                'info'  => 'Secret ứng dụng Facebook.',
+                                'title' => 'Client Secret',
+                            ],
+
+                            'redirect' => [
+                                'info'  => 'URL chuyển hướng Facebook.',
+                                'title' => 'Redirect',
+                            ],
+                        ],
+
+                        'github' => [
+                            'info'  => 'Cấu hình đăng nhập GitHub.',
+                            'title' => 'GitHub',
+
+                            'client-id' => [
+                                'info'  => 'ID ứng dụng GitHub.',
+                                'title' => 'Client ID',
+                            ],
+
+                            'client-secret' => [
+                                'info'  => 'Secret ứng dụng GitHub.',
+                                'title' => 'Client Secret',
+                            ],
+
+                            'redirect' => [
+                                'info'  => 'URL chuyển hướng GitHub.',
+                                'title' => 'Redirect',
+                            ],
+                        ],
+
+                        'linkedin' => [
+                            'info'  => 'Cấu hình đăng nhập LinkedIn.',
+                            'title' => 'LinkedIn',
+
+                            'client-id' => [
+                                'info'  => 'ID ứng dụng LinkedIn.',
+                                'title' => 'Client ID',
+                            ],
+
+                            'client-secret' => [
+                                'info'  => 'Secret ứng dụng LinkedIn.',
+                                'title' => 'Client Secret',
+                            ],
+
+                            'redirect' => [
+                                'info'  => 'URL chuyển hướng LinkedIn.',
+                                'title' => 'Redirect',
+                            ],
+                        ],
+
+                        'twitter' => [
+                            'info'  => 'Cấu hình đăng nhập Twitter.',
+                            'title' => 'Twitter',
+
+                            'client-id' => [
+                                'info'  => 'ID ứng dụng Twitter.',
+                                'title' => 'Client ID',
+                            ],
+
+                            'client-secret' => [
+                                'info'  => 'Secret ứng dụng Twitter.',
+                                'title' => 'Client Secret',
+                            ],
+
+                            'redirect' => [
+                                'info'  => 'URL chuyển hướng Twitter.',
+                                'title' => 'Redirect',
+                            ],
+                        ],
+                    ],
+                ],
+            ],
+
+            'email' => [
+                'info'  => 'Cấu hình email.',
+                'title' => 'Email',
+
+                'email-settings' => [
+                    'info'                     => 'Cấu hình cài đặt email.',
+                    'title'                    => 'Cài đặt email',
+                    'sender-name'              => 'Tên người gửi',
+                    'sender-name-info'         => 'Tên người gửi email.',
+                    'sender-email'             => 'Email người gửi',
+                    'sender-email-info'        => 'Địa chỉ email người gửi.',
+                    'shop-email-from'          => 'Email shop từ',
+                    'shop-email-from-info'     => 'Địa chỉ email shop.',
+                    'admin-email'              => 'Email quản trị',
+                    'admin-email-info'         => 'Địa chỉ email quản trị.',
+                    'send-email-verification'  => 'Gửi email xác minh',
+                    'send-email-verification-info' => 'Gửi email xác minh đến khách hàng mới.',
+                ],
+
+                'notifications' => [
+                    'info'                      => 'Cấu hình thông báo email.',
+                    'title'                     => 'Thông báo',
+                    'new-order'                 => 'Đơn hàng mới',
+                    'new-order-info'            => 'Gửi thông báo khi có đơn hàng mới.',
+                    'new-admin'                 => 'Quản trị viên mới',
+                    'new-admin-info'            => 'Gửi thông báo khi có quản trị viên mới.',
+                    'new-customer'              => 'Khách hàng mới',
+                    'new-customer-info'         => 'Gửi thông báo khi có khách hàng mới.',
+                    'new-invoice'               => 'Hóa đơn mới',
+                    'new-invoice-info'          => 'Gửi thông báo khi có hóa đơn mới.',
+                    'new-refund'                => 'Hoàn tiền mới',
+                    'new-refund-info'           => 'Gửi thông báo khi có hoàn tiền mới.',
+                    'new-shipment'              => 'Lô hàng mới',
+                    'new-shipment-info'         => 'Gửi thông báo khi có lô hàng mới.',
+                    'inventory-warning'         => 'Cảnh báo tồn kho',
+                    'inventory-warning-info'    => 'Gửi cảnh báo khi tồn kho thấp.',
+                ],
+            ],
+
             'sales' => [
-                'orderSettings' => [
+                'info'  => 'Cấu hình bán hàng.',
+                'title' => 'Bán hàng',
+
+                'shipping-setting' => [
+                    'info'  => 'Cấu hình cài đặt vận chuyển.',
+                    'title' => 'Cài đặt vận chuyển',
+
+                    'origin' => [
+                        'info'         => 'Cấu hình nguồn gốc vận chuyển.',
+                        'title'        => 'Nguồn gốc',
+                        'country'      => 'Quốc gia',
+                        'country-info' => 'Quốc gia nguồn gốc vận chuyển.',
+                        'state'        => 'Tỉnh/Thành',
+                        'state-info'   => 'Tỉnh/thành nguồn gốc vận chuyển.',
+                        'city'         => 'Thành phố',
+                        'city-info'    => 'Thành phố nguồn gốc vận chuyển.',
+                        'address'      => 'Địa chỉ',
+                        'address-info' => 'Địa chỉ nguồn gốc vận chuyển.',
+                        'zipcode'      => 'Mã bưu điện',
+                        'zipcode-info' => 'Mã bưu điện nguồn gốc vận chuyển.',
+                    ],
+                ],
+
+                'shipping-methods' => [
+                    'info'  => 'Cấu hình phương thức vận chuyển.',
+                    'title' => 'Phương thức vận chuyển',
+
+                    'free-shipping' => [
+                        'info'    => 'Cấu hình vận chuyển miễn phí.',
+                        'title'   => 'Vận chuyển miễn phí',
+                        'enabled' => 'Bật vận chuyển miễn phí',
+                    ],
+
+                    'flat-rate-shipping' => [
+                        'info'  => 'Cấu hình vận chuyển giá cố định.',
+                        'title' => 'Vận chuyển giá cố định',
+                        'rate'  => 'Giá',
+                        'rate-info' => 'Giá vận chuyển cố định.',
+
+                        'type' => [
+                            'info'    => 'Loại vận chuyển giá cố định.',
+                            'title'   => 'Loại',
+                            'per-unit' => 'Mỗi đơn vị',
+                            'per-order' => 'Mỗi đơn hàng',
+                        ],
+                    ],
+                ],
+
+                'payment-methods' => [
+                    'info'                  => 'Cấu hình phương thức thanh toán.',
+                    'title'                 => 'Phương thức thanh toán',
+                    'cash-on-delivery'      => 'Thanh toán khi nhận hàng',
+                    'cash-on-delivery-info' => 'Thanh toán bằng tiền mặt khi nhận hàng.',
+                    'money-transfer'        => 'Chuyển khoản',
+                    'money-transfer-info'   => 'Thanh toán bằng chuyển khoản ngân hàng.',
+                    'paypal-standard'       => 'PayPal Standard',
+                    'paypal-standard-info'  => 'Thanh toán qua PayPal.',
+                    'paypal-smart-button'   => 'PayPal Smart Button',
+                    'paypal-smart-button-info' => 'Thanh toán qua PayPal Smart Button.',
+                ],
+
+                'order-settings' => [
+                    'info'  => 'Cấu hình cài đặt đơn hàng.',
+                    'title' => 'Cài đặt đơn hàng',
+
                     'order-number' => [
-                        'order-number-prefix'       => 'Tiền tố số đơn hàng',
-                        'order-number-prefix-info'  => 'Tiền tố số đơn hàng',
-                        'order-number-suffix'       => 'Hậu tố số đơn hàng',
-                        'order-number-suffix-info'  => 'Hậu tố số đơn hàng',
-                        'order-number-length'       => 'Độ dài số đơn hàng',
-                        'order-number-length-info'  => 'Độ dài số đơn hàng',
+                        'info'                         => 'Cấu hình số đơn hàng.',
+                        'title'                        => 'Số đơn hàng',
+                        'order-number-prefix'          => 'Tiền tố số đơn hàng',
+                        'order-number-prefix-info'     => 'Tiền tố số đơn hàng',
+                        'order-number-suffix'          => 'Hậu tố số đơn hàng',
+                        'order-number-suffix-info'     => 'Hậu tố số đơn hàng',
+                        'order-number-length'          => 'Độ dài số đơn hàng',
+                        'order-number-length-info'     => 'Độ dài số đơn hàng',
                         'order-number-generator-class' => 'Lớp tạo số đơn hàng',
                         'order-number-generator-class-info' => 'Lớp tạo số đơn hàng',
+                    ],
+
+                    'minimum-order' => [
+                        'info'           => 'Cấu hình đơn hàng tối thiểu.',
+                        'title'          => 'Đơn hàng tối thiểu',
+                        'minimum-amount' => 'Số tiền tối thiểu',
+                        'minimum-amount-info' => 'Số tiền tối thiểu cho một đơn hàng.',
+                    ],
+
+                    'reorder' => [
+                        'info'    => 'Cho phép khách hàng đặt lại đơn hàng.',
+                        'title'   => 'Đặt lại đơn hàng',
+                        'enabled' => 'Bật đặt lại đơn hàng',
+                    ],
+
+                    'stock-options' => [
+                        'info'  => 'Cấu hình tùy chọn tồn kho.',
+                        'title' => 'Tùy chọn tồn kho',
+                    ],
+                ],
+
+                'invoice-settings' => [
+                    'info'  => 'Cấu hình cài đặt hóa đơn.',
+                    'title' => 'Cài đặt hóa đơn',
+
+                    'invoice-number' => [
+                        'info'                          => 'Cấu hình số hóa đơn.',
+                        'title'                         => 'Số hóa đơn',
+                        'invoice-number-prefix'         => 'Tiền tố số hóa đơn',
+                        'invoice-number-prefix-info'    => 'Tiền tố số hóa đơn',
+                        'invoice-number-suffix'         => 'Hậu tố số hóa đơn',
+                        'invoice-number-suffix-info'    => 'Hậu tố số hóa đơn',
+                        'invoice-number-length'         => 'Độ dài số hóa đơn',
+                        'invoice-number-length-info'    => 'Độ dài số hóa đơn',
+                        'invoice-number-generator-class' => 'Lớp tạo số hóa đơn',
+                        'invoice-number-generator-class-info' => 'Lớp tạo số hóa đơn',
+                    ],
+
+                    'payment-terms' => [
+                        'info'         => 'Cấu hình điều khoản thanh toán.',
+                        'title'        => 'Điều khoản thanh toán',
+                        'due-duration' => 'Thời hạn thanh toán',
+                        'due-duration-info' => 'Số ngày thanh toán sau khi tạo hóa đơn.',
+                    ],
+
+                    'pdf-print-outs' => [
+                        'info'                => 'Cấu hình xuất PDF.',
+                        'title'               => 'Xuất PDF',
+                        'logo-info'           => 'Logo trên hóa đơn PDF.',
+                        'logo'                => 'Logo',
+                        'address-info'        => 'Địa chỉ trên hóa đơn PDF.',
+                        'address'             => 'Địa chỉ',
+                    ],
+
+                    'invoice-reminders' => [
+                        'info'    => 'Cấu hình nhắc nhở hóa đơn.',
+                        'title'   => 'Nhắc nhở hóa đơn',
+                        'enabled' => 'Bật nhắc nhở hóa đơn',
+                    ],
+                ],
+
+                'taxes' => [
+                    'info'  => 'Cấu hình thuế.',
+                    'title' => 'Thuế',
+
+                    'categories' => [
+                        'info'                => 'Cấu hình danh mục thuế.',
+                        'title'               => 'Danh mục',
+                        'default-tax-category' => 'Danh mục thuế mặc định',
+                        'default-tax-category-info' => 'Danh mục thuế mặc định cho sản phẩm.',
+                    ],
+
+                    'calculation' => [
+                        'info'                   => 'Cấu hình tính toán thuế.',
+                        'title'                  => 'Tính toán',
+                        'tax-calculation-based-on' => 'Tính thuế dựa trên',
+                        'tax-calculation-based-on-info' => 'Tính thuế dựa trên địa chỉ nào.',
+                        'shipping-address'       => 'Địa chỉ giao hàng',
+                        'billing-address'        => 'Địa chỉ thanh toán',
+                        'shipping-origin'        => 'Nguồn gốc vận chuyển',
+                        'catalog-prices'         => 'Giá danh mục',
+                        'catalog-prices-info'    => 'Giá trong danh mục đã bao gồm thuế hay chưa.',
+                        'including-tax'          => 'Bao gồm thuế',
+                        'excluding-tax'          => 'Chưa bao gồm thuế',
+                    ],
+
+                    'default-destination-calculation' => [
+                        'info'         => 'Cấu hình tính toán đích mặc định.',
+                        'title'        => 'Tính toán đích mặc định',
+                        'country'      => 'Quốc gia mặc định',
+                        'country-info' => 'Quốc gia mặc định để tính thuế.',
+                        'state'        => 'Tỉnh/thành mặc định',
+                        'state-info'   => 'Tỉnh/thành mặc định để tính thuế.',
+                        'postcode'     => 'Mã bưu điện mặc định',
+                        'postcode-info' => 'Mã bưu điện mặc định để tính thuế.',
+                    ],
+
+                    'shopping-cart' => [
+                        'info'                        => 'Cấu hình giỏ hàng.',
+                        'title'                       => 'Giỏ hàng',
+                        'display-prices'              => 'Hiển thị giá',
+                        'display-prices-info'         => 'Hiển thị giá có bao gồm thuế hay không.',
+                        'display-subtotal'            => 'Hiển thị tổng phụ',
+                        'display-subtotal-info'       => 'Hiển thị tổng phụ có bao gồm thuế hay không.',
+                        'display-shipping-amount'     => 'Hiển thị phí vận chuyển',
+                        'display-shipping-amount-info' => 'Hiển thị phí vận chuyển có bao gồm thuế hay không.',
+                        'including-tax'               => 'Bao gồm thuế',
+                        'excluding-tax'               => 'Chưa bao gồm thuế',
+                        'including-and-excluding-tax' => 'Bao gồm và chưa bao gồm thuế',
+                    ],
+
+                    'sales' => [
+                        'info'                        => 'Cấu hình bán hàng.',
+                        'title'                       => 'Bán hàng',
+                        'display-prices'              => 'Hiển thị giá',
+                        'display-prices-info'         => 'Hiển thị giá có bao gồm thuế hay không.',
+                        'display-subtotal'            => 'Hiển thị tổng phụ',
+                        'display-subtotal-info'       => 'Hiển thị tổng phụ có bao gồm thuế hay không.',
+                        'display-shipping-amount'     => 'Hiển thị phí vận chuyển',
+                        'display-shipping-amount-info' => 'Hiển thị phí vận chuyển có bao gồm thuế hay không.',
+                        'including-tax'               => 'Bao gồm thuế',
+                        'excluding-tax'               => 'Chưa bao gồm thuế',
+                        'including-and-excluding-tax' => 'Bao gồm và chưa bao gồm thuế',
+                    ],
+                ],
+
+                'checkout' => [
+                    'info'  => 'Cấu hình thanh toán.',
+                    'title' => 'Thanh toán',
+
+                    'shopping-cart' => [
+                        'info'                         => 'Cấu hình giỏ hàng.',
+                        'title'                        => 'Giỏ hàng',
+                        'cross-sell-products'          => 'Sản phẩm bán chéo',
+                        'cross-sell-products-info'     => 'Hiển thị sản phẩm bán chéo trong giỏ hàng.',
+                        'estimate-shipping-tax'        => 'Ước tính vận chuyển và thuế',
+                        'estimate-shipping-tax-info'   => 'Hiển thị ước tính vận chuyển và thuế.',
+                        'item-quantities'              => 'Số lượng mặt hàng',
+                        'item-quantities-info'         => 'Hiển thị số lượng mặt hàng trong giỏ hàng.',
+                    ],
+
+                    'my-cart' => [
+                        'info'                    => 'Cấu hình giỏ hàng của tôi.',
+                        'title'                   => 'Giỏ hàng của tôi',
+                        'summary-quantity'        => 'Tóm tắt số lượng',
+                        'summary-quantity-info'   => 'Hiển thị tóm tắt số lượng.',
+                    ],
+
+                    'mini-cart' => [
+                        'info'                          => 'Cấu hình giỏ hàng mini.',
+                        'title'                         => 'Giỏ hàng mini',
+                        'display-mini-cart'             => 'Hiển thị giỏ hàng mini',
+                        'display-mini-cart-info'        => 'Hiển thị giỏ hàng mini trên header.',
+                        'offer-on-cart'                 => 'Ưu đãi trên giỏ hàng',
+                        'offer-on-cart-info'            => 'Hiển thị ưu đãi trong giỏ hàng mini.',
                     ],
                 ],
             ],
