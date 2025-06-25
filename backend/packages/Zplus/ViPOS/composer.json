@@ -1,0 +1,31 @@
+{
+    "name": "zplus/vipos",
+    "description": "ViPOS - Point of Sale System for Bagisto",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Zplus Team",
+            "email": "info@zplus.vn"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/support": "^10.0|^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zplus\\ViPOS\\": "src/",
+            "Zplus\\ViPOS\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Zplus\\ViPOS\\Providers\\ViPOSServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

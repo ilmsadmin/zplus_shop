@@ -1,0 +1,21 @@
+/* ViPOS Icons */
+.icon-pos:before {
+    content: "\e999";
+    font-family: "bagisto-admin" !important;
+}
+
+/* Optional: POS related icons */
+.icon-cash-register:before {
+    content: "\e99a";
+    font-family: "bagisto-admin" !important;
+}
+
+.icon-receipt:before {
+    content: "\e99b";
+    font-family: "bagisto-admin" !important;
+}
+
+.icon-pos-terminal:before {
+    content: "\e99c";
+    font-family: "bagisto-admin" !important;
+}

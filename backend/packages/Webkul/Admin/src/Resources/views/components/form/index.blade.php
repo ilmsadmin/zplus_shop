@@ -22,7 +22,7 @@
 
     <v-form
         method="{{ $method === 'GET' ? 'GET' : 'POST' }}"
-        :initial-errors="{{ json_encode($errors->getMessages()) }}"
+        :initial-errors="{{ json_encode(isset($errors) ? $errors->getMessages() : []) }}"
         v-slot="{ meta, errors, setValues }"
         @invalid-submit="onInvalidSubmit"
         {{ $attributes }}

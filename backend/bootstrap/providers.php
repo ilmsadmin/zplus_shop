@@ -48,4 +48,5 @@ return [
      * Zplus service providers.
      */
     Zplus\WpConvert\Providers\WpConvertServiceProvider::class,
+    Zplus\ViPOS\Providers\ViPOSServiceProvider::class,
 ];
