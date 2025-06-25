@@ -193,13 +193,41 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <button class="action-button" onclick="showTransactionDetails({{ $transaction->id }})">
-                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
-                                        </svg>
-                                        Xem chi tiết
-                                    </button>
+                                    <div class="flex items-center gap-2">
+                                        <button 
+                                            onclick="showTransactionDetails({{ $transaction->id }})"
+                                            class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm hover:bg-blue-200 transition-colors duration-200"
+                                            title="Xem chi tiết"
+                                        >
+                                            <svg class="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                                            </svg>
+                                            Chi tiết
+                                        </button>
+                                        @if($transaction->status === 'completed')
+                                            <button 
+                                                onclick="printReceipt({{ $transaction->id }})"
+                                                class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm hover:bg-green-200 transition-colors duration-200"
+                                                title="In hóa đơn"
+                                            >
+                                                <svg class="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z" clip-rule="evenodd"/>
+                                                </svg>
+                                                In
+                                            </button>
+                                            <button 
+                                                onclick="downloadReceipt({{ $transaction->id }})"
+                                                class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm hover:bg-purple-200 transition-colors duration-200"
+                                                title="Tải xuống hóa đơn"
+                                            >
+                                                <svg class="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                                </svg>
+                                                Tải
+                                            </button>
+                                        @endif
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
@@ -273,32 +301,33 @@
             </div>
         `;
         
-        // Fetch transaction details (you can implement AJAX call here)
-        setTimeout(() => {
-            // Mock transaction data - replace with real AJAX call
-            const mockTransactionData = {
-                id: transactionId,
-                transaction_number: 'POS2025062180001',
-                user: 'Cashier 1',
-                customer: 'Customer 3',
-                payment_method: 'cash',
-                total_amount: 268034,
-                status: 'completed',
-                created_at: '18/06/2025 17:28',
-                items: [
-                    { name: 'Sản phẩm A', quantity: 2, price: 50000, total: 100000 },
-                    { name: 'Sản phẩm B', quantity: 1, price: 168034, total: 168034 }
-                ],
-                summary: {
-                    subtotal: 268034,
-                    discount: 0,
-                    tax: 0,
-                    total: 268034
+        // Fetch transaction details via AJAX
+        fetch(`/admin/vipos/transactions/${transactionId}/details`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    displayTransactionDetails(data.transaction);
+                } else {
+                    detailsContainer.innerHTML = `
+                        <div class="text-center py-8">
+                            <svg class="w-12 h-12 text-red-400 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                            </svg>
+                            <p class="text-gray-600">Không thể tải chi tiết giao dịch</p>
+                        </div>
+                    `;
                 }
-            };
-            
-            displayTransactionDetails(mockTransactionData);
-        }, 1000);
+            })
+            .catch(error => {
+                detailsContainer.innerHTML = `
+                    <div class="text-center py-8">
+                        <svg class="w-12 h-12 text-red-400 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                        </svg>
+                        <p class="text-gray-600">Lỗi khi tải chi tiết giao dịch</p>
+                    </div>
+                `;
+            });
     }
 
     function displayTransactionDetails(data) {
@@ -449,11 +478,18 @@
     }
 
     function printReceipt(transactionId) {
-        alert('Tính năng in hóa đơn đang được phát triển');
+        // Mở hóa đơn trong tab mới để in
+        const printWindow = window.open(`/admin/vipos/transactions/${transactionId}/print`, '_blank');
+        
+        // Tự động in khi trang đã load xong
+        printWindow.onload = function() {
+            printWindow.print();
+        };
     }
 
     function downloadReceipt(transactionId) {
-        alert('Tính năng tải xuống hóa đơn đang được phát triển');
+        // Chuyển hướng để tải xuống PDF
+        window.location.href = `/admin/vipos/transactions/${transactionId}/download`;
     }
 
     // Close modal when clicking outside

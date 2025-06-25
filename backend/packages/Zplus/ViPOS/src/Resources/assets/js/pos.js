@@ -724,11 +724,19 @@ class PosSystem {
                 })
             });
 
+            console.log('Checkout response status:', response.status);
             const data = await response.json();
+            console.log('Checkout response data:', data);
             
             if (data.success) {
+                console.log('Payment successful, response data:', data);
                 this.showNotification('Thanh toán thành công!', 'success');
                 this.hideModal('payment-modal');
+                
+                // Show print receipt dialog
+                console.log('About to show print receipt dialog with transaction:', data.transaction);
+                this.showPrintReceiptDialog(data.transaction);
+                
                 this.clearCart();
                 this.clearCustomer();
                 this.discount = 0;
@@ -770,6 +778,120 @@ class PosSystem {
                 submitBtn.textContent = 'Xác nhận thanh toán';
                 submitBtn.disabled = false;
             }
+        }
+    }
+
+    // Show print receipt dialog after successful payment
+    showPrintReceiptDialog(transaction) {
+        console.log('showPrintReceiptDialog called with:', transaction);
+        
+        // Check if transaction has required data
+        if (!transaction || !transaction.transaction_number) {
+            console.error('Invalid transaction data:', transaction);
+            return;
+        }
+
+        // Remove any existing receipt modal first
+        if (this.receiptModal) {
+            this.closeReceiptDialog();
+        }
+
+        const modal = document.createElement('div');
+        modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+        modal.style.position = 'fixed';
+        modal.style.top = '0';
+        modal.style.left = '0';
+        modal.style.width = '100%';
+        modal.style.height = '100%';
+        modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+        modal.style.display = 'flex';
+        modal.style.alignItems = 'center';
+        modal.style.justifyContent = 'center';
+        modal.style.zIndex = '9999';
+        
+        modal.innerHTML = `
+            <div style="background: white; border-radius: 8px; padding: 24px; max-width: 400px; width: 90%; margin: 16px;">
+                <div style="text-align: center;">
+                    <div style="width: 64px; height: 64px; background: #dcfce7; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+                        <svg style="width: 32px; height: 32px; color: #16a34a;" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 style="font-size: 18px; font-weight: 600; color: #111827; margin-bottom: 8px;">Thanh toán thành công!</h3>
+                    <p style="color: #6b7280; margin-bottom: 4px;">Mã giao dịch: <strong>${transaction.transaction_number}</strong></p>
+                    <p style="color: #6b7280; margin-bottom: 24px;">Tổng tiền: <strong>${this.formatCurrency(transaction.total_amount)}</strong></p>
+                    
+                    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+                        <button 
+                            onclick="window.pos.printReceipt('${transaction.print_url}'); window.pos.closeReceiptDialog()"
+                            style="padding: 8px 16px; background: #2563eb; color: white; border: none; border-radius: 6px; display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px;"
+                            onmouseover="this.style.background='#1d4ed8'"
+                            onmouseout="this.style.background='#2563eb'"
+                        >
+                            <svg style="width: 16px; height: 16px;" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M5 4v3H4a2 2 0 00-2 2v3a2 2 0 002 2h1v2a2 2 0 002 2h6a2 2 0 002-2v-2h1a2 2 0 002-2V9a2 2 0 00-2-2h-1V4a2 2 0 00-2-2H7a2 2 0 00-2 2zm8 0H7v3h6V4zm0 8H7v4h6v-4z" clip-rule="evenodd"/>
+                            </svg>
+                            In hóa đơn
+                        </button>
+                        <button 
+                            onclick="window.location.href='${transaction.download_url}'"
+                            style="padding: 8px 16px; background: #059669; color: white; border: none; border-radius: 6px; display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px;"
+                            onmouseover="this.style.background='#047857'"
+                            onmouseout="this.style.background='#059669'"
+                        >
+                            <svg style="width: 16px; height: 16px;" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                            </svg>
+                            Tải PDF
+                        </button>
+                        <button 
+                            onclick="window.pos.closeReceiptDialog()"
+                            style="padding: 8px 16px; background: #6b7280; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 14px;"
+                            onmouseover="this.style.background='#4b5563'"
+                            onmouseout="this.style.background='#6b7280'"
+                        >
+                            Bỏ qua
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        // Store reference to modal for closing
+        this.receiptModal = modal;
+        document.body.appendChild(modal);
+        
+        console.log('Receipt modal added to DOM');
+        
+        // Auto close after 15 seconds
+        setTimeout(() => {
+            if (this.receiptModal) {
+                console.log('Auto-closing receipt modal');
+                this.closeReceiptDialog();
+            }
+        }, 15000);
+    }
+    
+    // Close receipt dialog
+    closeReceiptDialog() {
+        console.log('closeReceiptDialog called');
+        if (this.receiptModal) {
+            console.log('Removing receipt modal from DOM');
+            document.body.removeChild(this.receiptModal);
+            this.receiptModal = null;
+        }
+    }
+    
+    // Print receipt
+    printReceipt(printUrl) {
+        console.log('printReceipt called with URL:', printUrl);
+        const printWindow = window.open(printUrl, '_blank');
+        if (printWindow) {
+            printWindow.onload = function() {
+                printWindow.print();
+            };
+        } else {
+            console.error('Failed to open print window');
         }
     }
 

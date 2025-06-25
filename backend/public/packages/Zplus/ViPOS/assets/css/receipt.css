@@ -1,0 +1,234 @@
+/* Receipt Print Styles */
+.receipt-container {
+    max-width: 400px;
+    margin: 0 auto;
+    font-family: 'Arial', sans-serif;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #333;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #999;
+    padding-bottom: 15px;
+}
+
+.store-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.store-info {
+    font-size: 11px;
+    color: #666;
+    margin: 2px 0;
+}
+
+.receipt-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 15px 0 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.transaction-info {
+    margin-bottom: 15px;
+    font-size: 11px;
+}
+
+.transaction-info div {
+    display: flex;
+    justify-content: space-between;
+    margin: 3px 0;
+    padding: 2px 0;
+}
+
+.transaction-info div span:first-child {
+    font-weight: 500;
+}
+
+.items-section {
+    margin: 20px 0;
+}
+
+.items-header {
+    border-bottom: 1px solid #333;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+    font-size: 11px;
+    align-items: flex-start;
+}
+
+.item-name {
+    flex: 1;
+    margin-right: 10px;
+    word-wrap: break-word;
+    max-width: 180px;
+}
+
+.item-qty-price {
+    text-align: right;
+    min-width: 80px;
+    font-size: 10px;
+    color: #666;
+}
+
+.item-total {
+    text-align: right;
+    min-width: 60px;
+    font-weight: bold;
+}
+
+.totals-section {
+    margin-top: 20px;
+    border-top: 1px dashed #999;
+    padding-top: 10px;
+}
+
+.total-line {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+    font-size: 12px;
+}
+
+.total-line.grand-total {
+    font-weight: bold;
+    font-size: 14px;
+    border-top: 1px solid #333;
+    padding-top: 8px;
+    margin-top: 10px;
+}
+
+.payment-info {
+    margin-top: 15px;
+    border-top: 1px dashed #999;
+    padding-top: 10px;
+    font-size: 11px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px dashed #999;
+    padding-top: 15px;
+    font-size: 11px;
+    color: #666;
+}
+
+.thank-you {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 13px;
+    color: #333;
+}
+
+/* Print-specific styles */
+@media print {
+    body {
+        margin: 0;
+        padding: 10px;
+        background: white;
+    }
+    
+    .receipt-container {
+        border: none;
+        max-width: none;
+        width: 100%;
+        box-shadow: none;
+    }
+    
+    /* Hide any unwanted elements when printing */
+    .no-print {
+        display: none !important;
+    }
+    
+    /* Ensure good contrast for printing */
+    * {
+        color: #000 !important;
+        background: white !important;
+    }
+    
+    .header {
+        border-bottom: 2px dashed #000 !important;
+    }
+    
+    .totals-section {
+        border-top: 2px dashed #000 !important;
+    }
+    
+    .payment-info {
+        border-top: 2px dashed #000 !important;
+    }
+    
+    .footer {
+        border-top: 2px dashed #000 !important;
+    }
+    
+    .items-header {
+        border-bottom: 1px solid #000 !important;
+    }
+    
+    .total-line.grand-total {
+        border-top: 1px solid #000 !important;
+    }
+}
+
+/* For thermal printer (58mm) */
+@media print and (max-width: 58mm) {
+    .receipt-container {
+        width: 58mm;
+        font-size: 10px;
+    }
+    
+    .store-name {
+        font-size: 14px;
+    }
+    
+    .receipt-title {
+        font-size: 12px;
+    }
+    
+    .item {
+        font-size: 9px;
+    }
+    
+    .total-line {
+        font-size: 10px;
+    }
+    
+    .total-line.grand-total {
+        font-size: 12px;
+    }
+}
+
+/* For thermal printer (80mm) */
+@media print and (max-width: 80mm) {
+    .receipt-container {
+        width: 80mm;
+        font-size: 11px;
+    }
+    
+    .store-name {
+        font-size: 16px;
+    }
+    
+    .receipt-title {
+        font-size: 14px;
+    }
+}

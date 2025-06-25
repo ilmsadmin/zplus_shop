@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PosTransactionController extends Controller
 {
@@ -131,7 +132,13 @@ class PosTransactionController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Giao dịch đã được hoàn thành thành công',
-                'transaction' => $transaction
+                'transaction' => [
+                    'id' => $transaction->id,
+                    'transaction_number' => $transaction->transaction_number,
+                    'total_amount' => $transaction->total_amount,
+                    'print_url' => route('admin.vipos.transactions.print', $transaction->id),
+                    'download_url' => route('admin.vipos.transactions.download', $transaction->id)
+                ]
             ]);
 
         } catch (\Illuminate\Validation\ValidationException $e) {
@@ -361,6 +368,82 @@ class PosTransactionController extends Controller
                 'success' => false,
                 'message' => 'Failed to create customer: ' . $e->getMessage()
             ], 500);
+        }
+    }
+
+    /**
+     * Print receipt for a transaction.
+     */
+    public function printReceipt($id)
+    {
+        $transaction = PosTransaction::with(['user', 'customer', 'session', 'items'])
+            ->findOrFail($id);
+
+        return view('vipos::admin.transactions.receipt', compact('transaction'));
+    }
+
+    /**
+     * Download receipt PDF for a transaction.
+     */
+    public function downloadReceipt($id)
+    {
+        $transaction = PosTransaction::with(['user', 'customer', 'session', 'items'])
+            ->findOrFail($id);
+
+        $pdf = Pdf::loadView('vipos::admin.transactions.receipt', compact('transaction'));
+        $pdf->setPaper('a4', 'portrait');
+
+        $fileName = 'receipt-' . $transaction->transaction_number . '.pdf';
+        
+        return $pdf->download($fileName);
+    }
+
+    /**
+     * Get transaction details for AJAX.
+     */
+    public function getTransactionDetails($id)
+    {
+        try {
+            $transaction = PosTransaction::with(['user', 'customer', 'session', 'items'])
+                ->findOrFail($id);
+
+            return response()->json([
+                'success' => true,
+                'transaction' => [
+                    'id' => $transaction->id,
+                    'transaction_number' => $transaction->transaction_number,
+                    'user' => $transaction->user->name ?? 'N/A',
+                    'customer' => $transaction->customer ? 
+                        $transaction->customer->first_name . ' ' . $transaction->customer->last_name : 
+                        'Khách lẻ',
+                    'payment_method' => $transaction->payment_method,
+                    'total_amount' => $transaction->total_amount,
+                    'status' => $transaction->status,
+                    'created_at' => $transaction->created_at->format('d/m/Y H:i'),
+                    'items' => $transaction->items->map(function($item) {
+                        return [
+                            'name' => $item->product_name,
+                            'quantity' => $item->quantity,
+                            'price' => $item->price,
+                            'total' => $item->total
+                        ];
+                    }),
+                    'summary' => [
+                        'subtotal' => $transaction->subtotal_amount,
+                        'discount' => $transaction->discount_amount,
+                        'tax' => $transaction->tax_amount,
+                        'total' => $transaction->total_amount,
+                        'paid_amount' => $transaction->paid_amount,
+                        'change_amount' => $transaction->change_amount
+                    ]
+                ]
+            ]);
+
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Không tìm thấy giao dịch'
+            ], 404);
         }
     }
 }

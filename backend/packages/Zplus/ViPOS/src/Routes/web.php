@@ -38,6 +38,11 @@ Route::group(['middleware' => ['admin'], 'prefix' => config('app.admin_url')], f
             Route::get('/categories', [PosTransactionController::class, 'getCategories'])->name('categories');
             Route::get('/customers/search', [PosTransactionController::class, 'searchCustomers'])->name('customers.search');
             Route::post('/customers/quick-create', [PosTransactionController::class, 'quickCreateCustomer'])->name('customers.quick-create');
+            
+            // Receipt printing routes
+            Route::get('/{id}/print', [PosTransactionController::class, 'printReceipt'])->name('print');
+            Route::get('/{id}/download', [PosTransactionController::class, 'downloadReceipt'])->name('download');
+            Route::get('/{id}/details', [PosTransactionController::class, 'getTransactionDetails'])->name('details');
         });
     });
 });
