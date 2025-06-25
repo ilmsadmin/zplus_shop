@@ -3603,6 +3603,31 @@ return [
             'delete-success' => 'Giao diện đã được xóa thành công',
             'update-success' => 'Giao diện đã được cập nhật thành công',
         ],
+
+        'notification' => [
+            'index' => [
+                'title' => 'Thông báo',
+                
+                'datagrid' => [
+                    'image' => 'Hình ảnh',
+                ],
+            ],
+
+            'create' => [
+                'new-notification'     => 'Thông báo mới',
+                'back-btn'             => 'Quay lại',
+                'save-btn'             => 'Lưu thông báo',
+                'send-btn'             => 'Gửi thông báo',
+                'submit-btn'           => 'Gửi',
+                'general'              => 'Chung',
+                'title'                => 'Tiêu đề',
+                'content-and-image'    => 'Nội dung và hình ảnh',
+                'notification-content' => 'Nội dung thông báo',
+                'image'                => 'Hình ảnh',
+                'store-view'           => 'Chế độ xem cửa hàng',
+                'notification-type'    => 'Loại thông báo',
+            ],
+        ],
     ],
 
     'reporting' => [
