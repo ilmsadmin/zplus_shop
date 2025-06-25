@@ -251,9 +251,17 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Ngày sinh</label>
-                            <input type="date" name="date_of_birth" class="form-input">
+                            <label>Nhóm khách hàng</label>
+                            <select name="customer_group_id" class="form-input">
+                                <option value="">Chọn nhóm khách hàng</option>
+                                <option value="2" selected>General</option>
+                                <option value="3">Wholesale</option>
+                            </select>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày sinh</label>
+                        <input type="date" name="date_of_birth" class="form-input">
                     </div>
                 </form>
             </div>

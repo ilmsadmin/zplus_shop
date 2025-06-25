@@ -993,7 +993,8 @@ class PosSystem {
             email: formData.get('email'),
             phone: formData.get('phone'),
             gender: formData.get('gender'),
-            date_of_birth: formData.get('date_of_birth')
+            date_of_birth: formData.get('date_of_birth'),
+            customer_group_id: formData.get('customer_group_id') || null
         };
         
         // Validate required fields
@@ -1003,11 +1004,15 @@ class PosSystem {
         }
         
         try {
+            console.log('Creating customer with data:', customerData);
             // Show loading state
-            const submitBtn = form.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Đang tạo...';
-            submitBtn.disabled = true;
+            const submitBtn = document.querySelector('#customer-modal .btn-primary');
+            console.log('Submit button found:', submitBtn);
+            const originalText = submitBtn ? submitBtn.textContent : '';
+            if (submitBtn) {
+                submitBtn.textContent = 'Đang tạo...';
+                submitBtn.disabled = true;
+            }
             
             const response = await fetch('/admin/vipos/transactions/customers/quick-create', {
                 method: 'POST',
@@ -1043,7 +1048,7 @@ class PosSystem {
             this.showNotification('Lỗi kết nối. Vui lòng thử lại.', 'error');
         } finally {
             // Restore button state
-            const submitBtn = form.querySelector('button[type="submit"]');
+            const submitBtn = document.querySelector('#customer-modal .btn-primary');
             if (submitBtn) {
                 submitBtn.textContent = 'Tạo khách hàng';
                 submitBtn.disabled = false;

@@ -3,10 +3,12 @@
 namespace Zplus\ViPOS\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+use Webkul\Admin\Http\Controllers\Controller;
 use Webkul\Product\Models\Product;
 use Webkul\Customer\Models\Customer;
 use Webkul\Customer\Models\CustomerGroup;
+use Webkul\Customer\Repositories\CustomerRepository;
+use Webkul\Customer\Repositories\CustomerGroupRepository;
 use Webkul\Core\Repositories\ChannelRepository;
 use Webkul\Sales\Models\Order;
 use Webkul\Category\Models\Category;
@@ -18,6 +20,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Event;
+use Webkul\Core\Rules\PhoneNumber;
 use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -27,7 +31,9 @@ class PosTransactionController extends Controller
      * Create a new controller instance.
      */
     public function __construct(
-        protected ChannelRepository $channelRepository
+        protected ChannelRepository $channelRepository,
+        protected CustomerRepository $customerRepository,
+        protected CustomerGroupRepository $customerGroupRepository
     ) {}
 
     /**
@@ -308,49 +314,43 @@ class PosTransactionController extends Controller
     public function quickCreateCustomer(Request $request)
     {
         try {
-            $validator = Validator::make($request->all(), [
-                'first_name' => 'required|string|max:255',
-                'last_name' => 'required|string|max:255',
-                'email' => 'required|email|unique:customers,email',
-                'phone' => 'nullable|string|max:20',
-                'gender' => 'required|in:Male,Female,Other',
-                'date_of_birth' => 'nullable|date'
-            ], [
-                'first_name.required' => 'Tên là bắt buộc',
-                'last_name.required' => 'Họ là bắt buộc',
-                'email.required' => 'Email là bắt buộc',
-                'email.email' => 'Email không đúng định dạng',
-                'email.unique' => 'Email này đã được sử dụng',
-                'gender.required' => 'Giới tính là bắt buộc'
+            // Use same validation rules as Bagisto admin customer creation
+            $this->validate($request, [
+                'first_name'    => 'string|required',
+                'last_name'     => 'string|required',
+                'gender'        => 'required',
+                'email'         => 'required|unique:customers,email',
+                'date_of_birth' => 'nullable|date|before:today',
+                'phone'         => ['nullable', 'unique:customers,phone', new PhoneNumber],
             ]);
 
-            if ($validator->fails()) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Dữ liệu không hợp lệ',
-                    'errors' => $validator->errors()
-                ], 422);
+            $password = rand(100000, 10000000);
+
+            Event::dispatch('customer.registration.before');
+
+            $data = array_merge([
+                'password'    => bcrypt($password),
+                'is_verified' => 1,
+                'channel_id'  => core()->getCurrentChannel()->id,
+            ], $request->only([
+                'first_name',
+                'last_name',
+                'gender',
+                'email',
+                'date_of_birth',
+                'phone',
+                'customer_group_id',
+            ]));
+
+            if (empty($data['phone'])) {
+                $data['phone'] = null;
             }
 
-            // Get default customer group
-            $defaultGroup = CustomerGroup::where('code', 'general')->first();
-            if (!$defaultGroup) {
-                $defaultGroup = CustomerGroup::first();
-            }
+            Event::dispatch('customer.create.before');
 
-            // Create customer without password (system will handle password generation)
-            $customer = Customer::create([
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'email' => $request->email,
-                'phone' => $request->phone,
-                'gender' => $request->gender,
-                'date_of_birth' => $request->date_of_birth,
-                'password' => Hash::make(str()->random(10)), // Auto-generate random password
-                'customer_group_id' => $defaultGroup->id ?? 1,
-                'channel_id' => $this->channelRepository->getCurrentChannelId(),
-                'is_verified' => 1
-            ]);
+            $customer = $this->customerRepository->create($data);
+
+            Event::dispatch('customer.create.after', $customer);
 
             return response()->json([
                 'success' => true,
@@ -363,6 +363,12 @@ class PosTransactionController extends Controller
                 ]
             ]);
 
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Dữ liệu không hợp lệ',
+                'errors' => $e->errors()
+            ], 422);
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
@@ -407,6 +413,30 @@ class PosTransactionController extends Controller
             $transaction = PosTransaction::with(['user', 'customer', 'session', 'items'])
                 ->findOrFail($id);
 
+            // Get items from relationship, fallback to stored items array
+            $transactionItems = $transaction->items()->get();
+            if ($transactionItems->isEmpty() && is_array($transaction->items)) {
+                // Use stored items array if relationship is empty
+                $itemsData = collect($transaction->items)->map(function($item) {
+                    return [
+                        'name' => $item['name'] ?? 'N/A',
+                        'quantity' => $item['quantity'] ?? 0,
+                        'price' => $item['price'] ?? 0,
+                        'total' => ($item['quantity'] ?? 0) * ($item['price'] ?? 0)
+                    ];
+                });
+            } else {
+                // Use relationship items
+                $itemsData = $transactionItems->map(function($item) {
+                    return [
+                        'name' => $item->product_name,
+                        'quantity' => $item->quantity,
+                        'price' => $item->price,
+                        'total' => $item->total
+                    ];
+                });
+            }
+
             return response()->json([
                 'success' => true,
                 'transaction' => [
@@ -420,16 +450,9 @@ class PosTransactionController extends Controller
                     'total_amount' => $transaction->total_amount,
                     'status' => $transaction->status,
                     'created_at' => $transaction->created_at->format('d/m/Y H:i'),
-                    'items' => $transaction->items->map(function($item) {
-                        return [
-                            'name' => $item->product_name,
-                            'quantity' => $item->quantity,
-                            'price' => $item->price,
-                            'total' => $item->total
-                        ];
-                    }),
+                    'items' => $itemsData,
                     'summary' => [
-                        'subtotal' => $transaction->subtotal_amount,
+                        'subtotal' => $transaction->subtotal_amount ?? $transaction->subtotal,
                         'discount' => $transaction->discount_amount,
                         'tax' => $transaction->tax_amount,
                         'total' => $transaction->total_amount,
@@ -442,7 +465,7 @@ class PosTransactionController extends Controller
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
-                'message' => 'Không tìm thấy giao dịch'
+                'message' => 'Không tìm thấy giao dịch: ' . $e->getMessage()
             ], 404);
         }
     }
