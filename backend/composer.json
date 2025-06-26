@@ -67,6 +67,7 @@
             "Zplus\\ViPOS\\": "packages/Zplus/ViPOS/src",
             "Zplus\\Warranty\\": "packages/Zplus/Warranty/src",
             "Zplus\\Warranty\\Database\\Seeders\\": "packages/Zplus/Warranty/database/seeders/",
+            "Zplus\\Theme\\": "packages/Zplus/Theme/src",
             "Webkul\\Admin\\": "packages/Webkul/Admin/src",
             "Webkul\\Attribute\\": "packages/Webkul/Attribute/src",
             "Webkul\\BookingProduct\\": "packages/Webkul/BookingProduct/src",
