@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZPlus Shop - Trang chủ</title>
+    <meta name="description" content="ZPlus Shop - Cửa hàng điện tử hàng đầu Việt Nam với các sản phẩm chất lượng cao">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header mobile-only">
+        <div class="mobile-header-content">
+            <img src="images/logo.svg" alt="ZPlus Shop" class="mobile-header-logo">
+            
+            <div class="mobile-header-search">
+                <div class="mobile-search">
+                    <i data-lucide="search" class="mobile-search-icon"></i>
+                    <input type="text" placeholder="Tìm kiếm sản phẩm..." class="mobile-search-input">
+                </div>
+            </div>
+            
+            <div class="mobile-header-actions">
+                <a href="#" class="mobile-header-action">
+                    <i data-lucide="user"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Desktop Header -->
+    <header class="desktop-only" style="background-color: var(--white); border-bottom: 1px solid var(--gray-200); padding: 1rem 0;">
+        <div class="container">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-xl">
+                    <img src="images/logo.svg" alt="ZPlus Shop" style="height: 40px;">
+                    
+                    <!-- Desktop Search -->
+                    <div style="position: relative; width: 400px;">
+                        <i data-lucide="search" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--gray-400);"></i>
+                        <input type="text" placeholder="Tìm kiếm sản phẩm..." class="form-input" style="padding-left: 40px;">
+                    </div>
+                </div>
+                
+                <nav class="flex items-center gap-lg">
+                    <a href="#" class="text-gray-700 hover:text-primary">Danh mục</a>
+                    <a href="#" class="text-gray-700 hover:text-primary">Khuyến mãi</a>
+                    <a href="#" class="text-gray-700 hover:text-primary">Hỗ trợ</a>
+                    
+                    <div class="flex items-center gap-md">
+                        <a href="#" class="mobile-header-action">
+                            <i data-lucide="heart"></i>
+                        </a>
+                        <a href="#" class="mobile-header-action" style="position: relative;">
+                            <i data-lucide="shopping-cart"></i>
+                            <span class="mobile-bottom-nav-badge">3</span>
+                        </a>
+                        <a href="#" class="mobile-header-action">
+                            <i data-lucide="user"></i>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main style="margin-top: 80px;" class="mobile-only">
+        <!-- Hero Section -->
+        <section style="background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); color: var(--white); padding: 2rem 0;">
+            <div class="container text-center">
+                <h1 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">
+                    🔥 Siêu Sale 12.12
+                </h1>
+                <p style="font-size: 1.125rem; margin-bottom: 2rem; opacity: 0.9;">
+                    Giảm giá lên đến 50% cho tất cả sản phẩm
+                </p>
+                <a href="#products" class="btn btn-secondary btn-lg">
+                    Mua ngay
+                </a>
+            </div>
+        </section>
+
+        <!-- Categories -->
+        <section class="p-lg">
+            <div class="container">
+                <h2 class="text-xl font-semibold mb-lg">Danh mục nổi bật</h2>
+                
+                <div class="grid grid-cols-4 gap-md">
+                    <a href="#" class="mobile-category-card">
+                        <div class="mobile-category-icon">
+                            <i data-lucide="smartphone"></i>
+                        </div>
+                        <div class="mobile-category-title">Điện thoại</div>
+                        <div class="mobile-category-count">250+ sản phẩm</div>
+                    </a>
+                    
+                    <a href="#" class="mobile-category-card">
+                        <div class="mobile-category-icon">
+                            <i data-lucide="laptop"></i>
+                        </div>
+                        <div class="mobile-category-title">Laptop</div>
+                        <div class="mobile-category-count">120+ sản phẩm</div>
+                    </a>
+                    
+                    <a href="#" class="mobile-category-card">
+                        <div class="mobile-category-icon">
+                            <i data-lucide="headphones"></i>
+                        </div>
+                        <div class="mobile-category-title">Tai nghe</div>
+                        <div class="mobile-category-count">80+ sản phẩm</div>
+                    </a>
+                    
+                    <a href="#" class="mobile-category-card">
+                        <div class="mobile-category-icon">
+                            <i data-lucide="watch"></i>
+                        </div>
+                        <div class="mobile-category-title">Đồng hồ</div>
+                        <div class="mobile-category-count">45+ sản phẩm</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Flash Sale -->
+        <section class="p-lg bg-gray-50">
+            <div class="container">
+                <div class="flex items-center justify-between mb-lg">
+                    <h2 class="text-xl font-semibold">⚡ Flash Sale</h2>
+                    <div class="flex items-center gap-sm text-error">
+                        <i data-lucide="clock"></i>
+                        <span class="text-sm font-medium" id="countdown">02:45:30</span>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-md">
+                    <div class="mobile-product-card">
+                        <img src="images/products/product1.jpg" alt="iPhone 15 Pro" class="mobile-product-image">
+                        <div class="mobile-product-content">
+                            <h3 class="mobile-product-title">iPhone 15 Pro 256GB</h3>
+                            <div class="mobile-product-price">
+                                <span class="mobile-product-price-current">28.990.000đ</span>
+                                <span class="mobile-product-price-original">32.990.000đ</span>
+                            </div>
+                            <div class="mobile-product-rating">
+                                <div class="mobile-product-stars">
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star"></i>
+                                </div>
+                                <span class="mobile-product-rating-text">(124)</span>
+                            </div>
+                            <div class="mobile-product-actions">
+                                <button class="mobile-product-add-to-cart">Thêm vào giỏ</button>
+                                <button class="mobile-product-wishlist">
+                                    <i data-lucide="heart" style="width: 16px; height: 16px;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-product-card">
+                        <img src="images/products/product2.jpg" alt="MacBook Air M3" class="mobile-product-image">
+                        <div class="mobile-product-content">
+                            <h3 class="mobile-product-title">MacBook Air M3 15inch 512GB</h3>
+                            <div class="mobile-product-price">
+                                <span class="mobile-product-price-current">34.990.000đ</span>
+                                <span class="mobile-product-price-original">38.990.000đ</span>
+                            </div>
+                            <div class="mobile-product-rating">
+                                <div class="mobile-product-stars">
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                </div>
+                                <span class="mobile-product-rating-text">(89)</span>
+                            </div>
+                            <div class="mobile-product-actions">
+                                <button class="mobile-product-add-to-cart">Thêm vào giỏ</button>
+                                <button class="mobile-product-wishlist">
+                                    <i data-lucide="heart" style="width: 16px; height: 16px;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-lg">
+                    <a href="#" class="btn btn-outline">Xem tất cả Flash Sale</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="p-lg" id="products">
+            <div class="container">
+                <h2 class="text-xl font-semibold mb-lg">Sản phẩm nổi bật</h2>
+                
+                <div class="grid grid-cols-2 gap-md">
+                    <div class="mobile-product-card">
+                        <img src="images/products/product3.jpg" alt="Samsung Galaxy S24" class="mobile-product-image">
+                        <div class="mobile-product-content">
+                            <h3 class="mobile-product-title">Samsung Galaxy S24 Ultra 256GB</h3>
+                            <div class="mobile-product-price">
+                                <span class="mobile-product-price-current">29.990.000đ</span>
+                            </div>
+                            <div class="mobile-product-rating">
+                                <div class="mobile-product-stars">
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star"></i>
+                                </div>
+                                <span class="mobile-product-rating-text">(76)</span>
+                            </div>
+                            <div class="mobile-product-actions">
+                                <button class="mobile-product-add-to-cart">Thêm vào giỏ</button>
+                                <button class="mobile-product-wishlist">
+                                    <i data-lucide="heart" style="width: 16px; height: 16px;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-product-card">
+                        <img src="images/products/product4.jpg" alt="iPad Pro M4" class="mobile-product-image">
+                        <div class="mobile-product-content">
+                            <h3 class="mobile-product-title">iPad Pro M4 11inch 256GB</h3>
+                            <div class="mobile-product-price">
+                                <span class="mobile-product-price-current">24.990.000đ</span>
+                            </div>
+                            <div class="mobile-product-rating">
+                                <div class="mobile-product-stars">
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                </div>
+                                <span class="mobile-product-rating-text">(103)</span>
+                            </div>
+                            <div class="mobile-product-actions">
+                                <button class="mobile-product-add-to-cart">Thêm vào giỏ</button>
+                                <button class="mobile-product-wishlist">
+                                    <i data-lucide="heart" style="width: 16px; height: 16px;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-product-card">
+                        <img src="images/products/product5.jpg" alt="AirPods Pro 2" class="mobile-product-image">
+                        <div class="mobile-product-content">
+                            <h3 class="mobile-product-title">AirPods Pro 2 USB-C</h3>
+                            <div class="mobile-product-price">
+                                <span class="mobile-product-price-current">5.990.000đ</span>
+                                <span class="mobile-product-price-original">6.990.000đ</span>
+                            </div>
+                            <div class="mobile-product-rating">
+                                <div class="mobile-product-stars">
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                </div>
+                                <span class="mobile-product-rating-text">(234)</span>
+                            </div>
+                            <div class="mobile-product-actions">
+                                <button class="mobile-product-add-to-cart">Thêm vào giỏ</button>
+                                <button class="mobile-product-wishlist">
+                                    <i data-lucide="heart" style="width: 16px; height: 16px;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-product-card">
+                        <img src="images/products/product6.jpg" alt="Apple Watch Series 9" class="mobile-product-image">
+                        <div class="mobile-product-content">
+                            <h3 class="mobile-product-title">Apple Watch Series 9 GPS 45mm</h3>
+                            <div class="mobile-product-price">
+                                <span class="mobile-product-price-current">9.990.000đ</span>
+                            </div>
+                            <div class="mobile-product-rating">
+                                <div class="mobile-product-stars">
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star"></i>
+                                </div>
+                                <span class="mobile-product-rating-text">(156)</span>
+                            </div>
+                            <div class="mobile-product-actions">
+                                <button class="mobile-product-add-to-cart">Thêm vào giỏ</button>
+                                <button class="mobile-product-wishlist">
+                                    <i data-lucide="heart" style="width: 16px; height: 16px;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-lg">
+                    <a href="#" class="btn btn-primary btn-lg">Xem tất cả sản phẩm</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="p-lg bg-gray-50">
+            <div class="container">
+                <h2 class="text-xl font-semibold mb-lg text-center">Tại sao chọn ZPlus Shop?</h2>
+                
+                <div class="grid grid-cols-2 gap-lg">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-md">
+                            <i data-lucide="shield-check" style="color: white; width: 24px; height: 24px;"></i>
+                        </div>
+                        <h3 class="font-semibold mb-xs">Chính hãng 100%</h3>
+                        <p class="text-sm text-gray-600">Cam kết sản phẩm chính hãng</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-md">
+                            <i data-lucide="truck" style="color: white; width: 24px; height: 24px;"></i>
+                        </div>
+                        <h3 class="font-semibold mb-xs">Giao hàng nhanh</h3>
+                        <p class="text-sm text-gray-600">Giao hàng trong 2-4 giờ</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-md">
+                            <i data-lucide="rotate-ccw" style="color: white; width: 24px; height: 24px;"></i>
+                        </div>
+                        <h3 class="font-semibold mb-xs">Đổi trả 30 ngày</h3>
+                        <p class="text-sm text-gray-600">Đổi trả miễn phí trong 30 ngày</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-md">
+                            <i data-lucide="headphones" style="color: white; width: 24px; height: 24px;"></i>
+                        </div>
+                        <h3 class="font-semibold mb-xs">Hỗ trợ 24/7</h3>
+                        <p class="text-sm text-gray-600">Tư vấn nhiệt tình 24/7</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Desktop Content -->
+    <main class="desktop-only" style="padding-top: 20px;">
+        <!-- Hero Carousel -->
+        <section style="margin-bottom: 3rem;">
+            <div class="container">
+                <div style="background: linear-gradient(135deg, var(--primary-color), var(--primary-light)); border-radius: var(--radius-xl); padding: 4rem 2rem; color: var(--white); text-align: center;">
+                    <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 1rem;">
+                        🔥 Siêu Sale 12.12
+                    </h1>
+                    <p style="font-size: 1.25rem; margin-bottom: 2rem; opacity: 0.9;">
+                        Giảm giá lên đến 50% cho tất cả sản phẩm điện tử
+                    </p>
+                    <a href="#products" class="btn btn-secondary btn-lg">
+                        Khám phá ngay
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Desktop -->
+        <section style="margin-bottom: 3rem;">
+            <div class="container">
+                <h2 class="text-2xl font-semibold mb-xl">Danh mục sản phẩm</h2>
+                
+                <div class="grid grid-cols-6 gap-lg">
+                    <a href="#" class="mobile-category-card">
+                        <div class="mobile-category-icon">
+                            <i data-lucide="smartphone"></i>
+                        </div>
+                        <div class="mobile-category-title">Điện thoại</div>
+                        <div class="mobile-category-count">250+ sản phẩm</div>
+                    </a>
+                    
+                    <a href="#" class="mobile-category-card">
+                        <div class="mobile-category-icon">
+                            <i data-lucide="laptop"></i>
+                        </div>
+                        <div class="mobile-category-title">Laptop</div>
+                        <div class="mobile-category-count">120+ sản phẩm</div>
+                    </a>
+                    
+                    <a href="#" class="mobile-category-card">
+                        <div class="mobile-category-icon">
+                            <i data-lucide="tablet"></i>
+                        </div>
+                        <div class="mobile-category-title">Tablet</div>
+                        <div class="mobile-category-count">65+ sản phẩm</div>
+                    </a>
+                    
+                    <a href="#" class="mobile-category-card">
+                        <div class="mobile-category-icon">
+                            <i data-lucide="headphones"></i>
+                        </div>
+                        <div class="mobile-category-title">Tai nghe</div>
+                        <div class="mobile-category-count">80+ sản phẩm</div>
+                    </a>
+                    
+                    <a href="#" class="mobile-category-card">
+                        <div class="mobile-category-icon">
+                            <i data-lucide="watch"></i>
+                        </div>
+                        <div class="mobile-category-title">Đồng hồ</div>
+                        <div class="mobile-category-count">45+ sản phẩm</div>
+                    </a>
+                    
+                    <a href="#" class="mobile-category-card">
+                        <div class="mobile-category-icon">
+                            <i data-lucide="gamepad-2"></i>
+                        </div>
+                        <div class="mobile-category-title">Gaming</div>
+                        <div class="mobile-category-count">35+ sản phẩm</div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products Desktop -->
+        <section style="margin-bottom: 3rem;">
+            <div class="container">
+                <h2 class="text-2xl font-semibold mb-xl">Sản phẩm nổi bật</h2>
+                
+                <div class="grid grid-cols-4 gap-lg">
+                    <!-- Repeat mobile product cards but with desktop styling -->
+                    <div class="mobile-product-card">
+                        <img src="images/products/product1.jpg" alt="iPhone 15 Pro" class="mobile-product-image">
+                        <div class="mobile-product-content">
+                            <h3 class="mobile-product-title">iPhone 15 Pro 256GB</h3>
+                            <div class="mobile-product-price">
+                                <span class="mobile-product-price-current">28.990.000đ</span>
+                                <span class="mobile-product-price-original">32.990.000đ</span>
+                            </div>
+                            <div class="mobile-product-rating">
+                                <div class="mobile-product-stars">
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star" style="fill: currentColor;"></i>
+                                    <i data-lucide="star" class="mobile-product-star"></i>
+                                </div>
+                                <span class="mobile-product-rating-text">(124)</span>
+                            </div>
+                            <div class="mobile-product-actions">
+                                <button class="mobile-product-add-to-cart">Thêm vào giỏ</button>
+                                <button class="mobile-product-wishlist">
+                                    <i data-lucide="heart" style="width: 16px; height: 16px;"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Add more products... -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav mobile-only">
+        <ul class="mobile-bottom-nav-list">
+            <li class="mobile-bottom-nav-item">
+                <a href="#" class="mobile-bottom-nav-link active">
+                    <i data-lucide="home" class="mobile-bottom-nav-icon"></i>
+                    <span class="mobile-bottom-nav-text">Trang chủ</span>
+                </a>
+            </li>
+            <li class="mobile-bottom-nav-item">
+                <a href="#" class="mobile-bottom-nav-link">
+                    <i data-lucide="grid-3x3" class="mobile-bottom-nav-icon"></i>
+                    <span class="mobile-bottom-nav-text">Danh mục</span>
+                </a>
+            </li>
+            <li class="mobile-bottom-nav-item">
+                <a href="#" class="mobile-bottom-nav-link" style="position: relative;">
+                    <i data-lucide="shopping-cart" class="mobile-bottom-nav-icon"></i>
+                    <span class="mobile-bottom-nav-text">Giỏ hàng</span>
+                    <span class="mobile-bottom-nav-badge">3</span>
+                </a>
+            </li>
+            <li class="mobile-bottom-nav-item">
+                <a href="#" class="mobile-bottom-nav-link">
+                    <i data-lucide="heart" class="mobile-bottom-nav-icon"></i>
+                    <span class="mobile-bottom-nav-text">Yêu thích</span>
+                </a>
+            </li>
+            <li class="mobile-bottom-nav-item">
+                <a href="#" class="mobile-bottom-nav-link">
+                    <i data-lucide="user" class="mobile-bottom-nav-icon"></i>
+                    <span class="mobile-bottom-nav-text">Tài khoản</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Desktop Footer -->
+    <footer class="desktop-footer desktop-only">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="footer-main">
+                <div class="footer-grid">
+                    <!-- Company Info -->
+                    <div class="footer-section footer-brand">
+                        <img src="images/logo.svg" alt="ZPlus Shop" style="height: 40px; margin-bottom: 1rem;">
+                        <p>ZPlus Shop là cửa hàng điện tử hàng đầu Việt Nam, cung cấp các sản phẩm công nghệ chính hãng với chất lượng cao và dịch vụ tốt nhất.</p>
+                        <div class="footer-contact">
+                            <div class="contact-item">
+                                <i data-lucide="map-pin"></i>
+                                <span>123 Đường ABC, Quận 1, TP.HCM</span>
+                            </div>
+                            <div class="contact-item">
+                                <i data-lucide="phone"></i>
+                                <span>1900 1234</span>
+                            </div>
+                            <div class="contact-item">
+                                <i data-lucide="mail"></i>
+                                <span>contact@zplusshop.vn</span>
+                            </div>
+                        </div>
+                        <div class="footer-social">
+                            <a href="#" class="social-link">
+                                <i data-lucide="facebook"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i data-lucide="twitter"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i data-lucide="instagram"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i data-lucide="youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Product Categories -->
+                    <div class="footer-section">
+                        <h4>Danh mục sản phẩm</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Điện thoại</a></li>
+                            <li><a href="#">Laptop</a></li>
+                            <li><a href="#">Tablet</a></li>
+                            <li><a href="#">Tai nghe</a></li>
+                            <li><a href="#">Đồng hồ thông minh</a></li>
+                            <li><a href="#">Phụ kiện</a></li>
+                            <li><a href="#">Gaming</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Customer Service -->
+                    <div class="footer-section">
+                        <h4>Hỗ trợ khách hàng</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Hướng dẫn mua hàng</a></li>
+                            <li><a href="#">Chính sách giao hàng</a></li>
+                            <li><a href="#">Chính sách đổi trả</a></li>
+                            <li><a href="#">Chính sách bảo hành</a></li>
+                            <li><a href="#">Phương thức thanh toán</a></li>
+                            <li><a href="#">Câu hỏi thường gặp</a></li>
+                            <li><a href="#">Liên hệ hỗ trợ</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Company -->
+                    <div class="footer-section">
+                        <h4>Về ZPlus Shop</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Giới thiệu công ty</a></li>
+                            <li><a href="#">Tuyển dụng</a></li>
+                            <li><a href="#">Tin tức</a></li>
+                            <li><a href="#">Sự kiện</a></li>
+                            <li><a href="#">Điều khoản sử dụng</a></li>
+                            <li><a href="#">Chính sách bảo mật</a></li>
+                            <li><a href="#">Sitemap</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Newsletter & App Download -->
+                    <div class="footer-section">
+                        <h4>Kết nối với chúng tôi</h4>
+                        <p style="margin-bottom: 1rem; color: var(--gray-600); font-size: 0.875rem;">
+                            Đăng ký nhận thông tin khuyến mãi và sản phẩm mới nhất
+                        </p>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Nhập email của bạn" class="newsletter-input">
+                            <button class="newsletter-btn">
+                                <i data-lucide="send"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="app-download">
+                            <h5 style="margin: 1.5rem 0 0.75rem 0; font-size: 0.875rem; font-weight: 600;">Tải ứng dụng ZPlus</h5>
+                            <div class="app-links">
+                                <a href="#" class="app-link">
+                                    <img src="images/app-store.png" alt="App Store" style="height: 40px;">
+                                </a>
+                                <a href="#" class="app-link">
+                                    <img src="images/google-play.png" alt="Google Play" style="height: 40px;">
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="payment-methods">
+                            <h5 style="margin: 1.5rem 0 0.75rem 0; font-size: 0.875rem; font-weight: 600;">Phương thức thanh toán</h5>
+                            <div class="payment-icons">
+                                <i data-lucide="credit-card"></i>
+                                <i data-lucide="smartphone"></i>
+                                <i data-lucide="banknote"></i>
+                                <i data-lucide="wallet"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="footer-copyright">
+                        <p>&copy; 2024 ZPlus Shop. Tất cả quyền được bảo lưu.</p>
+                    </div>
+                    <div class="footer-certifications">
+                        <div class="cert-item">
+                            <i data-lucide="shield-check"></i>
+                            <span>Chứng nhận</span>
+                        </div>
+                        <div class="cert-item">
+                            <i data-lucide="award"></i>
+                            <span>Uy tín</span>
+                        </div>
+                        <div class="cert-item">
+                            <i data-lucide="truck"></i>
+                            <span>Giao hàng toàn quốc</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/common.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Flash Sale Countdown
+        function updateCountdown() {
+            const countdownElement = document.getElementById('countdown');
+            if (!countdownElement) return;
+            
+            const now = new Date().getTime();
+            const endTime = now + (2 * 60 * 60 * 1000) + (45 * 60 * 1000) + (30 * 1000); // 2h 45m 30s
+            
+            const distance = endTime - now;
+            
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            countdownElement.textContent = 
+                (hours < 10 ? '0' : '') + hours + ':' +
+                (minutes < 10 ? '0' : '') + minutes + ':' +
+                (seconds < 10 ? '0' : '') + seconds;
+        }
+        
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Add to cart functionality
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('mobile-product-add-to-cart')) {
+                e.preventDefault();
+                const productTitle = e.target.closest('.mobile-product-content').querySelector('.mobile-product-title').textContent;
+                showToast('Đã thêm "' + productTitle + '" vào giỏ hàng', 'success');
+                
+                // Update cart badge
+                const badges = document.querySelectorAll('.mobile-bottom-nav-badge');
+                badges.forEach(badge => {
+                    const currentCount = parseInt(badge.textContent) || 0;
+                    badge.textContent = currentCount + 1;
+                });
+            }
+            
+            if (e.target.closest('.mobile-product-wishlist')) {
+                e.preventDefault();
+                const wishlistBtn = e.target.closest('.mobile-product-wishlist');
+                wishlistBtn.classList.toggle('active');
+                const isActive = wishlistBtn.classList.contains('active');
+                const productTitle = wishlistBtn.closest('.mobile-product-content').querySelector('.mobile-product-title').textContent;
+                showToast(isActive ? 'Đã thêm vào yêu thích' : 'Đã xóa khỏi yêu thích', isActive ? 'success' : 'warning');
+            }
+        });
+        
+        // Toast notification
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `mobile-toast ${type}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => toast.classList.add('show'), 100);
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => document.body.removeChild(toast), 300);
+            }, 3000);
+        }
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

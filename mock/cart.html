@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng - ZPlus Shop</title>
+    <meta name="description" content="Giỏ hàng của bạn tại ZPlus Shop - Cửa hàng điện tử hàng đầu Việt Nam">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/mobile.css">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header mobile-only">
+        <div class="mobile-header-content">
+            <img src="images/logo.svg" alt="ZPlus Shop" class="mobile-header-logo">
+            
+            <div class="mobile-header-search">
+                <div class="mobile-search">
+                    <i data-lucide="search" class="mobile-search-icon"></i>
+                    <input type="text" placeholder="Tìm kiếm sản phẩm..." class="mobile-search-input">
+                </div>
+            </div>
+            
+            <div class="mobile-header-actions">
+                <a href="#" class="mobile-header-action">
+                    <i data-lucide="user"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Desktop Header -->
+    <header class="desktop-only" style="background-color: var(--white); border-bottom: 1px solid var(--gray-200); padding: 1rem 0;">
+        <div class="container">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-xl">
+                    <img src="images/logo.svg" alt="ZPlus Shop" style="height: 40px;">
+                    
+                    <!-- Desktop Search -->
+                    <div style="position: relative; width: 400px;">
+                        <i data-lucide="search" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--gray-400);"></i>
+                        <input type="text" placeholder="Tìm kiếm sản phẩm..." class="form-input" style="padding-left: 40px;">
+                    </div>
+                </div>
+                
+                <nav class="flex items-center gap-lg">
+                    <a href="index.html" class="text-gray-700 hover:text-primary">Trang chủ</a>
+                    <a href="category.html" class="text-gray-700 hover:text-primary">Danh mục</a>
+                    <a href="#" class="text-gray-700 hover:text-primary">Khuyến mãi</a>
+                    <a href="#" class="text-gray-700 hover:text-primary">Hỗ trợ</a>
+                    
+                    <div class="flex items-center gap-md">
+                        <a href="#" class="mobile-header-action">
+                            <i data-lucide="heart"></i>
+                        </a>
+                        <a href="cart.html" class="mobile-header-action" style="position: relative;">
+                            <i data-lucide="shopping-cart"></i>
+                            <span class="mobile-bottom-nav-badge">3</span>
+                        </a>
+                        <a href="#" class="mobile-header-action">
+                            <i data-lucide="user"></i>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="cart-page">
+        <!-- Mobile Cart -->
+        <div class="mobile-only">
+            <div class="mobile-cart-summary">
+                <div class="cart-stats">
+                    <span class="cart-count">3 sản phẩm</span>
+                    <span class="cart-total">2.890.000đ</span>
+                </div>
+            </div>
+
+            <div class="mobile-cart-items">
+                <!-- Cart Item 1 -->
+                <div class="mobile-cart-item">
+                    <div class="cart-item-checkbox">
+                        <input type="checkbox" checked>
+                    </div>
+                    <div class="cart-item-image">
+                        <img src="images/iphone-15-pro.svg" alt="iPhone 15 Pro">
+                    </div>
+                    <div class="cart-item-details">
+                        <h3 class="cart-item-title">iPhone 15 Pro 256GB</h3>
+                        <p class="cart-item-variant">Màu: Titan Tự Nhiên</p>
+                        <div class="cart-item-price">
+                            <span class="current-price">28.990.000đ</span>
+                            <span class="original-price">31.990.000đ</span>
+                        </div>
+                        <div class="cart-item-actions">
+                            <div class="quantity-controls">
+                                <button class="qty-btn minus">
+                                    <i data-lucide="minus"></i>
+                                </button>
+                                <span class="quantity">1</span>
+                                <button class="qty-btn plus">
+                                    <i data-lucide="plus"></i>
+                                </button>
+                            </div>
+                            <button class="remove-item">
+                                <i data-lucide="trash-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cart Item 2 -->
+                <div class="mobile-cart-item">
+                    <div class="cart-item-checkbox">
+                        <input type="checkbox" checked>
+                    </div>
+                    <div class="cart-item-image">
+                        <img src="images/macbook-air.svg" alt="MacBook Air">
+                    </div>
+                    <div class="cart-item-details">
+                        <h3 class="cart-item-title">MacBook Air M3 13"</h3>
+                        <p class="cart-item-variant">RAM: 16GB, SSD: 512GB</p>
+                        <div class="cart-item-price">
+                            <span class="current-price">32.990.000đ</span>
+                        </div>
+                        <div class="cart-item-actions">
+                            <div class="quantity-controls">
+                                <button class="qty-btn minus">
+                                    <i data-lucide="minus"></i>
+                                </button>
+                                <span class="quantity">1</span>
+                                <button class="qty-btn plus">
+                                    <i data-lucide="plus"></i>
+                                </button>
+                            </div>
+                            <button class="remove-item">
+                                <i data-lucide="trash-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cart Item 3 -->
+                <div class="mobile-cart-item">
+                    <div class="cart-item-checkbox">
+                        <input type="checkbox">
+                    </div>
+                    <div class="cart-item-image">
+                        <img src="images/airpods-pro.svg" alt="AirPods Pro">
+                    </div>
+                    <div class="cart-item-details">
+                        <h3 class="cart-item-title">AirPods Pro (2nd Gen)</h3>
+                        <p class="cart-item-variant">USB-C, Noise Cancelling</p>
+                        <div class="cart-item-price">
+                            <span class="current-price">6.090.000đ</span>
+                        </div>
+                        <div class="cart-item-actions">
+                            <div class="quantity-controls">
+                                <button class="qty-btn minus">
+                                    <i data-lucide="minus"></i>
+                                </button>
+                                <span class="quantity">1</span>
+                                <button class="qty-btn plus">
+                                    <i data-lucide="plus"></i>
+                                </button>
+                            </div>
+                            <button class="remove-item">
+                                <i data-lucide="trash-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Cart Actions -->
+            <div class="mobile-cart-actions">
+                <div class="select-all">
+                    <input type="checkbox" id="select-all" checked>
+                    <label for="select-all">Chọn tất cả</label>
+                </div>
+                <div class="cart-total-section">
+                    <div class="total-row">
+                        <span>Tạm tính:</span>
+                        <span>61.980.000đ</span>
+                    </div>
+                    <div class="total-row discount">
+                        <span>Giảm giá:</span>
+                        <span>-3.000.000đ</span>
+                    </div>
+                    <div class="total-row final">
+                        <span>Tổng cộng:</span>
+                        <span>58.980.000đ</span>
+                    </div>
+                </div>
+                <div class="checkout-actions">
+                    <button class="btn btn-secondary continue-shopping">
+                        Tiếp tục mua hàng
+                    </button>
+                    <button class="btn btn-primary checkout-btn">
+                        Thanh toán (2)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desktop Cart -->
+        <div class="desktop-only">
+            <div class="container">
+                <div class="cart-header">
+                    <h1>Giỏ hàng của bạn</h1>
+                    <p>Bạn có 3 sản phẩm trong giỏ hàng</p>
+                </div>
+
+                <div class="cart-layout">
+                    <div class="cart-items-section">
+                        <div class="cart-table-header">
+                            <div class="header-cell select-cell">
+                                <input type="checkbox" id="select-all-desktop" checked>
+                                <label for="select-all-desktop">Chọn tất cả</label>
+                            </div>
+                            <div class="header-cell product-cell">Sản phẩm</div>
+                            <div class="header-cell price-cell">Đơn giá</div>
+                            <div class="header-cell qty-cell">Số lượng</div>
+                            <div class="header-cell total-cell">Thành tiền</div>
+                            <div class="header-cell action-cell">Thao tác</div>
+                        </div>
+
+                        <!-- Desktop Cart Item 1 -->
+                        <div class="desktop-cart-item">
+                            <div class="item-cell select-cell">
+                                <input type="checkbox" checked>
+                            </div>
+                            <div class="item-cell product-cell">
+                                <div class="product-info">
+                                    <img src="images/iphone-15-pro.svg" alt="iPhone 15 Pro">
+                                    <div class="product-details">
+                                        <h3>iPhone 15 Pro 256GB</h3>
+                                        <p>Màu: Titan Tự Nhiên</p>
+                                        <div class="product-tags">
+                                            <span class="tag">Chính hãng</span>
+                                            <span class="tag">Bảo hành 12 tháng</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-cell price-cell">
+                                <div class="price-info">
+                                    <span class="current-price">28.990.000đ</span>
+                                    <span class="original-price">31.990.000đ</span>
+                                    <span class="discount-badge">-9%</span>
+                                </div>
+                            </div>
+                            <div class="item-cell qty-cell">
+                                <div class="quantity-controls desktop">
+                                    <button class="qty-btn minus">
+                                        <i data-lucide="minus"></i>
+                                    </button>
+                                    <input type="number" value="1" min="1" max="10" class="qty-input">
+                                    <button class="qty-btn plus">
+                                        <i data-lucide="plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="item-cell total-cell">
+                                <span class="item-total">28.990.000đ</span>
+                            </div>
+                            <div class="item-cell action-cell">
+                                <button class="action-btn save-later" title="Lưu để mua sau">
+                                    <i data-lucide="bookmark"></i>
+                                </button>
+                                <button class="action-btn remove-item" title="Xóa khỏi giỏ hàng">
+                                    <i data-lucide="trash-2"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Desktop Cart Item 2 -->
+                        <div class="desktop-cart-item">
+                            <div class="item-cell select-cell">
+                                <input type="checkbox" checked>
+                            </div>
+                            <div class="item-cell product-cell">
+                                <div class="product-info">
+                                    <img src="images/macbook-air.svg" alt="MacBook Air">
+                                    <div class="product-details">
+                                        <h3>MacBook Air M3 13"</h3>
+                                        <p>RAM: 16GB, SSD: 512GB</p>
+                                        <div class="product-tags">
+                                            <span class="tag">Chính hãng</span>
+                                            <span class="tag">Miễn phí vận chuyển</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-cell price-cell">
+                                <div class="price-info">
+                                    <span class="current-price">32.990.000đ</span>
+                                </div>
+                            </div>
+                            <div class="item-cell qty-cell">
+                                <div class="quantity-controls desktop">
+                                    <button class="qty-btn minus">
+                                        <i data-lucide="minus"></i>
+                                    </button>
+                                    <input type="number" value="1" min="1" max="5" class="qty-input">
+                                    <button class="qty-btn plus">
+                                        <i data-lucide="plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="item-cell total-cell">
+                                <span class="item-total">32.990.000đ</span>
+                            </div>
+                            <div class="item-cell action-cell">
+                                <button class="action-btn save-later" title="Lưu để mua sau">
+                                    <i data-lucide="bookmark"></i>
+                                </button>
+                                <button class="action-btn remove-item" title="Xóa khỏi giỏ hàng">
+                                    <i data-lucide="trash-2"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Desktop Cart Item 3 -->
+                        <div class="desktop-cart-item">
+                            <div class="item-cell select-cell">
+                                <input type="checkbox">
+                            </div>
+                            <div class="item-cell product-cell">
+                                <div class="product-info">
+                                    <img src="images/airpods-pro.svg" alt="AirPods Pro">
+                                    <div class="product-details">
+                                        <h3>AirPods Pro (2nd Gen)</h3>
+                                        <p>USB-C, Noise Cancelling</p>
+                                        <div class="product-tags">
+                                            <span class="tag">Chính hãng</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item-cell price-cell">
+                                <div class="price-info">
+                                    <span class="current-price">6.090.000đ</span>
+                                </div>
+                            </div>
+                            <div class="item-cell qty-cell">
+                                <div class="quantity-controls desktop">
+                                    <button class="qty-btn minus">
+                                        <i data-lucide="minus"></i>
+                                    </button>
+                                    <input type="number" value="1" min="1" max="10" class="qty-input">
+                                    <button class="qty-btn plus">
+                                        <i data-lucide="plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="item-cell total-cell">
+                                <span class="item-total">6.090.000đ</span>
+                            </div>
+                            <div class="item-cell action-cell">
+                                <button class="action-btn save-later" title="Lưu để mua sau">
+                                    <i data-lucide="bookmark"></i>
+                                </button>
+                                <button class="action-btn remove-item" title="Xóa khỏi giỏ hàng">
+                                    <i data-lucide="trash-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cart-summary-section">
+                        <div class="cart-summary-card">
+                            <h3>Tóm tắt đơn hàng</h3>
+                            
+                            <div class="summary-row">
+                                <span>Tạm tính (2 sản phẩm):</span>
+                                <span>61.980.000đ</span>
+                            </div>
+                            
+                            <div class="summary-row">
+                                <span>Phí vận chuyển:</span>
+                                <span class="free">Miễn phí</span>
+                            </div>
+                            
+                            <div class="summary-row discount">
+                                <span>Giảm giá:</span>
+                                <span>-3.000.000đ</span>
+                            </div>
+                            
+                            <div class="coupon-section">
+                                <h4>Mã giảm giá</h4>
+                                <div class="coupon-input">
+                                    <input type="text" placeholder="Nhập mã giảm giá">
+                                    <button class="apply-coupon">Áp dụng</button>
+                                </div>
+                                <div class="available-coupons">
+                                    <div class="coupon-item">
+                                        <div class="coupon-info">
+                                            <span class="coupon-code">SAVE100K</span>
+                                            <span class="coupon-desc">Giảm 100.000đ cho đơn từ 2tr</span>
+                                        </div>
+                                        <button class="use-coupon">Sử dụng</button>
+                                    </div>
+                                    <div class="coupon-item">
+                                        <div class="coupon-info">
+                                            <span class="coupon-code">NEWUSER</span>
+                                            <span class="coupon-desc">Giảm 5% cho khách hàng mới</span>
+                                        </div>
+                                        <button class="use-coupon">Sử dụng</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="summary-total">
+                                <span>Tổng cộng:</span>
+                                <span class="total-amount">58.980.000đ</span>
+                            </div>
+                            
+                            <div class="checkout-actions">
+                                <button class="btn btn-secondary continue-shopping">
+                                    <i data-lucide="arrow-left"></i>
+                                    Tiếp tục mua hàng
+                                </button>
+                                <button class="btn btn-primary checkout-btn">
+                                    Thanh toán
+                                    <i data-lucide="arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Recommendations -->
+                        <div class="recommendations-card">
+                            <h3>Có thể bạn quan tâm</h3>
+                            <div class="recommendation-items">
+                                <div class="rec-item">
+                                    <img src="images/iphone-case.svg" alt="Ốp lưng iPhone">
+                                    <div class="rec-info">
+                                        <h4>Ốp lưng iPhone 15 Pro</h4>
+                                        <span class="rec-price">590.000đ</span>
+                                    </div>
+                                    <button class="add-to-cart-rec">
+                                        <i data-lucide="plus"></i>
+                                    </button>
+                                </div>
+                                <div class="rec-item">
+                                    <img src="images/magic-mouse.svg" alt="Magic Mouse">
+                                    <div class="rec-info">
+                                        <h4>Magic Mouse</h4>
+                                        <span class="rec-price">2.290.000đ</span>
+                                    </div>
+                                    <button class="add-to-cart-rec">
+                                        <i data-lucide="plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav mobile-only">
+        <ul class="mobile-bottom-nav-list">
+            <li class="mobile-bottom-nav-item">
+                <a href="index.html" class="mobile-bottom-nav-link">
+                    <i data-lucide="home" class="mobile-bottom-nav-icon"></i>
+                    <span class="mobile-bottom-nav-text">Trang chủ</span>
+                </a>
+            </li>
+            <li class="mobile-bottom-nav-item">
+                <a href="category.html" class="mobile-bottom-nav-link">
+                    <i data-lucide="grid-3x3" class="mobile-bottom-nav-icon"></i>
+                    <span class="mobile-bottom-nav-text">Danh mục</span>
+                </a>
+            </li>
+            <li class="mobile-bottom-nav-item">
+                <a href="cart.html" class="mobile-bottom-nav-link active">
+                    <i data-lucide="shopping-cart" class="mobile-bottom-nav-icon"></i>
+                    <span class="mobile-bottom-nav-text">Giỏ hàng</span>
+                    <span class="mobile-bottom-nav-badge">3</span>
+                </a>
+            </li>
+            <li class="mobile-bottom-nav-item">
+                <a href="#" class="mobile-bottom-nav-link">
+                    <i data-lucide="heart" class="mobile-bottom-nav-icon"></i>
+                    <span class="mobile-bottom-nav-text">Yêu thích</span>
+                </a>
+            </li>
+            <li class="mobile-bottom-nav-item">
+                <a href="#" class="mobile-bottom-nav-link">
+                    <i data-lucide="user" class="mobile-bottom-nav-icon"></i>
+                    <span class="mobile-bottom-nav-text">Tài khoản</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Desktop Footer -->
+    <footer class="desktop-footer desktop-only">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="footer-main">
+                <div class="footer-grid">
+                    <!-- Company Info -->
+                    <div class="footer-section footer-brand">
+                        <img src="images/logo.svg" alt="ZPlus Shop" style="height: 40px; margin-bottom: 1rem;">
+                        <p>ZPlus Shop là cửa hàng điện tử hàng đầu Việt Nam, cung cấp các sản phẩm công nghệ chính hãng với chất lượng cao và dịch vụ tốt nhất.</p>
+                        <div class="footer-contact">
+                            <div class="contact-item">
+                                <i data-lucide="map-pin"></i>
+                                <span>123 Đường ABC, Quận 1, TP.HCM</span>
+                            </div>
+                            <div class="contact-item">
+                                <i data-lucide="phone"></i>
+                                <span>1900 1234</span>
+                            </div>
+                            <div class="contact-item">
+                                <i data-lucide="mail"></i>
+                                <span>contact@zplusshop.vn</span>
+                            </div>
+                        </div>
+                        <div class="footer-social">
+                            <a href="#" class="social-link">
+                                <i data-lucide="facebook"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i data-lucide="twitter"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i data-lucide="instagram"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i data-lucide="youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Product Categories -->
+                    <div class="footer-section">
+                        <h4>Danh mục sản phẩm</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Điện thoại</a></li>
+                            <li><a href="#">Laptop</a></li>
+                            <li><a href="#">Tablet</a></li>
+                            <li><a href="#">Tai nghe</a></li>
+                            <li><a href="#">Đồng hồ thông minh</a></li>
+                            <li><a href="#">Phụ kiện</a></li>
+                            <li><a href="#">Gaming</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Customer Service -->
+                    <div class="footer-section">
+                        <h4>Hỗ trợ khách hàng</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Hướng dẫn mua hàng</a></li>
+                            <li><a href="#">Chính sách giao hàng</a></li>
+                            <li><a href="#">Chính sách đổi trả</a></li>
+                            <li><a href="#">Chính sách bảo hành</a></li>
+                            <li><a href="#">Phương thức thanh toán</a></li>
+                            <li><a href="#">Câu hỏi thường gặp</a></li>
+                            <li><a href="#">Liên hệ hỗ trợ</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Company -->
+                    <div class="footer-section">
+                        <h4>Về ZPlus Shop</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Giới thiệu công ty</a></li>
+                            <li><a href="#">Tuyển dụng</a></li>
+                            <li><a href="#">Tin tức</a></li>
+                            <li><a href="#">Sự kiện</a></li>
+                            <li><a href="#">Điều khoản sử dụng</a></li>
+                            <li><a href="#">Chính sách bảo mật</a></li>
+                            <li><a href="#">Sitemap</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Newsletter & App Download -->
+                    <div class="footer-section">
+                        <h4>Kết nối với chúng tôi</h4>
+                        <p style="margin-bottom: 1rem; color: var(--gray-600); font-size: 0.875rem;">
+                            Đăng ký nhận thông tin khuyến mãi và sản phẩm mới nhất
+                        </p>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Nhập email của bạn" class="newsletter-input">
+                            <button class="newsletter-btn">
+                                <i data-lucide="send"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="app-download">
+                            <h5 style="margin: 1.5rem 0 0.75rem 0; font-size: 0.875rem; font-weight: 600;">Tải ứng dụng ZPlus</h5>                        <div class="app-links">
+                            <a href="#" class="app-link">
+                                <img src="images/app-store.svg" alt="App Store" style="height: 40px;">
+                            </a>
+                            <a href="#" class="app-link">
+                                <img src="images/google-play.svg" alt="Google Play" style="height: 40px;">
+                            </a>
+                        </div>
+                        </div>
+
+                        <div class="payment-methods">
+                            <h5 style="margin: 1.5rem 0 0.75rem 0; font-size: 0.875rem; font-weight: 600;">Phương thức thanh toán</h5>
+                            <div class="payment-icons">
+                                <i data-lucide="credit-card"></i>
+                                <i data-lucide="smartphone"></i>
+                                <i data-lucide="banknote"></i>
+                                <i data-lucide="wallet"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="footer-copyright">
+                        <p>&copy; 2024 ZPlus Shop. Tất cả quyền được bảo lưu.</p>
+                    </div>
+                    <div class="footer-certifications">
+                        <div class="cert-item">
+                            <i data-lucide="shield-check"></i>
+                            <span>Chứng nhận</span>
+                        </div>
+                        <div class="cert-item">
+                            <i data-lucide="award"></i>
+                            <span>Uy tín</span>
+                        </div>
+                        <div class="cert-item">
+                            <i data-lucide="truck"></i>
+                            <span>Giao hàng toàn quốc</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/common.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Quantity controls
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.qty-btn')) {
+                const btn = e.target.closest('.qty-btn');
+                const isPlus = btn.classList.contains('plus');
+                const qtyContainer = btn.closest('.quantity-controls');
+                const qtyElement = qtyContainer.querySelector('.quantity, .qty-input');
+                let currentQty = parseInt(qtyElement.textContent || qtyElement.value);
+                
+                if (isPlus) {
+                    currentQty++;
+                } else if (currentQty > 1) {
+                    currentQty--;
+                }
+                
+                if (qtyElement.tagName === 'INPUT') {
+                    qtyElement.value = currentQty;
+                } else {
+                    qtyElement.textContent = currentQty;
+                }
+                
+                updateCartTotal();
+                showToast('Đã cập nhật số lượng', 'success');
+            }
+            
+            // Remove item
+            if (e.target.closest('.remove-item')) {
+                e.preventDefault();
+                const cartItem = e.target.closest('.mobile-cart-item, .desktop-cart-item');
+                cartItem.style.opacity = '0.5';
+                setTimeout(() => {
+                    cartItem.remove();
+                    updateCartTotal();
+                    showToast('Đã xóa sản phẩm khỏi giỏ hàng', 'success');
+                }, 300);
+            }
+            
+            // Apply coupon
+            if (e.target.closest('.apply-coupon, .use-coupon')) {
+                e.preventDefault();
+                showToast('Đã áp dụng mã giảm giá', 'success');
+            }
+            
+            // Add recommendation to cart
+            if (e.target.closest('.add-to-cart-rec')) {
+                e.preventDefault();
+                showToast('Đã thêm sản phẩm vào giỏ hàng', 'success');
+            }
+            
+            // Checkout button
+            if (e.target.closest('.checkout-btn')) {
+                window.location.href = 'checkout.html';
+            }
+            
+            // Continue shopping
+            if (e.target.closest('.continue-shopping')) {
+                window.location.href = 'category.html';
+            }
+        });
+        
+        // Select all functionality
+        document.addEventListener('change', function(e) {
+            if (e.target.id === 'select-all' || e.target.id === 'select-all-desktop') {
+                const checkboxes = document.querySelectorAll('.cart-item-checkbox input, .item-cell.select-cell input');
+                checkboxes.forEach(checkbox => {
+                    if (checkbox !== e.target) {
+                        checkbox.checked = e.target.checked;
+                    }
+                });
+                updateCartTotal();
+            } else if (e.target.closest('.cart-item-checkbox, .item-cell.select-cell')) {
+                updateCartTotal();
+            }
+        });
+        
+        function updateCartTotal() {
+            // Update cart totals based on selected items
+            console.log('Updating cart total...');
+        }
+        
+        // Toast notification
+        function showToast(message, type = 'success') {
+            const toast = document.createElement('div');
+            toast.className = `mobile-toast ${type}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => toast.classList.add('show'), 100);
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => document.body.removeChild(toast), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

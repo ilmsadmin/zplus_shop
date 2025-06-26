@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Điện tử - ZPlus Shop</title>
+    <meta name="description" content="ZPlus Shop - Cửa hàng điện tử hàng đầu Việt Nam với các sản phẩm chất lượng cao">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header mobile-only">
+        <div class="mobile-header-content">
+            <img src="images/logo.svg" alt="ZPlus Shop" class="mobile-header-logo">
+            
+            <div class="mobile-header-search">
+                <div class="mobile-search">
+                    <i data-lucide="search" class="mobile-search-icon"></i>
+                    <input type="text" placeholder="Tìm kiếm sản phẩm..." class="mobile-search-input">
+                </div>
+            </div>
+            
+            <div class="mobile-header-actions">
+                <a href="#" class="mobile-header-action">
+                    <i data-lucide="user"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Desktop Header -->
+    <header class="desktop-only" style="background-color: var(--white); border-bottom: 1px solid var(--gray-200); padding: 1rem 0;">
+        <div class="container">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-xl">
+                    <img src="images/logo.svg" alt="ZPlus Shop" style="height: 40px;">
+                    
+                    <!-- Desktop Search -->
+                    <div style="position: relative; width: 400px;">
+                        <i data-lucide="search" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--gray-400);"></i>
+                        <input type="text" placeholder="Tìm kiếm sản phẩm..." class="form-input" style="padding-left: 40px;">
+                    </div>
+                </div>
+                
+                <nav class="flex items-center gap-lg">
+                    <a href="index.html" class="text-gray-700 hover:text-primary">Trang chủ</a>
+                    <a href="category.html" class="text-primary font-semibold">Danh mục</a>
+                    <a href="#" class="text-gray-700 hover:text-primary">Khuyến mãi</a>
+                    <a href="#" class="text-gray-700 hover:text-primary">Hỗ trợ</a>
+                    
+                    <div class="flex items-center gap-md">
+                        <a href="#" class="mobile-header-action">
+                            <i data-lucide="heart"></i>
+                        </a>
+                        <a href="#" class="mobile-header-action" style="position: relative;">
+                            <i data-lucide="shopping-cart"></i>
+                            <span class="mobile-bottom-nav-badge">3</span>
+                        </a>
+                        <a href="#" class="mobile-header-action">
+                            <i data-lucide="user"></i>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="container">
+            <a href="index.html">Trang chủ</a>
+            <span>/</span>
+            <span>Điện tử</span>
+        </div>
+    </div>
+
+    <!-- Category Page Content -->
+    <main class="category-page">
+        <div class="container">
+            <!-- Category Header -->
+            <div class="category-header">
+                <div class="category-info">
+                    <h1>Electronics</h1>
+                    <p class="category-description">Discover the latest in technology with our comprehensive electronics collection</p>
+                    <div class="category-stats">
+                        <span class="product-count">248 Products</span>
+                    </div>
+                </div>
+                <div class="category-image">
+                    <div class="placeholder-image">
+                        <i data-lucide="monitor"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-content">
+                <!-- Sidebar Filters -->
+                <aside class="filters-sidebar">
+                    <div class="filters-header">
+                        <h3>Filters</h3>
+                        <button class="clear-filters">Clear All</button>
+                    </div>
+
+                    <!-- Category Filter -->
+                    <div class="filter-group">
+                        <h4>Categories</h4>
+                        <div class="filter-options">
+                            <label class="checkbox-option">
+                                <input type="checkbox" checked>
+                                <span class="checkmark"></span>
+                                Electronics (248)
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Smartphones (45)
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Laptops (32)
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Audio (67)
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Gaming (28)
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Price Filter -->
+                    <div class="filter-group">
+                        <h4>Price Range</h4>
+                        <div class="price-range">
+                            <div class="price-inputs">
+                                <input type="number" placeholder="Min" value="0">
+                                <span>-</span>
+                                <input type="number" placeholder="Max" value="2000">
+                            </div>
+                            <div class="range-slider">
+                                <input type="range" min="0" max="2000" value="0" class="slider-min">
+                                <input type="range" min="0" max="2000" value="2000" class="slider-max">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Brand Filter -->
+                    <div class="filter-group">
+                        <h4>Brands</h4>
+                        <div class="filter-options">
+                            <label class="checkbox-option">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Apple (23)
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Samsung (18)
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Sony (15)
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                LG (12)
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Dell (9)
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Rating Filter -->
+                    <div class="filter-group">
+                        <h4>Customer Rating</h4>
+                        <div class="rating-options">
+                            <label class="rating-option">
+                                <input type="radio" name="rating">
+                                <div class="stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                </div>
+                                <span>& Up (45)</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="rating">
+                                <div class="stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                                <span>& Up (123)</span>
+                            </label>
+                            <label class="rating-option">
+                                <input type="radio" name="rating">
+                                <div class="stars">
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star filled">★</span>
+                                    <span class="star">★</span>
+                                    <span class="star">★</span>
+                                </div>
+                                <span>& Up (187)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Features Filter -->
+                    <div class="filter-group">
+                        <h4>Features</h4>
+                        <div class="filter-options">
+                            <label class="checkbox-option">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Free Shipping
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                On Sale
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                In Stock
+                            </label>
+                            <label class="checkbox-option">
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                                Fast Delivery
+                            </label>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Products Section -->
+                <div class="products-section">
+                    <!-- Toolbar -->
+                    <div class="products-toolbar">
+                        <div class="toolbar-left">
+                            <span class="results-count">Showing 1-20 of 248 results</span>
+                        </div>
+                        <div class="toolbar-right">
+                            <div class="view-toggle">
+                                <button class="view-btn active" data-view="grid">
+                                    <i data-lucide="grid-3x3"></i>
+                                </button>
+                                <button class="view-btn" data-view="list">
+                                    <i data-lucide="list"></i>
+                                </button>
+                            </div>
+                            <select class="sort-select">
+                                <option value="featured">Featured</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="newest">Newest First</option>
+                                <option value="rating">Highest Rated</option>
+                                <option value="popular">Most Popular</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <div class="products-grid" id="productsGrid">
+                        <!-- Product Card 1 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <div class="placeholder-image">
+                                    <i data-lucide="smartphone"></i>
+                                </div>
+                                <div class="product-badges">
+                                    <span class="badge sale">-20%</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn">
+                                        <i data-lucide="heart"></i>
+                                    </button>
+                                    <button class="action-btn quick-view-btn">
+                                        <i data-lucide="eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Smartphones</div>
+                                <h3 class="product-title">iPhone 15 Pro Max</h3>
+                                <div class="product-rating">
+                                    <div class="stars">
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                    </div>
+                                    <span class="rating-count">(124)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$999.99</span>
+                                    <span class="original-price">$1,249.99</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 2 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <div class="placeholder-image">
+                                    <i data-lucide="laptop"></i>
+                                </div>
+                                <div class="product-badges">
+                                    <span class="badge new">New</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn">
+                                        <i data-lucide="heart"></i>
+                                    </button>
+                                    <button class="action-btn quick-view-btn">
+                                        <i data-lucide="eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Laptops</div>
+                                <h3 class="product-title">MacBook Pro 16"</h3>
+                                <div class="product-rating">
+                                    <div class="stars">
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star">★</span>
+                                    </div>
+                                    <span class="rating-count">(89)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$2,399.99</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 3 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <div class="placeholder-image">
+                                    <i data-lucide="headphones"></i>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn">
+                                        <i data-lucide="heart"></i>
+                                    </button>
+                                    <button class="action-btn quick-view-btn">
+                                        <i data-lucide="eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Audio</div>
+                                <h3 class="product-title">Sony WH-1000XM5</h3>
+                                <div class="product-rating">
+                                    <div class="stars">
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                    </div>
+                                    <span class="rating-count">(256)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$349.99</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 4 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <div class="placeholder-image">
+                                    <i data-lucide="tablet"></i>
+                                </div>
+                                <div class="product-badges">
+                                    <span class="badge sale">-15%</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn">
+                                        <i data-lucide="heart"></i>
+                                    </button>
+                                    <button class="action-btn quick-view-btn">
+                                        <i data-lucide="eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Tablets</div>
+                                <h3 class="product-title">iPad Air 11"</h3>
+                                <div class="product-rating">
+                                    <div class="stars">
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star">★</span>
+                                    </div>
+                                    <span class="rating-count">(67)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$549.99</span>
+                                    <span class="original-price">$649.99</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 5 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <div class="placeholder-image">
+                                    <i data-lucide="gamepad-2"></i>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn">
+                                        <i data-lucide="heart"></i>
+                                    </button>
+                                    <button class="action-btn quick-view-btn">
+                                        <i data-lucide="eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Gaming</div>
+                                <h3 class="product-title">PlayStation 5</h3>
+                                <div class="product-rating">
+                                    <div class="stars">
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                    </div>
+                                    <span class="rating-count">(445)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$499.99</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- Product Card 6 -->
+                        <div class="product-card">
+                            <div class="product-image">
+                                <div class="placeholder-image">
+                                    <i data-lucide="watch"></i>
+                                </div>
+                                <div class="product-badges">
+                                    <span class="badge hot">Hot</span>
+                                </div>
+                                <div class="product-actions">
+                                    <button class="action-btn wishlist-btn">
+                                        <i data-lucide="heart"></i>
+                                    </button>
+                                    <button class="action-btn quick-view-btn">
+                                        <i data-lucide="eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">Wearables</div>
+                                <h3 class="product-title">Apple Watch Series 9</h3>
+                                <div class="product-rating">
+                                    <div class="stars">
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star filled">★</span>
+                                        <span class="star">★</span>
+                                    </div>
+                                    <span class="rating-count">(178)</span>
+                                </div>
+                                <div class="product-price">
+                                    <span class="current-price">$399.99</span>
+                                </div>
+                                <button class="btn btn-primary add-to-cart">Add to Cart</button>
+                            </div>
+                        </div>
+
+                        <!-- More product cards would continue here... -->
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <button class="page-btn prev" disabled>
+                            <i data-lucide="chevron-left"></i>
+                            Previous
+                        </button>
+                        <div class="page-numbers">
+                            <button class="page-btn active">1</button>
+                            <button class="page-btn">2</button>
+                            <button class="page-btn">3</button>
+                            <button class="page-btn">4</button>
+                            <span class="page-dots">...</span>
+                            <button class="page-btn">13</button>
+                        </div>
+                        <button class="page-btn next">
+                            Next
+                            <i data-lucide="chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav mobile-only">
+        <ul class="mobile-bottom-nav-list">
+            <li class="mobile-bottom-nav-item">
+                <a href="index.html" class="mobile-bottom-nav-link">
+                    <i data-lucide="home" class="mobile-bottom-nav-icon"></i>
+                    <span class="mobile-bottom-nav-text">Trang chủ</span>
+                </a>
+            </li>
+            <li class="mobile-bottom-nav-item">
+                <a href="category.html" class="mobile-bottom-nav-link active">
+                    <i data-lucide="grid-3x3" class="mobile-bottom-nav-icon"></i>
+                    <span class="mobile-bottom-nav-text">Danh mục</span>
+                </a>
+            </li>
+            <li class="mobile-bottom-nav-item">
+                <a href="cart.html" class="mobile-bottom-nav-link" style="position: relative;">
+                    <i data-lucide="shopping-cart" class="mobile-bottom-nav-icon"></i>
+                    <span class="mobile-bottom-nav-text">Giỏ hàng</span>
+                    <span class="mobile-bottom-nav-badge">3</span>
+                </a>
+            </li>
+            <li class="mobile-bottom-nav-item">
+                <a href="#" class="mobile-bottom-nav-link">
+                    <i data-lucide="heart" class="mobile-bottom-nav-icon"></i>
+                    <span class="mobile-bottom-nav-text">Yêu thích</span>
+                </a>
+            </li>
+            <li class="mobile-bottom-nav-item">
+                <a href="#" class="mobile-bottom-nav-link">
+                    <i data-lucide="user" class="mobile-bottom-nav-icon"></i>
+                    <span class="mobile-bottom-nav-text">Tài khoản</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Desktop Footer -->
+    <footer class="desktop-footer desktop-only">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="footer-main">
+                <div class="footer-grid">
+                    <!-- Company Info -->
+                    <div class="footer-section footer-brand">
+                        <img src="images/logo.svg" alt="ZPlus Shop" style="height: 40px; margin-bottom: 1rem;">
+                        <p>ZPlus Shop là cửa hàng điện tử hàng đầu Việt Nam, cung cấp các sản phẩm công nghệ chính hãng với chất lượng cao và dịch vụ tốt nhất.</p>
+                        <div class="footer-contact">
+                            <div class="contact-item">
+                                <i data-lucide="map-pin"></i>
+                                <span>123 Đường ABC, Quận 1, TP.HCM</span>
+                            </div>
+                            <div class="contact-item">
+                                <i data-lucide="phone"></i>
+                                <span>1900 1234</span>
+                            </div>
+                            <div class="contact-item">
+                                <i data-lucide="mail"></i>
+                                <span>contact@zplusshop.vn</span>
+                            </div>
+                        </div>
+                        <div class="footer-social">
+                            <a href="#" class="social-link">
+                                <i data-lucide="facebook"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i data-lucide="twitter"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i data-lucide="instagram"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i data-lucide="youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Product Categories -->
+                    <div class="footer-section">
+                        <h4>Danh mục sản phẩm</h4>
+                        <ul class="footer-links">
+                            <li><a href="category.html">Điện thoại</a></li>
+                            <li><a href="category.html">Laptop</a></li>
+                            <li><a href="category.html">Tablet</a></li>
+                            <li><a href="category.html">Tai nghe</a></li>
+                            <li><a href="category.html">Đồng hồ thông minh</a></li>
+                            <li><a href="category.html">Phụ kiện</a></li>
+                            <li><a href="category.html">Gaming</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Customer Service -->
+                    <div class="footer-section">
+                        <h4>Hỗ trợ khách hàng</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Hướng dẫn mua hàng</a></li>
+                            <li><a href="#">Chính sách giao hàng</a></li>
+                            <li><a href="#">Chính sách đổi trả</a></li>
+                            <li><a href="#">Chính sách bảo hành</a></li>
+                            <li><a href="#">Phương thức thanh toán</a></li>
+                            <li><a href="#">Câu hỏi thường gặp</a></li>
+                            <li><a href="#">Liên hệ hỗ trợ</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Company -->
+                    <div class="footer-section">
+                        <h4>Về ZPlus Shop</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Giới thiệu công ty</a></li>
+                            <li><a href="#">Tuyển dụng</a></li>
+                            <li><a href="#">Tin tức</a></li>
+                            <li><a href="#">Sự kiện</a></li>
+                            <li><a href="#">Điều khoản sử dụng</a></li>
+                            <li><a href="#">Chính sách bảo mật</a></li>
+                            <li><a href="#">Sitemap</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Newsletter & App Download -->
+                    <div class="footer-section">
+                        <h4>Kết nối với chúng tôi</h4>
+                        <p style="margin-bottom: 1rem; color: var(--gray-600); font-size: 0.875rem;">
+                            Đăng ký nhận thông tin khuyến mãi và sản phẩm mới nhất
+                        </p>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Nhập email của bạn" class="newsletter-input">
+                            <button class="newsletter-btn">
+                                <i data-lucide="send"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="app-download">
+                            <h5 style="margin: 1.5rem 0 0.75rem 0; font-size: 0.875rem; font-weight: 600;">Tải ứng dụng ZPlus</h5>
+                            <div class="app-links">
+                                <a href="#" class="app-link">
+                                    <img src="images/app-store.png" alt="App Store" style="height: 40px;">
+                                </a>
+                                <a href="#" class="app-link">
+                                    <img src="images/google-play.png" alt="Google Play" style="height: 40px;">
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="payment-methods">
+                            <h5 style="margin: 1.5rem 0 0.75rem 0; font-size: 0.875rem; font-weight: 600;">Phương thức thanh toán</h5>
+                            <div class="payment-icons">
+                                <i data-lucide="credit-card"></i>
+                                <i data-lucide="smartphone"></i>
+                                <i data-lucide="banknote"></i>
+                                <i data-lucide="wallet"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="footer-copyright">
+                        <p>&copy; 2024 ZPlus Shop. Tất cả quyền được bảo lưu.</p>
+                    </div>
+                    <div class="footer-certifications">
+                        <div class="cert-item">
+                            <i data-lucide="shield-check"></i>
+                            <span>Chứng nhận</span>
+                        </div>
+                        <div class="cert-item">
+                            <i data-lucide="award"></i>
+                            <span>Uy tín</span>
+                        </div>
+                        <div class="cert-item">
+                            <i data-lucide="truck"></i>
+                            <span>Giao hàng toàn quốc</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Filter Drawer -->
+    <div class="mobile-filter-overlay" id="filterOverlay">
+        <div class="mobile-filter-drawer">
+            <div class="filter-header">
+                <h3>Filters</h3>
+                <button class="close-filters" id="closeFilters">
+                    <i data-lucide="x"></i>
+                </button>
+            </div>
+            <div class="filter-content">
+                <!-- Same filter content as sidebar but optimized for mobile -->
+                <div class="filter-group">
+                    <h4>Categories</h4>
+                    <div class="filter-options">
+                        <label class="checkbox-option">
+                            <input type="checkbox" checked>
+                            <span class="checkmark"></span>
+                            Electronics (248)
+                        </label>
+                        <!-- More options... -->
+                    </div>
+                </div>
+                <!-- More filter groups... -->
+            </div>
+            <div class="filter-actions">
+                <button class="btn btn-secondary clear-all">Clear All</button>
+                <button class="btn btn-primary apply-filters">Apply Filters</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <i data-lucide="check-circle"></i>
+            <span>Product added to cart!</span>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/common.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Category page functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // View toggle functionality
+            const viewButtons = document.querySelectorAll('.view-btn');
+            const productsGrid = document.getElementById('productsGrid');
+
+            viewButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    viewButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const view = this.dataset.view;
+                    productsGrid.className = view === 'list' ? 'products-list' : 'products-grid';
+                });
+            });
+
+            // Add to cart functionality (đồng bộ với index.html)
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('add-to-cart')) {
+                    e.preventDefault();
+                    const productTitle = e.target.closest('.product-info').querySelector('.product-title').textContent;
+                    showToast('Đã thêm "' + productTitle + '" vào giỏ hàng', 'success');
+                    
+                    // Update cart badge
+                    const badges = document.querySelectorAll('.mobile-bottom-nav-badge');
+                    badges.forEach(badge => {
+                        const currentCount = parseInt(badge.textContent) || 0;
+                        badge.textContent = currentCount + 1;
+                    });
+                }
+                
+                if (e.target.closest('.wishlist-btn')) {
+                    e.preventDefault();
+                    const wishlistBtn = e.target.closest('.wishlist-btn');
+                    wishlistBtn.classList.toggle('active');
+                    const isActive = wishlistBtn.classList.contains('active');
+                    showToast(isActive ? 'Đã thêm vào yêu thích' : 'Đã xóa khỏi yêu thích', isActive ? 'success' : 'warning');
+                }
+            });
+
+            // Toast notification function (từ index.html)
+            function showToast(message, type = 'success') {
+                const toast = document.createElement('div');
+                toast.className = `mobile-toast ${type}`;
+                toast.textContent = message;
+                document.body.appendChild(toast);
+                
+                setTimeout(() => toast.classList.add('show'), 100);
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    setTimeout(() => document.body.removeChild(toast), 300);
+                }, 3000);
+            }
+
+            // Mobile filter functionality
+            const filterOverlay = document.getElementById('filterOverlay');
+            const closeFilters = document.getElementById('closeFilters');
+
+            // Add mobile filter button to toolbar
+            const toolbar = document.querySelector('.products-toolbar .toolbar-left');
+            const filterBtn = document.createElement('button');
+            filterBtn.className = 'btn btn-secondary mobile-filter-btn';
+            filterBtn.innerHTML = '<i data-lucide="filter"></i> Bộ lọc';
+            filterBtn.style.display = 'none';
+            toolbar.appendChild(filterBtn);
+
+            // Show filter button on mobile
+            function updateMobileElements() {
+                if (window.innerWidth <= 768) {
+                    filterBtn.style.display = 'inline-flex';
+                } else {
+                    filterBtn.style.display = 'none';
+                }
+            }
+
+            filterBtn.addEventListener('click', function() {
+                filterOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            if (closeFilters) {
+                closeFilters.addEventListener('click', function() {
+                    filterOverlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            }
+
+            // Close filter overlay when clicking outside
+            if (filterOverlay) {
+                filterOverlay.addEventListener('click', function(e) {
+                    if (e.target === filterOverlay) {
+                        filterOverlay.classList.remove('active');
+                        document.body.style.overflow = '';
+                    }
+                });
+            }
+
+            // Initialize mobile elements
+            updateMobileElements();
+            window.addEventListener('resize', updateMobileElements);
+
+            // Price range slider functionality
+            const rangeMin = document.querySelector('.slider-min');
+            const rangeMax = document.querySelector('.slider-max');
+            const priceInputs = document.querySelectorAll('.price-inputs input');
+
+            if (rangeMin && rangeMax) {
+                [rangeMin, rangeMax].forEach(input => {
+                    input.addEventListener('input', function() {
+                        let minVal = parseInt(rangeMin.value);
+                        let maxVal = parseInt(rangeMax.value);
+
+                        if (maxVal - minVal < 100) {
+                            if (input === rangeMin) {
+                                rangeMin.value = maxVal - 100;
+                            } else {
+                                rangeMax.value = minVal + 100;
+                            }
+                        }
+
+                        priceInputs[0].value = rangeMin.value;
+                        priceInputs[1].value = rangeMax.value;
+                    });
+                });
+            }
+
+            // Sort functionality
+            const sortSelect = document.querySelector('.sort-select');
+            if (sortSelect) {
+                sortSelect.addEventListener('change', function() {
+                    console.log('Sắp xếp theo:', this.value);
+                });
+            }
+
+            // Pagination functionality
+            const pageButtons = document.querySelectorAll('.page-btn:not(.prev):not(.next)');
+            pageButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (!this.classList.contains('active')) {
+                        pageButtons.forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                        console.log('Đang tải trang:', this.textContent);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán - ZPlus Shop</title>
+    <meta name="description" content="Hoàn tất đơn hàng của bạn với quy trình thanh toán an toàn và tiện lợi">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header mobile-only">
+        <div class="mobile-header-content">
+            <img src="images/logo.svg" alt="ZPlus Shop" class="mobile-header-logo">
+            
+            <div class="mobile-header-search">
+                <div class="mobile-search">
+                    <i data-lucide="search" class="mobile-search-icon"></i>
+                    <input type="text" placeholder="Tìm kiếm sản phẩm..." class="mobile-search-input">
+                </div>
+            </div>
+            
+            <div class="mobile-header-actions">
+                <a href="#" class="mobile-header-action">
+                    <i data-lucide="user"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Desktop Header -->
+    <header class="desktop-only" style="background-color: var(--white); border-bottom: 1px solid var(--gray-200); padding: 1rem 0;">
+        <div class="container">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center gap-xl">
+                    <img src="images/logo.svg" alt="ZPlus Shop" style="height: 40px;">
+                    
+                    <!-- Desktop Search -->
+                    <div style="position: relative; width: 400px;">
+                        <i data-lucide="search" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; color: var(--gray-400);"></i>
+                        <input type="text" placeholder="Tìm kiếm sản phẩm..." class="form-input" style="padding-left: 40px;">
+                    </div>
+                </div>
+                
+                <nav class="flex items-center gap-lg">
+                    <a href="index.html" class="text-gray-700 hover:text-primary">Trang chủ</a>
+                    <a href="category.html" class="text-gray-700 hover:text-primary">Danh mục</a>
+                    <a href="#" class="text-gray-700 hover:text-primary">Khuyến mãi</a>
+                    <a href="#" class="text-gray-700 hover:text-primary">Hỗ trợ</a>
+                    
+                    <div class="flex items-center gap-md">
+                        <a href="#" class="mobile-header-action">
+                            <i data-lucide="heart"></i>
+                        </a>
+                        <a href="cart.html" class="mobile-header-action" style="position: relative;">
+                            <i data-lucide="shopping-cart"></i>
+                            <span class="mobile-bottom-nav-badge">3</span>
+                        </a>
+                        <a href="#" class="mobile-header-action">
+                            <i data-lucide="user"></i>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb-section">
+            <div class="container">
+                <nav class="breadcrumb">
+                    <a href="index.html">Trang chủ</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <a href="cart.html">Giỏ hàng</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-current">Thanh toán</span>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Checkout Section -->
+        <section class="checkout-section">
+            <div class="container">
+                <div class="checkout-header">
+                    <h1>Thanh toán đơn hàng</h1>
+                    <div class="checkout-steps">
+                        <div class="step active">
+                            <div class="step-number">1</div>
+                            <span>Thông tin</span>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <span>Vận chuyển</span>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <span>Thanh toán</span>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <span>Hoàn tất</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkout-content">
+                    <div class="checkout-form">
+                        <!-- Step 1: Customer Information -->
+                        <div class="checkout-step" id="step-1">
+                            <div class="step-header">
+                                <h2>Thông tin khách hàng</h2>
+                                <div class="login-option">
+                                    <span>Đã có tài khoản? </span>
+                                    <a href="#" class="login-link">Đăng nhập</a>
+                                </div>
+                            </div>
+
+                            <form class="checkout-form-content">
+                                <div class="form-section">
+                                    <h3>Thông tin liên hệ</h3>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="email">Email *</label>
+                                            <input type="email" id="email" name="email" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="phone">Số điện thoại *</label>
+                                            <input type="tel" id="phone" name="phone" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-section">
+                                    <h3>Địa chỉ giao hàng</h3>
+                                    <div class="form-row">
+                                        <div class="form-group half">
+                                            <label for="firstName">Họ *</label>
+                                            <input type="text" id="firstName" name="firstName" required>
+                                        </div>
+                                        <div class="form-group half">
+                                            <label for="lastName">Tên *</label>
+                                            <input type="text" id="lastName" name="lastName" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="address">Địa chỉ *</label>
+                                            <input type="text" id="address" name="address" placeholder="Số nhà, tên đường" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="apartment">Căn hộ, tầng (tùy chọn)</label>
+                                            <input type="text" id="apartment" name="apartment" placeholder="Căn hộ, suite, etc.">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group third">
+                                            <label for="city">Thành phố *</label>
+                                            <select id="city" name="city" required>
+                                                <option value="">Chọn thành phố</option>
+                                                <option value="ho-chi-minh">TP. Hồ Chí Minh</option>
+                                                <option value="ha-noi">Hà Nội</option>
+                                                <option value="da-nang">Đà Nẵng</option>
+                                                <option value="can-tho">Cần Thơ</option>
+                                                <option value="hai-phong">Hải Phòng</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group third">
+                                            <label for="district">Quận/Huyện *</label>
+                                            <select id="district" name="district" required>
+                                                <option value="">Chọn quận/huyện</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group third">
+                                            <label for="ward">Phường/Xã *</label>
+                                            <select id="ward" name="ward" required>
+                                                <option value="">Chọn phường/xã</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-actions">
+                                    <button type="button" class="btn btn-primary" onclick="nextStep(2)">
+                                        Tiếp tục đến vận chuyển
+                                        <i class="fas fa-arrow-right"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Step 2: Shipping -->
+                        <div class="checkout-step hidden" id="step-2">
+                            <div class="step-header">
+                                <h2>Phương thức vận chuyển</h2>
+                            </div>
+
+                            <div class="shipping-options">
+                                <div class="shipping-option">
+                                    <input type="radio" id="standard" name="shipping" value="standard" checked>
+                                    <label for="standard" class="shipping-label">
+                                        <div class="shipping-info">
+                                            <div class="shipping-name">Giao hàng tiêu chuẩn</div>
+                                            <div class="shipping-time">3-5 ngày làm việc</div>
+                                        </div>
+                                        <div class="shipping-price">Miễn phí</div>
+                                    </label>
+                                </div>
+                                <div class="shipping-option">
+                                    <input type="radio" id="express" name="shipping" value="express">
+                                    <label for="express" class="shipping-label">
+                                        <div class="shipping-info">
+                                            <div class="shipping-name">Giao hàng nhanh</div>
+                                            <div class="shipping-time">1-2 ngày làm việc</div>
+                                        </div>
+                                        <div class="shipping-price">30.000₫</div>
+                                    </label>
+                                </div>
+                                <div class="shipping-option">
+                                    <input type="radio" id="same-day" name="shipping" value="same-day">
+                                    <label for="same-day" class="shipping-label">
+                                        <div class="shipping-info">
+                                            <div class="shipping-name">Giao hàng trong ngày</div>
+                                            <div class="shipping-time">Trong vòng 6 giờ</div>
+                                        </div>
+                                        <div class="shipping-price">50.000₫</div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary" onclick="prevStep(1)">
+                                    <i class="fas fa-arrow-left"></i>
+                                    Quay lại
+                                </button>
+                                <button type="button" class="btn btn-primary" onclick="nextStep(3)">
+                                    Tiếp tục đến thanh toán
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Payment -->
+                        <div class="checkout-step hidden" id="step-3">
+                            <div class="step-header">
+                                <h2>Phương thức thanh toán</h2>
+                            </div>
+
+                            <div class="payment-options">
+                                <div class="payment-option">
+                                    <input type="radio" id="cod" name="payment" value="cod" checked>
+                                    <label for="cod" class="payment-label">
+                                        <div class="payment-info">
+                                            <i class="fas fa-money-bill-wave"></i>
+                                            <div>
+                                                <div class="payment-name">Thanh toán khi nhận hàng (COD)</div>
+                                                <div class="payment-desc">Thanh toán bằng tiền mặt khi nhận được hàng</div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="payment-option">
+                                    <input type="radio" id="bank-transfer" name="payment" value="bank-transfer">
+                                    <label for="bank-transfer" class="payment-label">
+                                        <div class="payment-info">
+                                            <i class="fas fa-university"></i>
+                                            <div>
+                                                <div class="payment-name">Chuyển khoản ngân hàng</div>
+                                                <div class="payment-desc">Chuyển khoản trực tiếp qua ngân hàng</div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="payment-option">
+                                    <input type="radio" id="momo" name="payment" value="momo">
+                                    <label for="momo" class="payment-label">
+                                        <div class="payment-info">
+                                            <i class="fas fa-mobile-alt"></i>
+                                            <div>
+                                                <div class="payment-name">Ví MoMo</div>
+                                                <div class="payment-desc">Thanh toán qua ví điện tử MoMo</div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="payment-option">
+                                    <input type="radio" id="credit-card" name="payment" value="credit-card">
+                                    <label for="credit-card" class="payment-label">
+                                        <div class="payment-info">
+                                            <i class="fas fa-credit-card"></i>
+                                            <div>
+                                                <div class="payment-name">Thẻ tín dụng/Ghi nợ</div>
+                                                <div class="payment-desc">Visa, Mastercard, JCB</div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Credit Card Form -->
+                            <div class="credit-card-form hidden" id="credit-card-form">
+                                <div class="form-section">
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="card-number">Số thẻ *</label>
+                                            <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" maxlength="19">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="card-name">Tên chủ thẻ *</label>
+                                            <input type="text" id="card-name" name="card-name" placeholder="Tên như trên thẻ">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group half">
+                                            <label for="card-expiry">Ngày hết hạn *</label>
+                                            <input type="text" id="card-expiry" name="card-expiry" placeholder="MM/YY" maxlength="5">
+                                        </div>
+                                        <div class="form-group half">
+                                            <label for="card-cvv">CVV *</label>
+                                            <input type="text" id="card-cvv" name="card-cvv" placeholder="123" maxlength="4">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary" onclick="prevStep(2)">
+                                    <i class="fas fa-arrow-left"></i>
+                                    Quay lại
+                                </button>
+                                <button type="button" class="btn btn-primary" onclick="nextStep(4)">
+                                    Xem lại đơn hàng
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 4: Review & Complete -->
+                        <div class="checkout-step hidden" id="step-4">
+                            <div class="step-header">
+                                <h2>Xác nhận đơn hàng</h2>
+                            </div>
+
+                            <div class="order-review">
+                                <div class="review-section">
+                                    <h3>Thông tin liên hệ</h3>
+                                    <div class="review-item">
+                                        <span class="review-label">Email:</span>
+                                        <span class="review-value" id="review-email">customer@example.com</span>
+                                        <button class="edit-btn" onclick="editStep(1)">Sửa</button>
+                                    </div>
+                                    <div class="review-item">
+                                        <span class="review-label">Số điện thoại:</span>
+                                        <span class="review-value" id="review-phone">0123 456 789</span>
+                                        <button class="edit-btn" onclick="editStep(1)">Sửa</button>
+                                    </div>
+                                </div>
+
+                                <div class="review-section">
+                                    <h3>Địa chỉ giao hàng</h3>
+                                    <div class="review-item">
+                                        <span class="review-value" id="review-address">
+                                            Nguyễn Văn A<br>
+                                            123 Nguyễn Huệ, Phường Bến Nghé<br>
+                                            Quận 1, TP. Hồ Chí Minh
+                                        </span>
+                                        <button class="edit-btn" onclick="editStep(1)">Sửa</button>
+                                    </div>
+                                </div>
+
+                                <div class="review-section">
+                                    <h3>Phương thức vận chuyển</h3>
+                                    <div class="review-item">
+                                        <span class="review-value" id="review-shipping">Giao hàng tiêu chuẩn (3-5 ngày)</span>
+                                        <button class="edit-btn" onclick="editStep(2)">Sửa</button>
+                                    </div>
+                                </div>
+
+                                <div class="review-section">
+                                    <h3>Phương thức thanh toán</h3>
+                                    <div class="review-item">
+                                        <span class="review-value" id="review-payment">Thanh toán khi nhận hàng (COD)</span>
+                                        <button class="edit-btn" onclick="editStep(3)">Sửa</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="order-terms">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="terms" name="terms" required>
+                                    <span class="checkmark"></span>
+                                    Tôi đồng ý với <a href="#" class="terms-link">Điều khoản sử dụng</a> và <a href="#" class="privacy-link">Chính sách bảo mật</a>
+                                </label>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary" onclick="prevStep(3)">
+                                    <i class="fas fa-arrow-left"></i>
+                                    Quay lại
+                                </button>
+                                <button type="button" class="btn btn-success btn-large" onclick="completeOrder()">
+                                    <i class="fas fa-check"></i>
+                                    Hoàn tất đơn hàng
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Order Summary -->
+                    <div class="checkout-sidebar">
+                        <div class="order-summary">
+                            <h3>Tóm tắt đơn hàng</h3>
+                            
+                            <div class="order-items">
+                                <div class="order-item">
+                                    <div class="item-image">
+                                        <img src="images/iphone-15-pro.svg" alt="iPhone 15 Pro">
+                                    </div>
+                                    <div class="item-details">
+                                        <h4>iPhone 15 Pro Max</h4>
+                                        <p>256GB, Titan Tự nhiên</p>
+                                        <div class="item-quantity">Số lượng: 1</div>
+                                    </div>
+                                    <div class="item-price">32.990.000₫</div>
+                                </div>
+                                
+                                <div class="order-item">
+                                    <div class="item-image">
+                                        <img src="images/airpods-pro.svg" alt="AirPods Pro">
+                                    </div>
+                                    <div class="item-details">
+                                        <h4>AirPods Pro (Gen 2)</h4>
+                                        <p>USB-C</p>
+                                        <div class="item-quantity">Số lượng: 1</div>
+                                    </div>
+                                    <div class="item-price">6.290.000₫</div>
+                                </div>
+                                
+                                <div class="order-item">
+                                    <div class="item-image">
+                                        <img src="images/case-iphone.svg" alt="Ốp lưng iPhone">
+                                    </div>
+                                    <div class="item-details">
+                                        <h4>Ốp lưng iPhone 15 Pro</h4>
+                                        <p>Silicone, Màu xanh</p>
+                                        <div class="item-quantity">Số lượng: 1</div>
+                                    </div>
+                                    <div class="item-price">1.290.000₫</div>
+                                </div>
+                            </div>
+
+                            <div class="order-totals">
+                                <div class="total-line">
+                                    <span>Tạm tính:</span>
+                                    <span>40.570.000₫</span>
+                                </div>
+                                <div class="total-line">
+                                    <span>Vận chuyển:</span>
+                                    <span id="shipping-cost">Miễn phí</span>
+                                </div>
+                                <div class="total-line discount-line">
+                                    <span>Giảm giá:</span>
+                                    <span>-570.000₫</span>
+                                </div>
+                                <div class="total-line total">
+                                    <span>Tổng cộng:</span>
+                                    <span id="final-total">40.000.000₫</span>
+                                </div>
+                            </div>
+
+                            <!-- Coupon Code -->
+                            <div class="coupon-section">
+                                <div class="coupon-input">
+                                    <input type="text" placeholder="Mã giảm giá" id="coupon-code">
+                                    <button class="apply-coupon-btn" onclick="applyCoupon()">Áp dụng</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Desktop Footer -->
+    <footer class="desktop-footer desktop-only">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="footer-main">
+                <div class="footer-grid">
+                    <!-- Company Info -->
+                    <div class="footer-section footer-brand">
+                        <img src="images/logo.svg" alt="ZPlus Shop" style="height: 40px; margin-bottom: 1rem;">
+                        <p>ZPlus Shop là cửa hàng điện tử hàng đầu Việt Nam, cung cấp các sản phẩm công nghệ chính hãng với chất lượng cao và dịch vụ tốt nhất.</p>
+                        <div class="footer-contact">
+                            <div class="contact-item">
+                                <i data-lucide="map-pin"></i>
+                                <span>123 Đường ABC, Quận 1, TP.HCM</span>
+                            </div>
+                            <div class="contact-item">
+                                <i data-lucide="phone"></i>
+                                <span>1900 1234</span>
+                            </div>
+                            <div class="contact-item">
+                                <i data-lucide="mail"></i>
+                                <span>contact@zplusshop.vn</span>
+                            </div>
+                        </div>
+                        <div class="footer-social">
+                            <a href="#" class="social-link">
+                                <i data-lucide="facebook"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i data-lucide="twitter"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i data-lucide="instagram"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i data-lucide="youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Product Categories -->
+                    <div class="footer-section">
+                        <h4>Danh mục sản phẩm</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Điện thoại</a></li>
+                            <li><a href="#">Laptop</a></li>
+                            <li><a href="#">Tablet</a></li>
+                            <li><a href="#">Tai nghe</a></li>
+                            <li><a href="#">Đồng hồ thông minh</a></li>
+                            <li><a href="#">Phụ kiện</a></li>
+                            <li><a href="#">Gaming</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Customer Service -->
+                    <div class="footer-section">
+                        <h4>Hỗ trợ khách hàng</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Hướng dẫn mua hàng</a></li>
+                            <li><a href="#">Chính sách giao hàng</a></li>
+                            <li><a href="#">Chính sách đổi trả</a></li>
+                            <li><a href="#">Chính sách bảo hành</a></li>
+                            <li><a href="#">Phương thức thanh toán</a></li>
+                            <li><a href="#">Câu hỏi thường gặp</a></li>
+                            <li><a href="#">Liên hệ hỗ trợ</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Company -->
+                    <div class="footer-section">
+                        <h4>Về ZPlus Shop</h4>
+                        <ul class="footer-links">
+                            <li><a href="#">Giới thiệu công ty</a></li>
+                            <li><a href="#">Tuyển dụng</a></li>
+                            <li><a href="#">Tin tức</a></li>
+                            <li><a href="#">Sự kiện</a></li>
+                            <li><a href="#">Điều khoản sử dụng</a></li>
+                            <li><a href="#">Chính sách bảo mật</a></li>
+                            <li><a href="#">Sitemap</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Newsletter & App Download -->
+                    <div class="footer-section">
+                        <h4>Kết nối với chúng tôi</h4>
+                        <p style="margin-bottom: 1rem; color: var(--gray-600); font-size: 0.875rem;">
+                            Đăng ký nhận thông tin khuyến mãi và sản phẩm mới nhất
+                        </p>
+                        <div class="newsletter-form">
+                            <input type="email" placeholder="Nhập email của bạn" class="newsletter-input">
+                            <button class="newsletter-btn">
+                                <i data-lucide="send"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="app-download">
+                            <h5 style="margin: 1.5rem 0 0.75rem 0; font-size: 0.875rem; font-weight: 600;">Tải ứng dụng ZPlus</h5>
+                            <div class="app-links">
+                                <a href="#" class="app-link">
+                                    <img src="images/app-store.svg" alt="App Store" style="height: 40px;">
+                                </a>
+                                <a href="#" class="app-link">
+                                    <img src="images/google-play.svg" alt="Google Play" style="height: 40px;">
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="payment-methods">
+                            <h5 style="margin: 1.5rem 0 0.75rem 0; font-size: 0.875rem; font-weight: 600;">Phương thức thanh toán</h5>
+                            <div class="payment-icons">
+                                <i data-lucide="credit-card"></i>
+                                <i data-lucide="smartphone"></i>
+                                <i data-lucide="banknote"></i>
+                                <i data-lucide="wallet"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <div class="footer-copyright">
+                        <p>&copy; 2024 ZPlus Shop. Tất cả quyền được bảo lưu.</p>
+                    </div>
+                    <div class="footer-certifications">
+                        <div class="cert-item">
+                            <i data-lucide="shield-check"></i>
+                            <span>Chứng nhận</span>
+                        </div>
+                        <div class="cert-item">
+                            <i data-lucide="award"></i>
+                            <span>Uy tín</span>
+                        </div>
+                        <div class="cert-item">
+                            <i data-lucide="truck"></i>
+                            <span>Giao hàng toàn quốc</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav mobile-only">
+        <ul class="mobile-bottom-nav-list">
+            <li class="mobile-bottom-nav-item">
+                <a href="index.html" class="mobile-bottom-nav-link">
+                    <i data-lucide="home" class="mobile-bottom-nav-icon"></i>
+                    <span class="mobile-bottom-nav-text">Trang chủ</span>
+                </a>
+            </li>
+            <li class="mobile-bottom-nav-item">
+                <a href="category.html" class="mobile-bottom-nav-link">
+                    <i data-lucide="grid-3x3" class="mobile-bottom-nav-icon"></i>
+                    <span class="mobile-bottom-nav-text">Danh mục</span>
+                </a>
+            </li>
+            <li class="mobile-bottom-nav-item">
+                <a href="cart.html" class="mobile-bottom-nav-link">
+                    <i data-lucide="shopping-cart" class="mobile-bottom-nav-icon"></i>
+                    <span class="mobile-bottom-nav-text">Giỏ hàng</span>
+                    <span class="mobile-bottom-nav-badge">3</span>
+                </a>
+            </li>
+            <li class="mobile-bottom-nav-item">
+                <a href="#" class="mobile-bottom-nav-link">
+                    <i data-lucide="heart" class="mobile-bottom-nav-icon"></i>
+                    <span class="mobile-bottom-nav-text">Yêu thích</span>
+                </a>
+            </li>
+            <li class="mobile-bottom-nav-item">
+                <a href="#" class="mobile-bottom-nav-link">
+                    <i data-lucide="user" class="mobile-bottom-nav-icon"></i>
+                    <span class="mobile-bottom-nav-text">Tài khoản</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Scripts -->
+    <script src="js/common.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        // Checkout Step Management
+        function nextStep(stepNumber) {
+            // Validate current step
+            const currentStep = document.querySelector('.checkout-step:not(.hidden)');
+            if (!validateStep(currentStep)) {
+                return;
+            }
+
+            // Hide current step
+            document.querySelectorAll('.checkout-step').forEach(step => {
+                step.classList.add('hidden');
+            });
+
+            // Show next step
+            document.getElementById(`step-${stepNumber}`).classList.remove('hidden');
+
+            // Update step indicators
+            updateStepIndicators(stepNumber);
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function prevStep(stepNumber) {
+            // Hide current step
+            document.querySelectorAll('.checkout-step').forEach(step => {
+                step.classList.add('hidden');
+            });
+
+            // Show previous step
+            document.getElementById(`step-${stepNumber}`).classList.remove('hidden');
+
+            // Update step indicators
+            updateStepIndicators(stepNumber);
+
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function editStep(stepNumber) {
+            prevStep(stepNumber);
+        }
+
+        function updateStepIndicators(activeStep) {
+            const steps = document.querySelectorAll('.checkout-steps .step');
+            steps.forEach((step, index) => {
+                if (index + 1 < activeStep) {
+                    step.classList.add('completed');
+                    step.classList.remove('active');
+                } else if (index + 1 === activeStep) {
+                    step.classList.add('active');
+                    step.classList.remove('completed');
+                } else {
+                    step.classList.remove('active', 'completed');
+                }
+            });
+        }
+
+        function validateStep(step) {
+            const requiredFields = step.querySelectorAll('input[required], select[required]');
+            let isValid = true;
+
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('error');
+                    isValid = false;
+                } else {
+                    field.classList.remove('error');
+                }
+            });
+
+            if (!isValid) {
+                showToast('Vui lòng điền đầy đủ thông tin bắt buộc', 'error');
+            }
+
+            return isValid;
+        }
+
+        // Payment Method Handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const paymentRadios = document.querySelectorAll('input[name="payment"]');
+            const creditCardForm = document.getElementById('credit-card-form');
+
+            paymentRadios.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    if (this.value === 'credit-card') {
+                        creditCardForm.classList.remove('hidden');
+                    } else {
+                        creditCardForm.classList.add('hidden');
+                    }
+                });
+            });
+
+            // Shipping cost update
+            const shippingRadios = document.querySelectorAll('input[name="shipping"]');
+            shippingRadios.forEach(radio => {
+                radio.addEventListener('change', updateShippingCost);
+            });
+
+            // Format card number input
+            const cardNumberInput = document.getElementById('card-number');
+            if (cardNumberInput) {
+                cardNumberInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\s/g, '').replace(/[^0-9]/gi, '');
+                    let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+                    e.target.value = formattedValue;
+                });
+            }
+
+            // Format expiry date input
+            const expiryInput = document.getElementById('card-expiry');
+            if (expiryInput) {
+                expiryInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length >= 2) {
+                        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                    }
+                    e.target.value = value;
+                });
+            }
+        });
+
+        function updateShippingCost() {
+            const selectedShipping = document.querySelector('input[name="shipping"]:checked');
+            const shippingCostElement = document.getElementById('shipping-cost');
+            const finalTotalElement = document.getElementById('final-total');
+            
+            let shippingCost = 0;
+            let shippingText = 'Miễn phí';
+            
+            if (selectedShipping) {
+                switch (selectedShipping.value) {
+                    case 'express':
+                        shippingCost = 30000;
+                        shippingText = '30.000₫';
+                        break;
+                    case 'same-day':
+                        shippingCost = 50000;
+                        shippingText = '50.000₫';
+                        break;
+                    default:
+                        shippingCost = 0;
+                        shippingText = 'Miễn phí';
+                }
+            }
+            
+            shippingCostElement.textContent = shippingText;
+            
+            // Update total (40,000,000 base + shipping)
+            const total = 40000000 + shippingCost;
+            finalTotalElement.textContent = total.toLocaleString('vi-VN') + '₫';
+        }
+
+        function applyCoupon() {
+            const couponCode = document.getElementById('coupon-code').value.trim();
+            
+            if (!couponCode) {
+                showToast('Vui lòng nhập mã giảm giá', 'error');
+                return;
+            }
+
+            // Simulate coupon validation
+            if (couponCode.toUpperCase() === 'SAVE10') {
+                showToast('Áp dụng mã giảm giá thành công!', 'success');
+                // Update discount in UI if needed
+            } else {
+                showToast('Mã giảm giá không hợp lệ', 'error');
+            }
+        }
+
+        function completeOrder() {
+            const termsCheckbox = document.getElementById('terms');
+            
+            if (!termsCheckbox.checked) {
+                showToast('Vui lòng đồng ý với điều khoản và chính sách', 'error');
+                return;
+            }
+
+            // Simulate order processing
+            showToast('Đang xử lý đơn hàng...', 'info');
+            
+            setTimeout(() => {
+                showToast('Đặt hàng thành công! Cảm ơn bạn đã mua hàng.', 'success');
+                
+                // Redirect to success page (would be implemented)
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 2000);
+            }, 2000);
+        }
+
+        // Toast notification function
+        function showToast(message, type = 'info') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type} show`;
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Location selection handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const citySelect = document.getElementById('city');
+            const districtSelect = document.getElementById('district');
+            const wardSelect = document.getElementById('ward');
+
+            // Mock data for locations
+            const locations = {
+                'ho-chi-minh': {
+                    'quan-1': ['Phường Bến Nghé', 'Phường Bến Thành', 'Phường Cầu Kho'],
+                    'quan-3': ['Phường 1', 'Phường 2', 'Phường 3'],
+                    'quan-7': ['Phường Tân Thuận Đông', 'Phường Tân Thuận Tây', 'Phường Tân Kiểng']
+                },
+                'ha-noi': {
+                    'ba-dinh': ['Phường Điện Biên', 'Phường Đội Cấn', 'Phường Giảng Võ'],
+                    'hoan-kiem': ['Phường Chương Dương Độ', 'Phường Cửa Nam', 'Phường Đồng Xuân']
+                }
+            };
+
+            citySelect.addEventListener('change', function() {
+                const selectedCity = this.value;
+                districtSelect.innerHTML = '<option value="">Chọn quận/huyện</option>';
+                wardSelect.innerHTML = '<option value="">Chọn phường/xã</option>';
+
+                if (selectedCity && locations[selectedCity]) {
+                    Object.keys(locations[selectedCity]).forEach(district => {
+                        const option = document.createElement('option');
+                        option.value = district;
+                        option.textContent = district.charAt(0).toUpperCase() + district.slice(1).replace('-', ' ');
+                        districtSelect.appendChild(option);
+                    });
+                }
+            });
+
+            districtSelect.addEventListener('change', function() {
+                const selectedCity = citySelect.value;
+                const selectedDistrict = this.value;
+                wardSelect.innerHTML = '<option value="">Chọn phường/xã</option>';
+
+                if (selectedCity && selectedDistrict && locations[selectedCity][selectedDistrict]) {
+                    locations[selectedCity][selectedDistrict].forEach(ward => {
+                        const option = document.createElement('option');
+                        option.value = ward.toLowerCase().replace(' ', '-');
+                        option.textContent = ward;
+                        wardSelect.appendChild(option);
+                    });
+                }
+            });
+        });
+
+        // Add event listeners for cart functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update cart counts
+            updateCartCounts();
+        });
+
+        function updateCartCounts() {
+            const count = 3; // Current cart count
+            const cartElements = [
+                document.getElementById('cart-count'),
+                document.getElementById('mobile-cart-count'),
+                document.getElementById('mobile-nav-cart-count')
+            ];
+            
+            cartElements.forEach(element => {
+                if (element) {
+                    element.textContent = count;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
