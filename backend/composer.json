@@ -65,6 +65,7 @@
             "Database\\Seeders\\": "database/seeders/",
             "Zplus\\WpConvert\\": "packages/Zplus/WpConvert/src",
             "Zplus\\ViPOS\\": "packages/Zplus/ViPOS/src",
+            "Zplus\\Warranty\\": "packages/Zplus/Warranty/src",
             "Webkul\\Admin\\": "packages/Webkul/Admin/src",
             "Webkul\\Attribute\\": "packages/Webkul/Attribute/src",
             "Webkul\\BookingProduct\\": "packages/Webkul/BookingProduct/src",

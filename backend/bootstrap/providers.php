@@ -49,4 +49,5 @@ return [
      */
     Zplus\WpConvert\Providers\WpConvertServiceProvider::class,
     Zplus\ViPOS\Providers\ViPOSServiceProvider::class,
+    Zplus\Warranty\Providers\WarrantyServiceProvider::class,
 ];

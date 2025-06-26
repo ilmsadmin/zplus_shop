@@ -1,0 +1,133 @@
+<?php
+
+return [
+    'components' => [
+        'layouts' => [
+            'sidebar' => [
+                'warranty' => 'Quản lý bảo hành',
+                'warranties' => 'Danh sách bảo hành',
+                'packages' => 'Gói bảo hành',
+            ],
+        ],
+    ],
+
+    'admin' => [
+        'warranties' => [
+            'index' => [
+                'title' => 'Quản lý bảo hành',
+                'create-btn' => 'Tạo bảo hành mới',
+                'search-placeholder' => 'Tìm kiếm theo số bảo hành, serial, tên khách hàng...',
+                'export-btn' => 'Xuất Excel',
+                'datagrid' => [
+                    'warranty-number' => 'Số bảo hành',
+                    'product-name' => 'Sản phẩm',
+                    'product-serial' => 'Serial',
+                    'customer-name' => 'Khách hàng',
+                    'customer-phone' => 'Số điện thoại',
+                    'package' => 'Gói bảo hành',
+                    'start-date' => 'Ngày bắt đầu',
+                    'end-date' => 'Ngày kết thúc',
+                    'status' => 'Trạng thái',
+                    'actions' => 'Hành động',
+                    'view' => 'Xem',
+                    'edit' => 'Sửa',
+                    'delete' => 'Xóa',
+                ],
+            ],
+            'create' => [
+                'title' => 'Tạo bảo hành mới',
+                'save-btn' => 'Lưu bảo hành',
+                'general' => 'Thông tin chung',
+                'product-info' => 'Thông tin sản phẩm',
+                'customer-info' => 'Thông tin khách hàng',
+                'warranty-info' => 'Thông tin bảo hành',
+            ],
+            'edit' => [
+                'title' => 'Chỉnh sửa bảo hành',
+                'update-btn' => 'Cập nhật',
+            ],
+            'show' => [
+                'title' => 'Chi tiết bảo hành',
+                'warranty-details' => 'Thông tin bảo hành',
+                'product-details' => 'Thông tin sản phẩm',
+                'customer-details' => 'Thông tin khách hàng',
+                'warranty-history' => 'Lịch sử bảo hành',
+            ],
+            'fields' => [
+                'warranty-number' => 'Số bảo hành',
+                'warranty-package' => 'Gói bảo hành',
+                'product' => 'Sản phẩm',
+                'product-serial' => 'Serial sản phẩm',
+                'customer' => 'Khách hàng',
+                'customer-phone' => 'Số điện thoại',
+                'customer-email' => 'Email',
+                'purchase-date' => 'Ngày mua',
+                'start-date' => 'Ngày bắt đầu bảo hành',
+                'end-date' => 'Ngày kết thúc bảo hành',
+                'order-number' => 'Số đơn hàng',
+                'status' => 'Trạng thái',
+                'notes' => 'Ghi chú',
+            ],
+            'status' => [
+                'active' => 'Đang hiệu lực',
+                'expired' => 'Đã hết hạn',
+                'claimed' => 'Đã bảo hành',
+                'cancelled' => 'Đã hủy',
+            ],
+        ],
+
+        'packages' => [
+            'index' => [
+                'title' => 'Quản lý gói bảo hành',
+                'create-btn' => 'Tạo gói mới',
+                'datagrid' => [
+                    'name' => 'Tên gói',
+                    'duration' => 'Thời gian (tháng)',
+                    'price' => 'Giá',
+                    'warranties-count' => 'Số bảo hành',
+                    'status' => 'Trạng thái',
+                    'actions' => 'Hành động',
+                    'active' => 'Kích hoạt',
+                    'inactive' => 'Tạm ngưng',
+                ],
+            ],
+            'create' => [
+                'title' => 'Tạo gói bảo hành mới',
+                'save-btn' => 'Lưu gói',
+            ],
+            'edit' => [
+                'title' => 'Chỉnh sửa gói bảo hành',
+                'update-btn' => 'Cập nhật',
+            ],
+            'fields' => [
+                'name' => 'Tên gói',
+                'duration-months' => 'Thời gian (tháng)',
+                'description' => 'Mô tả',
+                'price' => 'Giá',
+                'is-active' => 'Kích hoạt',
+            ],
+        ],
+    ],
+
+    'frontend' => [
+        'search' => [
+            'title' => 'Tra cứu bảo hành',
+            'description' => 'Nhập số serial sản phẩm hoặc số điện thoại để tra cứu thông tin bảo hành',
+            'search-placeholder' => 'Nhập số serial hoặc số điện thoại...',
+            'search-btn' => 'Tìm kiếm',
+            'no-results' => 'Không tìm thấy kết quả',
+            'warranty-details' => 'Thông tin bảo hành',
+            'remaining-days' => 'Còn lại: :days ngày',
+        ],
+    ],
+
+    'messages' => [
+        'create-success' => 'Tạo bảo hành thành công',
+        'update-success' => 'Cập nhật bảo hành thành công',
+        'delete-success' => 'Xóa bảo hành thành công',
+        'package-create-success' => 'Tạo gói bảo hành thành công',
+        'package-update-success' => 'Cập nhật gói bảo hành thành công',
+        'package-delete-success' => 'Xóa gói bảo hành thành công',
+        'package-cannot-delete' => 'Không thể xóa gói có bảo hành đang sử dụng',
+    ],
+];
