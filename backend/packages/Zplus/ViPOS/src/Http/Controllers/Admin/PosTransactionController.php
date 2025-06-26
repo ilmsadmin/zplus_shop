@@ -113,14 +113,21 @@ class PosTransactionController extends Controller
                 // Get product to retrieve SKU
                 $product = Product::find($item['product_id']);
                 
+                $subtotal = $item['quantity'] * $item['price'];
+                
                 PosTransactionItem::create([
                     'pos_transaction_id' => $transaction->id,
                     'product_id' => $item['product_id'],
                     'product_sku' => $product->sku ?? '',
                     'product_name' => $item['name'] ?? '',
+                    'unit_price' => $item['price'],
                     'quantity' => $item['quantity'],
-                    'price' => $item['price'],
-                    'total' => $item['quantity'] * $item['price']
+                    'discount_amount' => 0,
+                    'discount_percentage' => 0,
+                    'tax_amount' => 0,
+                    'tax_percentage' => 0,
+                    'subtotal' => $subtotal,
+                    'total' => $subtotal,
                 ]);
             }
 

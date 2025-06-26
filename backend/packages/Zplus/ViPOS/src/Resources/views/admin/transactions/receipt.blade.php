@@ -69,8 +69,8 @@
                     <div class="item">
                         @if(is_array($item))
                             <div class="item-name">{{ $item['product_name'] ?? $item['name'] ?? 'N/A' }}</div>
-                            <div class="item-qty-price">{{ $item['quantity'] ?? 0 }} x {{ number_format($item['unit_price'] ?? $item['price'] ?? 0, 0, ',', '.') }}đ</div>
-                            <div class="item-total">{{ number_format($item['total'] ?? 0, 0, ',', '.') }}đ</div>
+                            <div class="item-qty-price">{{ $item['quantity'] ?? 0 }} x {{ number_format($item['price'] ?? 0, 0, ',', '.') }}đ</div>
+                            <div class="item-total">{{ number_format(($item['quantity'] ?? 0) * ($item['price'] ?? 0), 0, ',', '.') }}đ</div>
                         @else
                             <div class="item-name">{{ $item->product_name ?? 'N/A' }}</div>
                             <div class="item-qty-price">{{ $item->quantity ?? 0 }} x {{ number_format($item->unit_price ?? 0, 0, ',', '.') }}đ</div>
@@ -91,7 +91,7 @@
         <div class="totals-section">
             <div class="total-line">
                 <span>Tạm tính:</span>
-                <span>{{ number_format($transaction->subtotal_amount, 0, ',', '.') }}đ</span>
+                <span>{{ number_format($transaction->subtotal_amount ?: ($transaction->total_amount - $transaction->tax_amount + $transaction->discount_amount), 0, ',', '.') }}đ</span>
             </div>
             
             @if($transaction->discount_amount > 0)
