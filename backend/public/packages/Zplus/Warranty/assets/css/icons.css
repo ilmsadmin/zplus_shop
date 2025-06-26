@@ -1,0 +1,20 @@
+/* Warranty Icons */
+.icon-warranty:before {
+    content: "\e99d";
+    font-family: "bagisto-admin" !important;
+}
+
+.icon-warranty-shield:before {
+    content: "\e99e";
+    font-family: "bagisto-admin" !important;
+}
+
+.icon-warranty-certificate:before {
+    content: "\e99f";
+    font-family: "bagisto-admin" !important;
+}
+
+/* Use existing settings icon for warranty management */
+.warranty-icon {
+    color: #2563eb;
+}

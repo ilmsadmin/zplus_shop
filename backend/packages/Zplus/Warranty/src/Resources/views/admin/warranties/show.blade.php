@@ -1,14 +1,12 @@
-@extends('admin::layouts.content')
+<x-admin::layouts>
+    <x-slot:title>
+        Chi tiết bảo hành
+    </x-slot>
 
-@section('page_title')
-    {{ trans('warranty::app.admin.warranties.show.title') }}
-@stop
-
-@section('content')
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center mb-4">
         <div class="flex flex-col gap-2">
             <div class="text-xl text-gray-800 dark:text-white font-bold">
-                {{ trans('warranty::app.admin.warranties.show.title') }} - {{ $warranty->warranty_number }}
+                Chi tiết bảo hành - {{ $warranty->warranty_number }}
             </div>
         </div>
 
@@ -17,268 +15,185 @@
                 href="{{ route('admin.warranty.edit', $warranty->id) }}"
                 class="primary-button"
             >
-                {{ trans('warranty::app.admin.warranties.index.datagrid.edit') }}
+                Chỉnh sửa
             </a>
             <a 
                 href="{{ route('admin.warranty.index') }}"
                 class="secondary-button"
             >
-                {{ trans('admin::app.datagrid.back') }}
+                Quay lại
             </a>
         </div>
     </div>
 
-    <div class="flex gap-2.5 mt-3.5 max-xl:flex-wrap">
-        <!-- Warranty Details -->
-        <div class="flex flex-col gap-2 flex-1 max-xl:flex-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- Thông tin bảo hành -->
+        <div class="bg-white p-4 rounded shadow">
+            <h3 class="text-lg font-semibold mb-4">Thông tin bảo hành</h3>
             
-            <x-admin::accordion>
-                <x-slot:header>
-                    <div class="flex items-center justify-between">
-                        <p class="p-2.5 text-gray-800 dark:text-white text-base  font-semibold">
-                            {{ trans('warranty::app.admin.warranties.show.warranty-details') }}
-                        </p>
-                    </div>
-                </x-slot:header>
+            <div class="space-y-3">
+                <div class="flex justify-between py-2 border-b border-gray-200">
+                    <span class="text-sm font-medium text-gray-600">Mã bảo hành:</span>
+                    <span class="text-sm text-gray-900 font-mono">{{ $warranty->warranty_number }}</span>
+                </div>
 
-                <x-slot:content>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">
-                                {{ trans('warranty::app.admin.warranties.fields.warranty-number') }}
-                            </label>
-                            <p class="text-gray-600 dark:text-gray-300">{{ $warranty->warranty_number }}</p>
-                        </div>
+                <div class="flex justify-between py-2 border-b border-gray-200">
+                    <span class="text-sm font-medium text-gray-600">Gói bảo hành:</span>
+                    <span class="text-sm text-gray-900">
+                        {{ $warranty->warrantyPackage->name ?? 'N/A' }} 
+                        ({{ $warranty->warrantyPackage->duration_months ?? 'N/A' }} tháng)
+                    </span>
+                </div>
 
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">
-                                {{ trans('warranty::app.admin.warranties.fields.status') }}
-                            </label>
-                            <p class="text-gray-600 dark:text-gray-300">
-                                <span class="badge {{ $warranty->status_badge_class }}">
-                                    {{ $warranty->status_text }}
-                                </span>
-                            </p>
-                        </div>
+                <div class="flex justify-between py-2 border-b border-gray-200">
+                    <span class="text-sm font-medium text-gray-600">Trạng thái:</span>
+                    <span class="text-sm">
+                        <span class="px-2 py-1 rounded text-xs
+                            @switch($warranty->status)
+                                @case('active') bg-green-200 text-green-800 @break
+                                @case('expired') bg-red-200 text-red-800 @break
+                                @case('claimed') bg-yellow-200 text-yellow-800 @break
+                                @case('cancelled') bg-gray-200 text-gray-800 @break
+                                @default bg-gray-200 text-gray-800
+                            @endswitch">
+                            @switch($warranty->status)
+                                @case('active') Đang hiệu lực @break
+                                @case('expired') Hết hạn @break
+                                @case('claimed') Đã sử dụng @break
+                                @case('cancelled') Đã hủy @break
+                                @default {{ $warranty->status }}
+                            @endswitch
+                        </span>
+                    </span>
+                </div>
 
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">
-                                {{ trans('warranty::app.admin.warranties.fields.warranty-package') }}
-                            </label>
-                            <p class="text-gray-600 dark:text-gray-300">{{ $warranty->warrantyPackage->name ?? 'N/A' }}</p>
-                        </div>
+                <div class="flex justify-between py-2 border-b border-gray-200">
+                    <span class="text-sm font-medium text-gray-600">Ngày bắt đầu:</span>
+                    <span class="text-sm text-gray-900">{{ $warranty->start_date->format('d/m/Y') }}</span>
+                </div>
 
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">
-                                {{ trans('warranty::app.admin.warranties.fields.purchase-date') }}
-                            </label>
-                            <p class="text-gray-600 dark:text-gray-300">{{ $warranty->purchase_date->format('d/m/Y') }}</p>
-                        </div>
+                <div class="flex justify-between py-2 border-b border-gray-200">
+                    <span class="text-sm font-medium text-gray-600">Ngày hết hạn:</span>
+                    <span class="text-sm text-gray-900">{{ $warranty->end_date->format('d/m/Y') }}</span>
+                </div>
 
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">
-                                {{ trans('warranty::app.admin.warranties.fields.start-date') }}
-                            </label>
-                            <p class="text-gray-600 dark:text-gray-300">{{ $warranty->start_date->format('d/m/Y') }}</p>
-                        </div>
+                <div class="flex justify-between py-2">
+                    <span class="text-sm font-medium text-gray-600">Ngày mua:</span>
+                    <span class="text-sm text-gray-900">{{ \Carbon\Carbon::parse($warranty->purchase_date)->format('d/m/Y') }}</span>
+                </div>
+            </div>
+        </div>
 
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">
-                                {{ trans('warranty::app.admin.warranties.fields.end-date') }}
-                            </label>
-                            <p class="text-gray-600 dark:text-gray-300">
-                                {{ $warranty->end_date->format('d/m/Y') }}
-                                @if($warranty->isActive())
-                                    <span class="text-green-600">({{ $warranty->remaining_days }} ngày còn lại)</span>
-                                @elseif($warranty->isExpired())
-                                    <span class="text-red-600">(Đã hết hạn)</span>
-                                @endif
-                            </p>
-                        </div>
+        <!-- Thông tin sản phẩm -->
+        <div class="bg-white p-4 rounded shadow">
+            <h3 class="text-lg font-semibold mb-4">Thông tin sản phẩm</h3>
+            
+            <div class="space-y-3">
+                <div class="flex justify-between py-2 border-b border-gray-200">
+                    <span class="text-sm font-medium text-gray-600">Tên sản phẩm:</span>
+                    <span class="text-sm text-gray-900">{{ $warranty->product_name ?? 'N/A' }}</span>
+                </div>
 
-                        @if($warranty->order_number)
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">
-                                {{ trans('warranty::app.admin.warranties.fields.order-number') }}
-                            </label>
-                            <p class="text-gray-600 dark:text-gray-300">{{ $warranty->order_number }}</p>
-                        </div>
-                        @endif
+                <div class="flex justify-between py-2 border-b border-gray-200">
+                    <span class="text-sm font-medium text-gray-600">SKU:</span>
+                    <span class="text-sm text-gray-900 font-mono">{{ $warranty->product_sku ?? 'N/A' }}</span>
+                </div>
 
-                        @if($warranty->notes)
-                        <div class="col-span-2">
-                            <label class="text-gray-800 dark:text-white font-medium">
-                                {{ trans('warranty::app.admin.warranties.fields.notes') }}
-                            </label>
-                            <p class="text-gray-600 dark:text-gray-300">{{ $warranty->notes }}</p>
-                        </div>
-                        @endif
-                    </div>
-                </x-slot:content>
-            </x-admin::accordion>
+                <div class="flex justify-between py-2 border-b border-gray-200">
+                    <span class="text-sm font-medium text-gray-600">Serial:</span>
+                    <span class="text-sm text-gray-900 font-mono">{{ $warranty->product_serial }}</span>
+                </div>
 
-            <!-- Product Information -->
-            <x-admin::accordion>
-                <x-slot:header>
-                    <div class="flex items-center justify-between">
-                        <p class="p-2.5 text-gray-800 dark:text-white text-base  font-semibold">
-                            {{ trans('warranty::app.admin.warranties.show.product-details') }}
-                        </p>
-                    </div>
-                </x-slot:header>
+                <div class="flex justify-between py-2">
+                    <span class="text-sm font-medium text-gray-600">Số đơn hàng:</span>
+                    <span class="text-sm text-gray-900">{{ $warranty->order_number ?? 'N/A' }}</span>
+                </div>
+            </div>
+        </div>
 
-                <x-slot:content>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">
-                                {{ trans('warranty::app.admin.warranties.fields.product') }}
-                            </label>
-                            <p class="text-gray-600 dark:text-gray-300">{{ $warranty->product_name }}</p>
-                        </div>
+        <!-- Thông tin khách hàng -->
+        <div class="bg-white p-4 rounded shadow">
+            <h3 class="text-lg font-semibold mb-4">Thông tin khách hàng</h3>
+            
+            <div class="space-y-3">
+                <div class="flex justify-between py-2 border-b border-gray-200">
+                    <span class="text-sm font-medium text-gray-600">Tên khách hàng:</span>
+                    <span class="text-sm text-gray-900">{{ $warranty->customer_name }}</span>
+                </div>
 
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">SKU</label>
-                            <p class="text-gray-600 dark:text-gray-300">{{ $warranty->product_sku }}</p>
-                        </div>
+                <div class="flex justify-between py-2 border-b border-gray-200">
+                    <span class="text-sm font-medium text-gray-600">Email:</span>
+                    <span class="text-sm text-gray-900">{{ $warranty->customer_email ?? 'N/A' }}</span>
+                </div>
 
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">
-                                {{ trans('warranty::app.admin.warranties.fields.product-serial') }}
-                            </label>
-                            <p class="text-gray-600 dark:text-gray-300 font-bold text-lg">{{ $warranty->product_serial }}</p>
-                        </div>
+                <div class="flex justify-between py-2">
+                    <span class="text-sm font-medium text-gray-600">Số điện thoại:</span>
+                    <span class="text-sm text-gray-900">{{ $warranty->customer_phone ?? 'N/A' }}</span>
+                </div>
+            </div>
+        </div>
 
-                        @if($warranty->product)
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">Liên kết sản phẩm</label>
-                            <p class="text-gray-600 dark:text-gray-300">
-                                <a href="{{ route('admin.catalog.products.edit', $warranty->product->id) }}" class="text-blue-600 hover:text-blue-800">
-                                    Xem chi tiết sản phẩm
-                                </a>
-                            </p>
-                        </div>
-                        @endif
-                    </div>
-                </x-slot:content>
-            </x-admin::accordion>
+        <!-- Ghi chú và thông tin khác -->
+        <div class="bg-white p-4 rounded shadow">
+            <h3 class="text-lg font-semibold mb-4">Ghi chú & Thông tin khác</h3>
+            
+            <div class="space-y-3">
+                <div class="flex justify-between py-2 border-b border-gray-200">
+                    <span class="text-sm font-medium text-gray-600">Ghi chú:</span>
+                    <span class="text-sm text-gray-900">{{ $warranty->notes ?? 'Không có ghi chú' }}</span>
+                </div>
 
-            <!-- Customer Information -->
-            <x-admin::accordion>
-                <x-slot:header>
-                    <div class="flex items-center justify-between">
-                        <p class="p-2.5 text-gray-800 dark:text-white text-base  font-semibold">
-                            {{ trans('warranty::app.admin.warranties.show.customer-details') }}
-                        </p>
-                    </div>
-                </x-slot:header>
+                <div class="flex justify-between py-2 border-b border-gray-200">
+                    <span class="text-sm font-medium text-gray-600">Ngày tạo:</span>
+                    <span class="text-sm text-gray-900">{{ $warranty->created_at->format('d/m/Y H:i:s') }}</span>
+                </div>
 
-                <x-slot:content>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">
-                                {{ trans('warranty::app.admin.warranties.fields.customer') }}
-                            </label>
-                            <p class="text-gray-600 dark:text-gray-300">{{ $warranty->customer_name }}</p>
-                        </div>
-
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">
-                                {{ trans('warranty::app.admin.warranties.fields.customer-phone') }}
-                            </label>
-                            <p class="text-gray-600 dark:text-gray-300 font-bold">{{ $warranty->customer_phone }}</p>
-                        </div>
-
-                        @if($warranty->customer_email)
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">
-                                {{ trans('warranty::app.admin.warranties.fields.customer-email') }}
-                            </label>
-                            <p class="text-gray-600 dark:text-gray-300">{{ $warranty->customer_email }}</p>
-                        </div>
-                        @endif
-
-                        @if($warranty->customer)
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">Liên kết khách hàng</label>
-                            <p class="text-gray-600 dark:text-gray-300">
-                                <a href="{{ route('admin.customers.edit', $warranty->customer->id) }}" class="text-blue-600 hover:text-blue-800">
-                                    Xem chi tiết khách hàng
-                                </a>
-                            </p>
-                        </div>
-                        @endif
-                    </div>
-                </x-slot:content>
-            </x-admin::accordion>
-
-            @if($warranty->posTransaction)
-            <!-- POS Transaction Information -->
-            <x-admin::accordion>
-                <x-slot:header>
-                    <div class="flex items-center justify-between">
-                        <p class="p-2.5 text-gray-800 dark:text-white text-base  font-semibold">
-                            Thông tin giao dịch POS
-                        </p>
-                    </div>
-                </x-slot:header>
-
-                <x-slot:content>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">Số giao dịch</label>
-                            <p class="text-gray-600 dark:text-gray-300">{{ $warranty->posTransaction->transaction_number }}</p>
-                        </div>
-
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">Tổng tiền</label>
-                            <p class="text-gray-600 dark:text-gray-300">{{ number_format($warranty->posTransaction->total_amount, 0, ',', '.') }} ₫</p>
-                        </div>
-
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">Phương thức thanh toán</label>
-                            <p class="text-gray-600 dark:text-gray-300">{{ ucfirst($warranty->posTransaction->payment_method) }}</p>
-                        </div>
-
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">Ngày giao dịch</label>
-                            <p class="text-gray-600 dark:text-gray-300">{{ $warranty->posTransaction->created_at->format('d/m/Y H:i:s') }}</p>
-                        </div>
-                    </div>
-                </x-slot:content>
-            </x-admin::accordion>
-            @endif
-
-            <!-- Created By Information -->
-            <x-admin::accordion>
-                <x-slot:header>
-                    <div class="flex items-center justify-between">
-                        <p class="p-2.5 text-gray-800 dark:text-white text-base  font-semibold">
-                            Thông tin tạo
-                        </p>
-                    </div>
-                </x-slot:header>
-
-                <x-slot:content>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">Người tạo</label>
-                            <p class="text-gray-600 dark:text-gray-300">{{ $warranty->createdBy->name ?? 'N/A' }}</p>
-                        </div>
-
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">Ngày tạo</label>
-                            <p class="text-gray-600 dark:text-gray-300">{{ $warranty->created_at->format('d/m/Y H:i:s') }}</p>
-                        </div>
-
-                        <div>
-                            <label class="text-gray-800 dark:text-white font-medium">Cập nhật cuối</label>
-                            <p class="text-gray-600 dark:text-gray-300">{{ $warranty->updated_at->format('d/m/Y H:i:s') }}</p>
-                        </div>
-                    </div>
-                </x-slot:content>
-            </x-admin::accordion>
-
+                <div class="flex justify-between py-2">
+                    <span class="text-sm font-medium text-gray-600">Cập nhật cuối:</span>
+                    <span class="text-sm text-gray-900">{{ $warranty->updated_at->format('d/m/Y H:i:s') }}</span>
+                </div>
+            </div>
         </div>
     </div>
 
-@stop
+    <!-- Thống kê thời gian -->
+    <div class="mt-6 bg-white p-4 rounded shadow">
+        <h3 class="text-lg font-semibold mb-4">Thống kê thời gian bảo hành</h3>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <div class="text-center p-4 bg-blue-50 rounded">
+                <div class="text-2xl font-bold text-blue-600">
+                    {{ $warranty->start_date->diffInDays(now()) }}
+                </div>
+                <div class="text-sm text-gray-600">Ngày đã qua</div>
+            </div>
+            
+            <div class="text-center p-4 bg-green-50 rounded">
+                <div class="text-2xl font-bold text-green-600">
+                    {{ max(0, $warranty->end_date->diffInDays(now())) }}
+                </div>
+                <div class="text-sm text-gray-600">Ngày còn lại</div>
+            </div>
+            
+            <div class="text-center p-4 bg-purple-50 rounded">
+                <div class="text-2xl font-bold text-purple-600">
+                    {{ $warranty->start_date->diffInDays($warranty->end_date) }}
+                </div>
+                <div class="text-sm text-gray-600">Tổng thời gian (ngày)</div>
+            </div>
+        </div>
+        
+        <!-- Progress bar -->
+        <div>
+            <div class="flex justify-between text-sm text-gray-600 mb-2">
+                <span>Tiến độ bảo hành</span>
+                <span>{{ round(($warranty->start_date->diffInDays(now()) / $warranty->start_date->diffInDays($warranty->end_date)) * 100, 1) }}%</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+                <div class="bg-blue-600 h-2 rounded-full" 
+                     style="width: {{ min(100, round(($warranty->start_date->diffInDays(now()) / $warranty->start_date->diffInDays($warranty->end_date)) * 100, 1)) }}%">
+                </div>
+            </div>
+        </div>
+    </div>
+</x-admin::layouts>

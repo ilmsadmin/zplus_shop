@@ -9,8 +9,7 @@ return [
         'name'       => 'warranty::app.components.layouts.sidebar.warranty',
         'route'      => 'admin.warranty.index',
         'sort'       => 2.6, // Placed after ViPOS (2.5)
-        'icon'       => 'icon-shield',
-        'icon-class' => 'warranty-icon',
+        'icon'       => 'icon-settings',
     ],
     [
         'key'        => 'warranty.index',

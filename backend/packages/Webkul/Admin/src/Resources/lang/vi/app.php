@@ -62,6 +62,7 @@ return [
             'change-password'   => 'Đổi mật khẩu',
             'confirm-password'  => 'Xác nhận mật khẩu',
             'current-password'  => 'Mật khẩu hiện tại',
+            'edit-btn'          => 'Chỉnh sửa',
             'email'             => 'Email',
             'general'           => 'Chung',
             'invalid-password'  => 'Mật khẩu hiện tại bạn nhập không chính xác.',
@@ -4781,6 +4782,7 @@ return [
             ],
 
             'toolbar' => [
+                'back'      => 'Quay lại',
                 'length-of' => ':length của',
                 'of'        => 'của',
                 'per-page'  => 'Mỗi trang',

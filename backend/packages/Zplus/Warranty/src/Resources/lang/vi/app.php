@@ -1,6 +1,18 @@
 <?php
 
 return [
+    'acl' => [
+        'warranty' => 'Quản lý bảo hành',
+        'warranties' => 'Bảo hành',
+        'create' => 'Tạo mới',
+        'edit' => 'Chỉnh sửa',
+        'delete' => 'Xóa',
+        'packages' => 'Gói bảo hành',
+        'packages-create' => 'Tạo gói',
+        'packages-edit' => 'Sửa gói',
+        'packages-delete' => 'Xóa gói',
+    ],
+
     'components' => [
         'layouts' => [
             'sidebar' => [
@@ -98,6 +110,28 @@ return [
             'edit' => [
                 'title' => 'Chỉnh sửa gói bảo hành',
                 'update-btn' => 'Cập nhật',
+                'general-info' => 'Thông tin chung',
+                'settings' => 'Cài đặt',
+                'name' => 'Tên gói',
+                'duration-months' => 'Thời gian (tháng)',
+                'price' => 'Giá',
+                'description' => 'Mô tả',
+                'status' => 'Trạng thái',
+                'save-btn' => 'Lưu thay đổi',
+            ],
+            'show' => [
+                'title' => 'Chi tiết gói bảo hành',
+                'general-info' => 'Thông tin chung',
+                'name' => 'Tên gói',
+                'duration' => 'Thời gian',
+                'months' => 'tháng',
+                'price' => 'Giá',
+                'status' => 'Trạng thái',
+                'active' => 'Đang hoạt động',
+                'inactive' => 'Tạm ngưng',
+                'description' => 'Mô tả',
+                'statistics' => 'Thống kê',
+                'total-warranties' => 'Tổng số bảo hành',
             ],
             'fields' => [
                 'name' => 'Tên gói',

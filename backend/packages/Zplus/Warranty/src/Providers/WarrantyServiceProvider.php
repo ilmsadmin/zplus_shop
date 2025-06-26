@@ -12,6 +12,7 @@ class WarrantyServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        \Log::info('WarrantyServiceProvider register() called');
         $this->registerConfig();
     }
 
@@ -20,6 +21,7 @@ class WarrantyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        \Log::info('WarrantyServiceProvider boot() called');
         $this->loadRoutesFrom(__DIR__.'/../Routes/web.php');
         
         $this->loadViewsFrom(__DIR__.'/../Resources/views', 'warranty');
@@ -42,6 +44,11 @@ class WarrantyServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             dirname(__DIR__).'/Config/menu.php',
             'menu.admin'
+        );
+        
+        $this->mergeConfigFrom(
+            dirname(__DIR__).'/Config/acl.php',
+            'acl'
         );
     }
 }

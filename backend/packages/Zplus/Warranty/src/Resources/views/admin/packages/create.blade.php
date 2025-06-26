@@ -1,10 +1,8 @@
-@extends('admin::layouts.content')
-
-@section('page_title')
-    {{ trans('warranty::app.admin.packages.create.title') }}
-@stop
-
-@section('content')
+<x-admin::layouts>
+    <!-- Page Title -->
+    <x-slot:title>
+        {{ trans('warranty::app.admin.packages.create.title') }}
+    </x-slot>
     <div class="flex justify-between items-center">
         <div class="flex flex-col gap-2">
             <div class="text-xl text-gray-800 dark:text-white font-bold">
@@ -147,5 +145,4 @@
             </button>
         </div>
     </x-admin::form>
-
-@stop
+</x-admin::layouts>

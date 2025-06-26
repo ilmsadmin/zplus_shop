@@ -1,6 +1,18 @@
 <?php
 
 return [
+    'acl' => [
+        'warranty' => 'Warranty Management',
+        'warranties' => 'Warranties',
+        'create' => 'Create',
+        'edit' => 'Edit',
+        'delete' => 'Delete',
+        'packages' => 'Warranty Packages',
+        'packages-create' => 'Create Package',
+        'packages-edit' => 'Edit Package',
+        'packages-delete' => 'Delete Package',
+    ],
+
     'components' => [
         'layouts' => [
             'sidebar' => [

@@ -30,7 +30,7 @@ class WarrantyPackageController extends Controller
     /**
      * Store a newly created warranty package in storage.
      */
-    public function store(Request $request): JsonResponse
+    public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -49,16 +49,15 @@ class WarrantyPackageController extends Controller
             'is_active' => $request->boolean('is_active', true),
         ]);
 
-        return response()->json([
-            'message' => 'Warranty package created successfully',
-            'package' => $package
-        ]);
+        session()->flash('success', 'Gói bảo hành đã được tạo thành công');
+
+        return redirect()->route('admin.warranty.packages.index');
     }
 
     /**
      * Display the specified warranty package.
      */
-    public function show(int $id): View
+    public function show(string $id): View
     {
         $package = WarrantyPackage::with('warranties')->findOrFail($id);
         
@@ -68,7 +67,7 @@ class WarrantyPackageController extends Controller
     /**
      * Show the form for editing the specified warranty package.
      */
-    public function edit(int $id): View
+    public function edit(string $id): View
     {
         $package = WarrantyPackage::findOrFail($id);
         
@@ -78,7 +77,7 @@ class WarrantyPackageController extends Controller
     /**
      * Update the specified warranty package in storage.
      */
-    public function update(Request $request, int $id): JsonResponse
+    public function update(Request $request, string $id)
     {
         $package = WarrantyPackage::findOrFail($id);
         
@@ -87,7 +86,7 @@ class WarrantyPackageController extends Controller
             'duration_months' => 'required|integer|min:1|max:60',
             'description' => 'nullable|string',
             'price' => 'nullable|numeric|min:0',
-            'is_active' => 'boolean',
+            'is_active' => 'nullable|boolean',
         ]);
 
         $package->update([
@@ -96,19 +95,18 @@ class WarrantyPackageController extends Controller
             'duration_months' => $request->duration_months,
             'description' => $request->description,
             'price' => $request->price ?? 0,
-            'is_active' => $request->boolean('is_active', true),
+            'is_active' => $request->has('is_active') ? (bool) $request->is_active : false,
         ]);
 
-        return response()->json([
-            'message' => 'Warranty package updated successfully',
-            'package' => $package
-        ]);
+        session()->flash('success', 'Gói bảo hành đã được cập nhật thành công');
+
+        return redirect()->route('admin.warranty.packages.index');
     }
 
     /**
      * Remove the specified warranty package from storage.
      */
-    public function destroy(int $id): JsonResponse
+    public function destroy(string $id): JsonResponse
     {
         $package = WarrantyPackage::findOrFail($id);
         
@@ -156,13 +154,15 @@ class WarrantyPackageController extends Controller
     /**
      * Toggle package status.
      */
-    public function toggleStatus(int $id): JsonResponse
+    public function toggleStatus(string $id): JsonResponse
     {
         $package = WarrantyPackage::findOrFail($id);
         $package->update(['is_active' => !$package->is_active]);
 
+        $message = $package->is_active ? 'Đã kích hoạt gói bảo hành thành công' : 'Đã tạm ngưng gói bảo hành thành công';
+
         return response()->json([
-            'message' => 'Package status updated successfully',
+            'message' => $message,
             'package' => $package
         ]);
     }

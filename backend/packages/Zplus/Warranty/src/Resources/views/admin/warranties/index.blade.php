@@ -1,14 +1,12 @@
-@extends('admin::layouts.content')
+<x-admin::layouts>
+    <x-slot:title>
+        Quản lý bảo hành
+    </x-slot>
 
-@section('page_title')
-    {{ trans('warranty::app.admin.warranties.index.title') }}
-@stop
-
-@section('content')
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center mb-4">
         <div class="flex flex-col gap-2">
             <div class="text-xl text-gray-800 dark:text-white font-bold">
-                {{ trans('warranty::app.admin.warranties.index.title') }}
+                Quản lý bảo hành
             </div>
         </div>
 
@@ -17,137 +15,185 @@
                 href="{{ route('admin.warranty.create') }}"
                 class="primary-button"
             >
-                {{ trans('warranty::app.admin.warranties.index.create-btn') }}
+                Tạo bảo hành mới
             </a>
         </div>
     </div>
 
-    {!! view_render_event('bagisto.admin.warranty.warranties.list.before') !!}
+    <!-- Success Message -->
+    @if(session('success'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+            {{ session('success') }}
+        </div>
+    @endif
 
-    <x-admin::datagrid src="{{ route('admin.warranty.api.warranties') }}">
+    <div class="bg-white p-4 rounded shadow">
+        <h3 class="text-lg font-semibold mb-4">Danh sách bảo hành</h3>
+        
         <!-- Search Bar -->
-        <template #header>
-            <div class="flex items-center gap-x-2.5">
-                <x-admin::form.control-group>
-                    <x-admin::form.control-group.control
-                        type="text"
-                        id="search"
-                        name="search"
-                        placeholder="{{ trans('warranty::app.admin.warranties.index.search-placeholder') }}"
-                        v-model="applied.search.value"
-                        @keyup.enter="searchData"
-                    />
-                </x-admin::form.control-group>
+        <div class="mb-4">
+            <input 
+                type="text" 
+                id="search-input" 
+                placeholder="Tìm kiếm theo mã bảo hành, serial, tên khách hàng..."
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+        </div>
+        
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left border-collapse border border-gray-300">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="border border-gray-300 px-4 py-2">Mã bảo hành</th>
+                        <th class="border border-gray-300 px-4 py-2">Serial sản phẩm</th>
+                        <th class="border border-gray-300 px-4 py-2">Tên sản phẩm</th>
+                        <th class="border border-gray-300 px-4 py-2">Khách hàng</th>
+                        <th class="border border-gray-300 px-4 py-2">Gói bảo hành</th>
+                        <th class="border border-gray-300 px-4 py-2">Ngày bắt đầu</th>
+                        <th class="border border-gray-300 px-4 py-2">Ngày hết hạn</th>
+                        <th class="border border-gray-300 px-4 py-2">Trạng thái</th>
+                        <th class="border border-gray-300 px-4 py-2">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody id="warranties-table-body">
+                    <tr>
+                        <td colspan="9" class="border border-gray-300 px-4 py-2 text-center">Đang tải dữ liệu...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-                <button 
-                    type="button"
-                    class="primary-button" 
-                    @click="searchData"
-                >
-                    {{ trans('admin::app.datagrid.search') }}
-                </button>
-            </div>
-        </template>
+        <!-- Pagination -->
+        <div id="pagination" class="mt-4 flex justify-between items-center">
+            <div id="pagination-info" class="text-sm text-gray-700"></div>
+            <div id="pagination-links" class="flex gap-2"></div>
+        </div>
+    </div>
 
-        <!-- Table Structure -->
-        <template #table>
-            <div class="overflow-x-auto">
-                <table class="w-full text-sm text-left">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th class="px-6 py-3">{{ trans('warranty::app.admin.warranties.index.datagrid.warranty-number') }}</th>
-                            <th class="px-6 py-3">{{ trans('warranty::app.admin.warranties.index.datagrid.product-name') }}</th>
-                            <th class="px-6 py-3">{{ trans('warranty::app.admin.warranties.index.datagrid.product-serial') }}</th>
-                            <th class="px-6 py-3">{{ trans('warranty::app.admin.warranties.index.datagrid.customer-name') }}</th>
-                            <th class="px-6 py-3">{{ trans('warranty::app.admin.warranties.index.datagrid.customer-phone') }}</th>
-                            <th class="px-6 py-3">{{ trans('warranty::app.admin.warranties.index.datagrid.package') }}</th>
-                            <th class="px-6 py-3">{{ trans('warranty::app.admin.warranties.index.datagrid.end-date') }}</th>
-                            <th class="px-6 py-3">{{ trans('warranty::app.admin.warranties.index.datagrid.status') }}</th>
-                            <th class="px-6 py-3">{{ trans('warranty::app.admin.warranties.index.datagrid.actions') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="record in records" :key="record.id" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
-                                @{{ record.warranty_number }}
-                            </td>
-                            <td class="px-6 py-4">
-                                @{{ record.product_name }}
-                            </td>
-                            <td class="px-6 py-4">
-                                @{{ record.product_serial }}
-                            </td>
-                            <td class="px-6 py-4">
-                                @{{ record.customer_name }}
-                            </td>
-                            <td class="px-6 py-4">
-                                @{{ record.customer_phone }}
-                            </td>
-                            <td class="px-6 py-4">
-                                @{{ record.warranty_package?.name }}
-                            </td>
-                            <td class="px-6 py-4">
-                                @{{ record.end_date }}
-                            </td>
-                            <td class="px-6 py-4">
-                                <span :class="'badge ' + (record.status === 'active' ? 'badge-success' : record.status === 'expired' ? 'badge-danger' : 'badge-warning')">
-                                    @{{ record.status }}
-                                </span>
-                            </td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center gap-x-2">
-                                    <a 
-                                        :href="'{{ route('admin.warranty.show', '') }}/' + record.id"
-                                        class="text-blue-600 hover:text-blue-900"
-                                    >
-                                        {{ trans('warranty::app.admin.warranties.index.datagrid.view') }}
-                                    </a>
-                                    <a 
-                                        :href="'{{ route('admin.warranty.edit', '') }}/' + record.id"
-                                        class="text-green-600 hover:text-green-900"
-                                    >
-                                        {{ trans('warranty::app.admin.warranties.index.datagrid.edit') }}
-                                    </a>
-                                    <button 
-                                        @click="deleteWarranty(record.id)"
-                                        class="text-red-600 hover:text-red-900"
-                                    >
-                                        {{ trans('warranty::app.admin.warranties.index.datagrid.delete') }}
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </template>
-    </x-admin::datagrid>
-
-    {!! view_render_event('bagisto.admin.warranty.warranties.list.after') !!}
-
-@push('scripts')
     <script>
-        function deleteWarranty(id) {
-            if (confirm('{{ trans('admin::app.datagrid.delete-confirm') }}')) {
-                fetch(`{{ route('admin.warranty.destroy', '') }}/${id}`, {
-                    method: 'DELETE',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                        'Content-Type': 'application/json',
-                    },
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.message) {
-                        location.reload();
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-            }
-        }
-    </script>
-@endpush
+    let currentPage = 1;
+    let searchQuery = '';
 
-@stop
+    document.addEventListener('DOMContentLoaded', function() {
+        loadWarranties();
+        
+        // Search functionality
+        const searchInput = document.getElementById('search-input');
+        let searchTimeout;
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                searchQuery = this.value;
+                currentPage = 1;
+                loadWarranties();
+            }, 500);
+        });
+    });
+
+    function loadWarranties() {
+        const url = new URL('{{ route("admin.warranty.api.warranties") }}');
+        if (searchQuery) url.searchParams.append('search', searchQuery);
+        url.searchParams.append('page', currentPage);
+        
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                console.log('API Response:', data);
+                renderWarrantiesTable(data);
+                renderPagination(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('warranties-table-body').innerHTML = 
+                    '<tr><td colspan="9" class="border border-gray-300 px-4 py-2 text-center text-red-600">Lỗi tải dữ liệu: ' + error.message + '</td></tr>';
+            });
+    }
+
+    function renderWarrantiesTable(data) {
+        const tbody = document.getElementById('warranties-table-body');
+        
+        if (data.data && data.data.length > 0) {
+            tbody.innerHTML = data.data.map(warranty => `
+                <tr class="hover:bg-gray-50">
+                    <td class="border border-gray-300 px-4 py-2 font-mono">${warranty.warranty_number}</td>
+                    <td class="border border-gray-300 px-4 py-2">${warranty.product_serial || 'N/A'}</td>
+                    <td class="border border-gray-300 px-4 py-2">${warranty.product_name || 'N/A'}</td>
+                    <td class="border border-gray-300 px-4 py-2">${warranty.customer_name || 'N/A'}</td>
+                    <td class="border border-gray-300 px-4 py-2">${warranty.warranty_package ? warranty.warranty_package.name : 'N/A'}</td>
+                    <td class="border border-gray-300 px-4 py-2">${formatDate(warranty.start_date)}</td>
+                    <td class="border border-gray-300 px-4 py-2">${formatDate(warranty.end_date)}</td>
+                    <td class="border border-gray-300 px-4 py-2">
+                        <span class="px-2 py-1 rounded text-xs ${getStatusClass(warranty.status)}">
+                            ${getStatusText(warranty.status)}
+                        </span>
+                    </td>
+                    <td class="border border-gray-300 px-4 py-2">
+                        <div class="flex gap-2">
+                            <a href="/admin/warranty/${warranty.id}" class="text-blue-600 hover:underline">Xem</a>
+                            <a href="/admin/warranty/${warranty.id}/edit" class="text-green-600 hover:underline">Sửa</a>
+                        </div>
+                    </td>
+                </tr>
+            `).join('');
+        } else {
+            tbody.innerHTML = '<tr><td colspan="9" class="border border-gray-300 px-4 py-2 text-center">Không có dữ liệu</td></tr>';
+        }
+    }
+
+    function renderPagination(data) {
+        const info = document.getElementById('pagination-info');
+        const links = document.getElementById('pagination-links');
+        
+        if (data.total) {
+            info.innerHTML = `Hiển thị ${data.from || 0} đến ${data.to || 0} trong tổng số ${data.total} bản ghi`;
+            
+            let paginationHtml = '';
+            
+            if (data.prev_page_url) {
+                paginationHtml += `<button onclick="changePage(${data.current_page - 1})" class="px-3 py-1 border rounded hover:bg-gray-100">Trước</button>`;
+            }
+            
+            for (let i = Math.max(1, data.current_page - 2); i <= Math.min(data.last_page, data.current_page + 2); i++) {
+                paginationHtml += `<button onclick="changePage(${i})" class="px-3 py-1 border rounded ${i === data.current_page ? 'bg-blue-500 text-white' : 'hover:bg-gray-100'}">${i}</button>`;
+            }
+            
+            if (data.next_page_url) {
+                paginationHtml += `<button onclick="changePage(${data.current_page + 1})" class="px-3 py-1 border rounded hover:bg-gray-100">Sau</button>`;
+            }
+            
+            links.innerHTML = paginationHtml;
+        }
+    }
+
+    function changePage(page) {
+        currentPage = page;
+        loadWarranties();
+    }
+
+    function formatDate(dateString) {
+        if (!dateString) return 'N/A';
+        const date = new Date(dateString);
+        return date.toLocaleDateString('vi-VN');
+    }
+
+    function getStatusClass(status) {
+        switch(status) {
+            case 'active': return 'bg-green-200 text-green-800';
+            case 'expired': return 'bg-red-200 text-red-800';
+            case 'claimed': return 'bg-yellow-200 text-yellow-800';
+            case 'cancelled': return 'bg-gray-200 text-gray-800';
+            default: return 'bg-gray-200 text-gray-800';
+        }
+    }
+
+    function getStatusText(status) {
+        switch(status) {
+            case 'active': return 'Đang hiệu lực';
+            case 'expired': return 'Hết hạn';
+            case 'claimed': return 'Đã sử dụng';
+            case 'cancelled': return 'Đã hủy';
+            default: return status;
+        }
+    }
+    </script>
+</x-admin::layouts>

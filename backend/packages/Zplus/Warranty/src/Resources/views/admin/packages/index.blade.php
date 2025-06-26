@@ -1,14 +1,12 @@
-@extends('admin::layouts.content')
+<x-admin::layouts>
+    <x-slot:title>
+        Quản lý gói bảo hành
+    </x-slot>
 
-@section('page_title')
-    {{ trans('warranty::app.admin.packages.index.title') }}
-@stop
-
-@section('content')
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center mb-4">
         <div class="flex flex-col gap-2">
             <div class="text-xl text-gray-800 dark:text-white font-bold">
-                {{ trans('warranty::app.admin.packages.index.title') }}
+                Quản lý gói bảo hành
             </div>
         </div>
 
@@ -17,136 +15,106 @@
                 href="{{ route('admin.warranty.packages.create') }}"
                 class="primary-button"
             >
-                {{ trans('warranty::app.admin.packages.index.create-btn') }}
+                Tạo gói bảo hành mới
             </a>
         </div>
     </div>
 
-    {!! view_render_event('bagisto.admin.warranty.packages.list.before') !!}
+    <!-- Success Message -->
+    @if(session('success'))
+        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+            {{ session('success') }}
+        </div>
+    @endif
 
-    <x-admin::datagrid src="{{ route('admin.warranty.packages.api.packages') }}">
-        <!-- Table Structure -->
-        <template #table>
-            <div class="overflow-x-auto">
-                <table class="w-full text-sm text-left">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th class="px-6 py-3">{{ trans('warranty::app.admin.packages.index.datagrid.name') }}</th>
-                            <th class="px-6 py-3">{{ trans('warranty::app.admin.packages.index.datagrid.duration') }}</th>
-                            <th class="px-6 py-3">{{ trans('warranty::app.admin.packages.index.datagrid.price') }}</th>
-                            <th class="px-6 py-3">{{ trans('warranty::app.admin.packages.index.datagrid.warranties-count') }}</th>
-                            <th class="px-6 py-3">{{ trans('warranty::app.admin.packages.index.datagrid.status') }}</th>
-                            <th class="px-6 py-3">{{ trans('warranty::app.admin.packages.index.datagrid.actions') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr v-for="record in records" :key="record.id" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">
-                                @{{ record.name }}
-                            </td>
-                            <td class="px-6 py-4">
-                                @{{ record.duration_months }} tháng
-                            </td>
-                            <td class="px-6 py-4">
-                                @{{ record.price > 0 ? formatPrice(record.price) : 'Miễn phí' }}
-                            </td>
-                            <td class="px-6 py-4">
-                                @{{ record.warranties_count || 0 }}
-                            </td>
-                            <td class="px-6 py-4">
-                                <span :class="'badge ' + (record.is_active ? 'badge-success' : 'badge-secondary')">
-                                    @{{ record.is_active ? '{{ trans('warranty::app.admin.packages.index.datagrid.active') }}' : '{{ trans('warranty::app.admin.packages.index.datagrid.inactive') }}' }}
+    <div class="bg-white p-4 rounded shadow">
+        <h3 class="text-lg font-semibold mb-4">Danh sách gói bảo hành</h3>
+        
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left border-collapse border border-gray-300">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="border border-gray-300 px-4 py-2">Tên gói</th>
+                        <th class="border border-gray-300 px-4 py-2">Thời hạn (tháng)</th>
+                        <th class="border border-gray-300 px-4 py-2">Giá</th>
+                        <th class="border border-gray-300 px-4 py-2">Số bảo hành</th>
+                        <th class="border border-gray-300 px-4 py-2">Trạng thái</th>
+                        <th class="border border-gray-300 px-4 py-2">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody id="packages-table-body">
+                    <tr>
+                        <td colspan="6" class="border border-gray-300 px-4 py-2 text-center">Đang tải dữ liệu...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('{{ route("admin.warranty.packages.api.packages") }}')
+            .then(response => response.json())
+            .then(data => {
+                console.log('API Response:', data);
+                const tbody = document.getElementById('packages-table-body');
+                if (data.data && data.data.length > 0) {
+                    tbody.innerHTML = data.data.map(package => `
+                        <tr class="hover:bg-gray-50">
+                            <td class="border border-gray-300 px-4 py-2">${package.name}</td>
+                            <td class="border border-gray-300 px-4 py-2">${package.duration_months}</td>
+                            <td class="border border-gray-300 px-4 py-2">${package.price > 0 ? package.price.toLocaleString() + ' VND' : 'Miễn phí'}</td>
+                            <td class="border border-gray-300 px-4 py-2">${package.warranties_count || 0}</td>
+                            <td class="border border-gray-300 px-4 py-2">
+                                <span class="px-2 py-1 rounded text-xs ${package.is_active ? 'bg-green-200 text-green-800' : 'bg-gray-200 text-gray-800'}">
+                                    ${package.is_active ? 'Hoạt động' : 'Tạm ngưng'}
                                 </span>
                             </td>
-                            <td class="px-6 py-4">
-                                <div class="flex items-center gap-x-2">
-                                    <a 
-                                        :href="'{{ route('admin.warranty.packages.show', '') }}/' + record.id"
-                                        class="text-blue-600 hover:text-blue-900"
-                                    >
-                                        {{ trans('warranty::app.admin.warranties.index.datagrid.view') }}
-                                    </a>
-                                    <a 
-                                        :href="'{{ route('admin.warranty.packages.edit', '') }}/' + record.id"
-                                        class="text-green-600 hover:text-green-900"
-                                    >
-                                        {{ trans('warranty::app.admin.warranties.index.datagrid.edit') }}
-                                    </a>
-                                    <button 
-                                        @click="toggleStatus(record.id)"
-                                        :class="record.is_active ? 'text-orange-600 hover:text-orange-900' : 'text-green-600 hover:text-green-900'"
-                                    >
-                                        @{{ record.is_active ? 'Tạm ngưng' : 'Kích hoạt' }}
-                                    </button>
-                                    <button 
-                                        @click="deletePackage(record.id)"
-                                        class="text-red-600 hover:text-red-900"
-                                        v-if="record.warranties_count == 0"
-                                    >
-                                        {{ trans('warranty::app.admin.warranties.index.datagrid.delete') }}
+                            <td class="border border-gray-300 px-4 py-2">
+                                <div class="flex gap-2">
+                                    <a href="/admin/warranty/packages/${package.id}" class="text-blue-600 hover:underline">Xem</a>
+                                    <a href="/admin/warranty/packages/${package.id}/edit" class="text-green-600 hover:underline">Sửa</a>
+                                    <button onclick="toggleStatus(${package.id})" class="text-orange-600 hover:underline">
+                                        ${package.is_active ? 'Tạm ngưng' : 'Kích hoạt'}
                                     </button>
                                 </div>
                             </td>
                         </tr>
-                    </tbody>
-                </table>
-            </div>
-        </template>
-    </x-admin::datagrid>
+                    `).join('');
+                } else {
+                    tbody.innerHTML = '<tr><td colspan="6" class="border border-gray-300 px-4 py-2 text-center">Không có dữ liệu</td></tr>';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('packages-table-body').innerHTML = 
+                    '<tr><td colspan="6" class="border border-gray-300 px-4 py-2 text-center text-red-600">Lỗi tải dữ liệu: ' + error.message + '</td></tr>';
+            });
+    });
 
-    {!! view_render_event('bagisto.admin.warranty.packages.list.after') !!}
-
-@push('scripts')
-    <script>
-        function formatPrice(price) {
-            return new Intl.NumberFormat('vi-VN', { 
-                style: 'currency', 
-                currency: 'VND' 
-            }).format(price);
+    function toggleStatus(id) {
+        if (confirm('Bạn có chắc chắn muốn thay đổi trạng thái gói bảo hành này?')) {
+            fetch(`{{ url('admin/warranty/packages') }}/${id}/toggle-status`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    alert(data.message);
+                    location.reload();
+                } else {
+                    alert('Có lỗi xảy ra');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Có lỗi xảy ra: ' + error.message);
+            });
         }
-
-        function toggleStatus(id) {
-            if (confirm('{{ trans('admin::app.datagrid.mass-action.confirm') }}')) {
-                fetch(`{{ route('admin.warranty.packages.toggle-status', '') }}/${id}`, {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                        'Content-Type': 'application/json',
-                    },
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.message) {
-                        location.reload();
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-            }
-        }
-
-        function deletePackage(id) {
-            if (confirm('{{ trans('admin::app.datagrid.delete-confirm') }}')) {
-                fetch(`{{ route('admin.warranty.packages.destroy', '') }}/${id}`, {
-                    method: 'DELETE',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                        'Content-Type': 'application/json',
-                    },
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.message) {
-                        location.reload();
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-            }
-        }
+    }
     </script>
-@endpush
-
-@stop
+</x-admin::layouts>

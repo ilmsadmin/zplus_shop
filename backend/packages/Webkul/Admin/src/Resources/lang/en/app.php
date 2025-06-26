@@ -4709,6 +4709,7 @@ return [
             ],
 
             'toolbar' => [
+                'back'      => 'Back',
                 'length-of' => ':length of',
                 'of'        => 'of',
                 'per-page'  => 'Per Page',

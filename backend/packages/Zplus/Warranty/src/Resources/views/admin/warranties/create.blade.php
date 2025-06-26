@@ -1,14 +1,12 @@
-@extends('admin::layouts.content')
+<x-admin::layouts>
+    <x-slot:title>
+        Tạo bảo hành mới
+    </x-slot>
 
-@section('page_title')
-    {{ trans('warranty::app.admin.warranties.create.title') }}
-@stop
-
-@section('content')
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center mb-4">
         <div class="flex flex-col gap-2">
             <div class="text-xl text-gray-800 dark:text-white font-bold">
-                {{ trans('warranty::app.admin.warranties.create.title') }}
+                Tạo bảo hành mới
             </div>
         </div>
 
@@ -17,200 +15,166 @@
                 href="{{ route('admin.warranty.index') }}"
                 class="secondary-button"
             >
-                {{ trans('admin::app.datagrid.back') }}
+                Quay lại
             </a>
         </div>
     </div>
 
-    <x-admin::form 
-        action="{{ route('admin.warranty.store') }}" 
-        method="POST"
-        enctype="multipart/form-data"
-    >
+    <form action="{{ route('admin.warranty.store') }}" method="POST" class="bg-white p-6 rounded shadow">
         @csrf
 
-        <div class="flex gap-2.5 mt-3.5 max-xl:flex-wrap">
-            <!-- General Information -->
-            <div class="flex flex-col gap-2 flex-1 max-xl:flex-auto">
-                
-                <x-admin::accordion>
-                    <x-slot:header>
-                        <div class="flex items-center justify-between">
-                            <p class="p-2.5 text-gray-800 dark:text-white text-base  font-semibold">
-                                {{ trans('warranty::app.admin.warranties.create.general') }}
-                            </p>
-                        </div>
-                    </x-slot:header>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Warranty Package -->
+            <div>
+                <label for="warranty_package_id" class="block text-sm font-medium text-gray-700 mb-2">
+                    Gói bảo hành <span class="text-red-500">*</span>
+                </label>
+                <select 
+                    name="warranty_package_id" 
+                    id="warranty_package_id" 
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                    <option value="">Chọn gói bảo hành</option>
+                    @foreach($warrantyPackages as $package)
+                        <option value="{{ $package->id }}" {{ old('warranty_package_id') == $package->id ? 'selected' : '' }}>
+                            {{ $package->name }} ({{ $package->duration_months }} tháng)
+                        </option>
+                    @endforeach
+                </select>
+            </div>
 
-                    <x-slot:content>
-                        <!-- Warranty Package -->
-                        <x-admin::form.control-group class="mb-2.5">
-                            <x-admin::form.control-group.label class="required">
-                                {{ trans('warranty::app.admin.warranties.fields.warranty-package') }}
-                            </x-admin::form.control-group.label>
+            <!-- Product -->
+            <div>
+                <label for="product_id" class="block text-sm font-medium text-gray-700 mb-2">
+                    Sản phẩm <span class="text-red-500">*</span>
+                </label>
+                <select 
+                    name="product_id" 
+                    id="product_id" 
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                    <option value="">Chọn sản phẩm</option>
+                    @foreach($products as $product)
+                        <option value="{{ $product['id'] }}" {{ old('product_id') == $product['id'] ? 'selected' : '' }}>
+                            {{ $product['name'] }} ({{ $product['sku'] }})
+                        </option>
+                    @endforeach
+                </select>
+            </div>
 
-                            <x-admin::form.control-group.control
-                                type="select"
-                                name="warranty_package_id"
-                                rules="required"
-                                :value="old('warranty_package_id')"
-                            >
-                                <option value="">{{ trans('admin::app.datagrid.select') }}</option>
-                                @foreach ($warrantyPackages as $package)
-                                    <option value="{{ $package->id }}">{{ $package->name }} ({{ $package->duration_text }})</option>
-                                @endforeach
-                            </x-admin::form.control-group.control>
+            <!-- Product Serial -->
+            <div>
+                <label for="product_serial" class="block text-sm font-medium text-gray-700 mb-2">
+                    Serial sản phẩm <span class="text-red-500">*</span>
+                </label>
+                <input 
+                    type="text" 
+                    name="product_serial" 
+                    id="product_serial" 
+                    value="{{ old('product_serial') }}"
+                    required
+                    placeholder="Nhập serial sản phẩm"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+            </div>
 
-                            <x-admin::form.control-group.error control-name="warranty_package_id" />
-                        </x-admin::form.control-group>
+            <!-- Customer -->
+            <div>
+                <label for="customer_id" class="block text-sm font-medium text-gray-700 mb-2">
+                    Khách hàng <span class="text-red-500">*</span>
+                </label>
+                <select 
+                    name="customer_id" 
+                    id="customer_id" 
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                    <option value="">Chọn khách hàng</option>
+                    @foreach($customers as $customer)
+                        <option value="{{ $customer->id }}" {{ old('customer_id') == $customer->id ? 'selected' : '' }}>
+                            {{ $customer->first_name }} {{ $customer->last_name }} ({{ $customer->email }})
+                        </option>
+                    @endforeach
+                </select>
+            </div>
 
-                        <!-- Purchase Date -->
-                        <x-admin::form.control-group class="mb-2.5">
-                            <x-admin::form.control-group.label class="required">
-                                {{ trans('warranty::app.admin.warranties.fields.purchase-date') }}
-                            </x-admin::form.control-group.label>
+            <!-- Purchase Date -->
+            <div>
+                <label for="purchase_date" class="block text-sm font-medium text-gray-700 mb-2">
+                    Ngày mua <span class="text-red-500">*</span>
+                </label>
+                <input 
+                    type="date" 
+                    name="purchase_date" 
+                    id="purchase_date" 
+                    value="{{ old('purchase_date', date('Y-m-d')) }}"
+                    required
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+            </div>
 
-                            <x-admin::form.control-group.control
-                                type="date"
-                                name="purchase_date"
-                                rules="required"
-                                :value="old('purchase_date', now()->format('Y-m-d'))"
-                            />
-
-                            <x-admin::form.control-group.error control-name="purchase_date" />
-                        </x-admin::form.control-group>
-
-                        <!-- Order Number -->
-                        <x-admin::form.control-group class="mb-2.5">
-                            <x-admin::form.control-group.label>
-                                {{ trans('warranty::app.admin.warranties.fields.order-number') }}
-                            </x-admin::form.control-group.label>
-
-                            <x-admin::form.control-group.control
-                                type="text"
-                                name="order_number"
-                                :value="old('order_number')"
-                                placeholder="Nhập số đơn hàng từ POS"
-                            />
-
-                            <x-admin::form.control-group.error control-name="order_number" />
-                        </x-admin::form.control-group>
-
-                        <!-- Notes -->
-                        <x-admin::form.control-group class="mb-2.5">
-                            <x-admin::form.control-group.label>
-                                {{ trans('warranty::app.admin.warranties.fields.notes') }}
-                            </x-admin::form.control-group.label>
-
-                            <x-admin::form.control-group.control
-                                type="textarea"
-                                name="notes"
-                                :value="old('notes')"
-                                placeholder="Ghi chú thêm về bảo hành"
-                                rows="3"
-                            />
-
-                            <x-admin::form.control-group.error control-name="notes" />
-                        </x-admin::form.control-group>
-                    </x-slot:content>
-                </x-admin::accordion>
-
-                <!-- Product Information -->
-                <x-admin::accordion>
-                    <x-slot:header>
-                        <div class="flex items-center justify-between">
-                            <p class="p-2.5 text-gray-800 dark:text-white text-base  font-semibold">
-                                {{ trans('warranty::app.admin.warranties.create.product-info') }}
-                            </p>
-                        </div>
-                    </x-slot:header>
-
-                    <x-slot:content>
-                        <!-- Product -->
-                        <x-admin::form.control-group class="mb-2.5">
-                            <x-admin::form.control-group.label class="required">
-                                {{ trans('warranty::app.admin.warranties.fields.product') }}
-                            </x-admin::form.control-group.label>
-
-                            <x-admin::form.control-group.control
-                                type="select"
-                                name="product_id"
-                                rules="required"
-                                :value="old('product_id')"
-                            >
-                                <option value="">{{ trans('admin::app.datagrid.select') }}</option>
-                                @foreach ($products as $product)
-                                    <option value="{{ $product->id }}">{{ $product->name }} ({{ $product->sku }})</option>
-                                @endforeach
-                            </x-admin::form.control-group.control>
-
-                            <x-admin::form.control-group.error control-name="product_id" />
-                        </x-admin::form.control-group>
-
-                        <!-- Product Serial -->
-                        <x-admin::form.control-group class="mb-2.5">
-                            <x-admin::form.control-group.label class="required">
-                                {{ trans('warranty::app.admin.warranties.fields.product-serial') }}
-                            </x-admin::form.control-group.label>
-
-                            <x-admin::form.control-group.control
-                                type="text"
-                                name="product_serial"
-                                rules="required"
-                                :value="old('product_serial')"
-                                placeholder="Nhập số serial sản phẩm"
-                            />
-
-                            <x-admin::form.control-group.error control-name="product_serial" />
-                        </x-admin::form.control-group>
-                    </x-slot:content>
-                </x-admin::accordion>
-
-                <!-- Customer Information -->
-                <x-admin::accordion>
-                    <x-slot:header>
-                        <div class="flex items-center justify-between">
-                            <p class="p-2.5 text-gray-800 dark:text-white text-base  font-semibold">
-                                {{ trans('warranty::app.admin.warranties.create.customer-info') }}
-                            </p>
-                        </div>
-                    </x-slot:header>
-
-                    <x-slot:content>
-                        <!-- Customer -->
-                        <x-admin::form.control-group class="mb-2.5">
-                            <x-admin::form.control-group.label class="required">
-                                {{ trans('warranty::app.admin.warranties.fields.customer') }}
-                            </x-admin::form.control-group.label>
-
-                            <x-admin::form.control-group.control
-                                type="select"
-                                name="customer_id"
-                                rules="required"
-                                :value="old('customer_id')"
-                            >
-                                <option value="">{{ trans('admin::app.datagrid.select') }}</option>
-                                @foreach ($customers as $customer)
-                                    <option value="{{ $customer->id }}">{{ $customer->first_name }} {{ $customer->last_name }} ({{ $customer->email }})</option>
-                                @endforeach
-                            </x-admin::form.control-group.control>
-
-                            <x-admin::form.control-group.error control-name="customer_id" />
-                        </x-admin::form.control-group>
-                    </x-slot:content>
-                </x-admin::accordion>
-
+            <!-- Order Number -->
+            <div>
+                <label for="order_number" class="block text-sm font-medium text-gray-700 mb-2">
+                    Số đơn hàng
+                </label>
+                <input 
+                    type="text" 
+                    name="order_number" 
+                    id="order_number" 
+                    value="{{ old('order_number') }}"
+                    placeholder="Nhập số đơn hàng (nếu có)"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
             </div>
         </div>
 
-        <div class="flex gap-x-2.5 items-center mt-5">
+        <!-- Notes -->
+        <div class="mt-6">
+            <label for="notes" class="block text-sm font-medium text-gray-700 mb-2">
+                Ghi chú
+            </label>
+            <textarea 
+                name="notes" 
+                id="notes" 
+                rows="4"
+                placeholder="Nhập ghi chú thêm (nếu có)"
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >{{ old('notes') }}</textarea>
+        </div>
+
+        <!-- Submit Buttons -->
+        <div class="flex justify-end gap-3 mt-6">
+            <a 
+                href="{{ route('admin.warranty.index') }}"
+                class="secondary-button"
+            >
+                Hủy bỏ
+            </a>
             <button 
-                type="submit" 
+                type="submit"
                 class="primary-button"
             >
-                {{ trans('warranty::app.admin.warranties.create.save-btn') }}
+                Tạo bảo hành
             </button>
         </div>
-    </x-admin::form>
+    </form>
 
-@stop
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Auto-calculate warranty dates when package is selected
+        const packageSelect = document.getElementById('warranty_package_id');
+        const purchaseDateInput = document.getElementById('purchase_date');
+        
+        function updateWarrantyInfo() {
+            // This could be enhanced to show warranty end date preview
+            console.log('Package selected:', packageSelect.value);
+        }
+        
+        packageSelect.addEventListener('change', updateWarrantyInfo);
+        purchaseDateInput.addEventListener('change', updateWarrantyInfo);
+    });
+    </script>
+</x-admin::layouts>

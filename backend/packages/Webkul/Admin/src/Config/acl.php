@@ -859,6 +859,31 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Warranty Management (temporary test)
+    |--------------------------------------------------------------------------
+    |
+    | All ACLs related to warranty will be placed here.
+    |
+    */
+    [
+        'key'   => 'warranty',
+        'name'  => 'warranty::app.acl.warranty',
+        'route' => 'admin.warranty.index',
+        'sort'  => 6,
+    ], [
+        'key'   => 'warranty.index',
+        'name'  => 'warranty::app.acl.warranties',
+        'route' => 'admin.warranty.index',
+        'sort'  => 1,
+    ], [
+        'key'   => 'warranty.packages',
+        'name'  => 'warranty::app.acl.packages',
+        'route' => 'admin.warranty.packages.index',
+        'sort'  => 2,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Configuration
     |--------------------------------------------------------------------------
     |

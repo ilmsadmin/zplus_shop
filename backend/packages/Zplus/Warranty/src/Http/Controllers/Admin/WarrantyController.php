@@ -28,16 +28,29 @@ class WarrantyController extends Controller
     public function create(): View
     {
         $warrantyPackages = WarrantyPackage::active()->orderBy('duration_months')->get();
-        $products = Product::orderBy('name')->get();
+        
+        // Get products with proper Bagisto relationship
+        $products = Product::with('attribute_values.attribute')
+                          ->orderBy('id')
+                          ->get()
+                          ->map(function($product) {
+                              return [
+                                  'id' => $product->id,
+                                  'name' => $product->name ?? "Product #{$product->id}",
+                                  'sku' => $product->sku,
+                              ];
+                          });
+        
         $customers = Customer::orderBy('first_name')->get();
         
-        return view('warranty::admin.warranties.create', compact('warrantyPackages', 'products', 'customers'));
+        return view('warranty::admin.warranties.create', compact('warrantyPackages', 'products', 'customers'))
+               ->with('errors', session('errors', new \Illuminate\Support\MessageBag()));
     }
 
     /**
      * Store a newly created warranty in storage.
      */
-    public function store(Request $request): JsonResponse
+    public function store(Request $request)
     {
         $request->validate([
             'warranty_package_id' => 'required|exists:warranty_packages,id',
@@ -78,16 +91,23 @@ class WarrantyController extends Controller
             'created_by' => auth()->guard('admin')->id(),
         ]);
 
-        return response()->json([
-            'message' => 'Warranty created successfully',
-            'warranty' => $warranty
-        ]);
+        // If AJAX request, return JSON
+        if ($request->ajax()) {
+            return response()->json([
+                'message' => 'Warranty created successfully',
+                'warranty' => $warranty
+            ]);
+        }
+
+        // If normal form submission, redirect with success message
+        return redirect()->route('admin.warranty.index')
+                         ->with('success', 'Bảo hành đã được tạo thành công!');
     }
 
     /**
      * Display the specified warranty.
      */
-    public function show(int $id): View
+    public function show(string $id): View
     {
         $warranty = Warranty::with(['warrantyPackage', 'product', 'customer', 'posTransaction', 'createdBy'])
             ->findOrFail($id);
@@ -98,11 +118,12 @@ class WarrantyController extends Controller
     /**
      * Show the form for editing the specified warranty.
      */
-    public function edit(int $id): View
+    public function edit(string $id): View
     {
-        $warranty = Warranty::findOrFail($id);
+        $warranty = Warranty::with(['warrantyPackage', 'product', 'customer', 'posTransaction', 'createdBy'])
+            ->findOrFail($id);
         $warrantyPackages = WarrantyPackage::active()->orderBy('duration_months')->get();
-        $products = Product::orderBy('name')->get();
+        $products = Product::orderBy('id')->get();
         $customers = Customer::orderBy('first_name')->get();
         
         return view('warranty::admin.warranties.edit', compact('warranty', 'warrantyPackages', 'products', 'customers'));
@@ -111,7 +132,7 @@ class WarrantyController extends Controller
     /**
      * Update the specified warranty in storage.
      */
-    public function update(Request $request, int $id): JsonResponse
+    public function update(Request $request, string $id): JsonResponse
     {
         $warranty = Warranty::findOrFail($id);
         
@@ -134,7 +155,7 @@ class WarrantyController extends Controller
     /**
      * Remove the specified warranty from storage.
      */
-    public function destroy(int $id): JsonResponse
+    public function destroy(string $id): JsonResponse
     {
         $warranty = Warranty::findOrFail($id);
         $warranty->delete();
@@ -168,6 +189,34 @@ class WarrantyController extends Controller
 
         $warranties = $query->orderBy('created_at', 'desc')
             ->paginate($request->get('limit', 10));
+
+        // Transform the data to ensure proper serialization
+        $transformedWarranties = $warranties->getCollection()->transform(function ($warranty) {
+            return [
+                'id' => $warranty->id,
+                'warranty_number' => $warranty->warranty_number,
+                'product_serial' => $warranty->product_serial,
+                'product_name' => $warranty->product_name,
+                'product_sku' => $warranty->product_sku,
+                'customer_name' => $warranty->customer_name,
+                'customer_phone' => $warranty->customer_phone,
+                'customer_email' => $warranty->customer_email,
+                'warranty_package' => $warranty->warrantyPackage ? [
+                    'id' => $warranty->warrantyPackage->id,
+                    'name' => $warranty->warrantyPackage->name,
+                    'duration_months' => $warranty->warrantyPackage->duration_months,
+                ] : null,
+                'start_date' => $warranty->start_date,
+                'end_date' => $warranty->end_date,
+                'purchase_date' => $warranty->purchase_date,
+                'status' => $warranty->status,
+                'notes' => $warranty->notes,
+                'created_at' => $warranty->created_at,
+                'updated_at' => $warranty->updated_at,
+            ];
+        });
+
+        $warranties->setCollection($transformedWarranties);
 
         return response()->json($warranties);
     }
