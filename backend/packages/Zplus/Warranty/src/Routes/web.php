@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Zplus\Warranty\Http\Controllers\Admin\WarrantyController;
 use Zplus\Warranty\Http\Controllers\Admin\WarrantyPackageController;
+use Zplus\Warranty\Http\Controllers\Frontend\WarrantySearchController;
 
 Route::group(['middleware' => ['admin'], 'prefix' => config('app.admin_url')], function () {
     Route::prefix('warranty')->name('admin.warranty.')->group(function () {
@@ -37,7 +38,8 @@ Route::group(['middleware' => ['admin'], 'prefix' => config('app.admin_url')], f
     });
 });
 
-// Public frontend search route (no admin middleware)
+// Public frontend search routes (no admin middleware)
 Route::prefix('warranty-search')->name('warranty.search.')->group(function () {
-    Route::get('/', [WarrantyController::class, 'search'])->name('index');
+    Route::get('/', [WarrantySearchController::class, 'index'])->name('index');
+    Route::post('/', [WarrantySearchController::class, 'search'])->name('search');
 });
