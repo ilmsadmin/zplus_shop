@@ -1,0 +1,5 @@
+<!-- Placeholder for SSL certificate badge -->
+<svg width="60" height="30" xmlns="http://www.w3.org/2000/svg">
+  <rect width="60" height="30" rx="4" fill="#00A86B"/>
+  <text x="30" y="18" text-anchor="middle" dy=".3em" font-family="Arial" font-size="8" fill="#fff" font-weight="bold">SSL</text>
+</svg>

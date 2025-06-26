@@ -1,0 +1,5 @@
+<!-- Placeholder for MoMo icon -->
+<svg width="40" height="25" xmlns="http://www.w3.org/2000/svg">
+  <rect width="40" height="25" rx="4" fill="#D82D8B"/>
+  <text x="20" y="15" text-anchor="middle" dy=".3em" font-family="Arial" font-size="7" fill="#fff" font-weight="bold">MoMo</text>
+</svg>

@@ -10,7 +10,7 @@ return [
     |
     */
 
-    'shop-default' => 'default',
+    'shop-default' => 'zplus',
 
     'shop' => [
         'default' => [
@@ -21,6 +21,18 @@ return [
             'vite'        => [
                 'hot_file'                 => 'shop-default-vite.hot',
                 'build_directory'          => 'themes/shop/default/build',
+                'package_assets_directory' => 'src/Resources/assets',
+            ],
+        ],
+
+        'zplus' => [
+            'name'        => 'ZPlus',
+            'assets_path' => 'public/themes/shop/zplus',
+            'views_path'  => 'packages/Zplus/Theme/src/Resources/views',
+
+            'vite'        => [
+                'hot_file'                 => 'shop-zplus-vite.hot',
+                'build_directory'          => 'themes/shop/zplus/build',
                 'package_assets_directory' => 'src/Resources/assets',
             ],
         ],
