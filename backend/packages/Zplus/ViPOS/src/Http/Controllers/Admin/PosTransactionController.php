@@ -21,9 +21,11 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Log;
 use Webkul\Core\Rules\PhoneNumber;
 use Carbon\Carbon;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Zplus\ViPOS\Services\BagistoOrderService;
 
 class PosTransactionController extends Controller
 {
@@ -33,7 +35,8 @@ class PosTransactionController extends Controller
     public function __construct(
         protected ChannelRepository $channelRepository,
         protected CustomerRepository $customerRepository,
-        protected CustomerGroupRepository $customerGroupRepository
+        protected CustomerGroupRepository $customerGroupRepository,
+        protected BagistoOrderService $bagistoOrderService
     ) {}
 
     /**
@@ -133,15 +136,47 @@ class PosTransactionController extends Controller
                 'movement_at' => Carbon::now()
             ]);
 
+            // Create corresponding order in Bagisto
+            try {
+                $bagistoOrder = $this->bagistoOrderService->createOrderFromPosTransaction($transaction);
+                
+                if ($bagistoOrder) {
+                    Log::info('Bagisto order created successfully', [
+                        'pos_transaction_id' => $transaction->id,
+                        'bagisto_order_id' => $bagistoOrder->id,
+                        'order_increment_id' => $bagistoOrder->increment_id
+                    ]);
+                } else {
+                    Log::warning('Failed to create Bagisto order', [
+                        'pos_transaction_id' => $transaction->id
+                    ]);
+                }
+            } catch (\Exception $e) {
+                Log::error('Error creating Bagisto order', [
+                    'pos_transaction_id' => $transaction->id,
+                    'error' => $e->getMessage()
+                ]);
+                // Continue with POS transaction success even if Bagisto order creation fails
+            }
+
             DB::commit();
+
+            // Reload transaction to get the updated bagisto_order_id
+            $transaction->refresh();
+
+            $message = 'Giao dịch đã được hoàn thành thành công';
+            if ($transaction->bagisto_order_id) {
+                $message .= '. Đã tạo đơn hàng trong hệ thống Bagisto.';
+            }
 
             return response()->json([
                 'success' => true,
-                'message' => 'Giao dịch đã được hoàn thành thành công',
+                'message' => $message,
                 'transaction' => [
                     'id' => $transaction->id,
                     'transaction_number' => $transaction->transaction_number,
                     'total_amount' => $transaction->total_amount,
+                    'bagisto_order_id' => $transaction->bagisto_order_id,
                     'print_url' => route('admin.vipos.transactions.print', $transaction->id),
                     'download_url' => route('admin.vipos.transactions.download', $transaction->id)
                 ]
@@ -410,7 +445,7 @@ class PosTransactionController extends Controller
     public function getTransactionDetails($id)
     {
         try {
-            $transaction = PosTransaction::with(['user', 'customer', 'session', 'items'])
+            $transaction = PosTransaction::with(['user', 'customer', 'session', 'items', 'bagistoOrder'])
                 ->findOrFail($id);
 
             // Get items from relationship, fallback to stored items array
@@ -450,6 +485,13 @@ class PosTransactionController extends Controller
                     'total_amount' => $transaction->total_amount,
                     'status' => $transaction->status,
                     'created_at' => $transaction->created_at->format('d/m/Y H:i'),
+                    'bagisto_order_id' => $transaction->bagisto_order_id,
+                    'bagisto_order' => $transaction->bagistoOrder ? [
+                        'id' => $transaction->bagistoOrder->id,
+                        'increment_id' => $transaction->bagistoOrder->increment_id,
+                        'status' => $transaction->bagistoOrder->status,
+                        'grand_total' => $transaction->bagistoOrder->grand_total
+                    ] : null,
                     'items' => $itemsData,
                     'summary' => [
                         'subtotal' => $transaction->subtotal_amount ?? $transaction->subtotal,

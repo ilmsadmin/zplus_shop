@@ -22,6 +22,7 @@ class PosTransaction extends Model
         'sale_id',
         'customer_id',
         'user_id',
+        'bagisto_order_id',
         'subtotal',
         'discount_amount',
         'discount_percentage',
@@ -97,6 +98,14 @@ class PosTransaction extends Model
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class, 'sale_id');
+    }
+
+    /**
+     * Get the Bagisto order associated with the transaction.
+     */
+    public function bagistoOrder(): BelongsTo
+    {
+        return $this->belongsTo(Order::class, 'bagisto_order_id');
     }
 
     /**
